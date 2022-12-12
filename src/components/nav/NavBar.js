@@ -22,7 +22,6 @@ export const NavBar = () => {
     )
     
     return <>
-        <Outlet/>
         <section className="nav">
             <button onClick={() => navigate(`/home`)} className="nav__home">Home</button>
             {
@@ -34,7 +33,7 @@ export const NavBar = () => {
                             localStorage.removeItem("auth_token")
                             navigate('/login')
                         }}
-                    >Logout</button>
+                        >Logout</button>
                 </>
                 : <>
                     <button onClick={() => navigate("/login")} className="nav__button">Login</button>
@@ -42,5 +41,6 @@ export const NavBar = () => {
                 </>
             }
         </section>
+        <Outlet/>
     </>
 }
