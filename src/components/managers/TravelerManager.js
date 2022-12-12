@@ -7,6 +7,15 @@ export const getAuthTraveler = () => {
         .then(response => response.json())
 }
 
+export const getTravelers = () => {
+    return fetch("http://localhost:8000/travelers", {
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
+        }
+     })
+        .then(response => response.json())
+}
+
 export const saveTraveler = traveler => {
     return fetch(`http://localhost:8000/travelers/${traveler.id}`, {
         method: "PUT",
