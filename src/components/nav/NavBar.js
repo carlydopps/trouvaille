@@ -1,20 +1,37 @@
+import { useEffect, useState } from "react"
 import { Outlet, useNavigate } from "react-router-dom"
+import { getAuthTraveler } from "../managers/TravelerManager"
 
 
 export const NavBar = () => {
 
+    const [user, setUser] = useState({})
     const navigate = useNavigate()
+
+    useEffect(
+        () => {
+
+            if (localStorage.getItem("auth_token") !== null) {
+                getAuthTraveler()
+                .then((data) => {
+                    setUser(data)
+                })
+            }
+        },
+        []
+    )
     
     return <>
         <Outlet/>
         <section className="nav">
             <button onClick={() => navigate(`/home`)} className="nav__home">Home</button>
             {
-                (localStorage.getItem("tr_token") !== null) ?
+                (localStorage.getItem("auth_token") !== null) ?
                 <>
+                    <button onClick={() => navigate(`/account/${user.id}`)} className="nav__button">Account</button>
                     <button className="nav__button" 
                         onClick={() => {
-                            localStorage.removeItem("tr_token")
+                            localStorage.removeItem("auth_token")
                             navigate('/login')
                         }}
                     >Logout</button>
