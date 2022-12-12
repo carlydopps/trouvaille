@@ -17,7 +17,7 @@ export const Login = () => {
         loginUser(user)
             .then(res => {
                 if ("valid" in res && res.valid && "token" in res) {
-                    localStorage.setItem("tr_token", res.token)
+                    localStorage.setItem("auth_token", res.token)
                     navigate("/home")
                 }
                 else {

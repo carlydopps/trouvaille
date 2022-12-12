@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom"
+import { Account } from "./components/account/Account"
 import { Login } from "./components/auth/Login"
 import { Register } from "./components/auth/Register"
 import { HomePage } from "./components/home/HomePage"
@@ -12,11 +13,12 @@ export const Trouvaille = () => {
             <Route element={<NavBar />}>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/home" element={<HomePage />} />
-                <Route element={<Authorized  />}></Route>
+                <Route element={<Authorized  />}>
+                    <Route path="/account/:userId" element={<Account />} />
+                </Route>
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
         </Routes>
     </>
 }
-
