@@ -28,6 +28,7 @@ export const NavBar = () => {
                 (localStorage.getItem("auth_token") !== null) ?
                 <>
                     <button onClick={() => navigate(`/account/${user.id}`)} className="nav__button">Account</button>
+                    <button onClick={() => navigate(`/my-trips`)} className="nav__button">My Trips</button>
                     <button className="nav__button" 
                         onClick={() => {
                             localStorage.removeItem("auth_token")

@@ -3,12 +3,15 @@ import { getTrips } from "../managers/TripManager"
 import { getTravelers } from "../managers/TravelerManager"
 import { getDestinations } from "../managers/DestinationManager"
 import "./HomePage.css"
+import { useNavigate } from "react-router-dom"
 
 export const HomePage = () => {
 
     const [trips, setTrips] = useState([])
     const [travelers, setTravelers] = useState([])
     const [destinations, setDestinations] = useState([])
+
+    const navigate = useNavigate()
 
     useEffect(
         () => {
@@ -29,6 +32,7 @@ export const HomePage = () => {
         <h1>Trouvaille</h1>
         <section>
             <h2>Trips</h2>
+            <button onClick={() => navigate('/trips/create')} >Start Planning!</button>
             {
                 trips.map(trip => {
                     return <div key={`trip--${trip.id}`}>
