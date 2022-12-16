@@ -6,7 +6,9 @@ import { createExperience } from "../managers/ExperienceManager"
 import { getExperienceTypes } from "../managers/ExperienceTypeManager"
 import { getSeasons } from "../managers/SeasonManager"
 import { getStyles } from "../managers/StyleManager"
-import { addTripDestination, addTripExperience, createTrip } from "../managers/TripManager"
+import { addTripDestination } from "../managers/TripDestinationManager"
+import { addTripExperience } from "../managers/TripExperienceManager"
+import { createTrip } from "../managers/TripManager"
 
 export const CreateTripForm = () => {
 
@@ -16,8 +18,8 @@ export const CreateTripForm = () => {
     const [experienceTypes, setExperienceTypes] = useState([])
     const [tripDestinations, setTripDestinations] = useState([])
     const [tripExperiences, setTripExperiences] = useState([])
-    const [displayDestForm, setDisplayDestForm] = useState(false)
-    const [displayExpForm, setDisplayExpForm] = useState(false)
+    const [showDestForm, setShowDestForm] = useState(false)
+    const [showExpForm, setShowExpForm] = useState(false)
     const [destination, updateDestination] = useState({
         "city": "",
         "state": "",
@@ -62,10 +64,10 @@ export const CreateTripForm = () => {
 
                 tripDestinations.map(tripDest => {
                     createDestination(tripDest)
-                        .then((tripDest) => {
+                        .then((newDest) => {
                             let newTripDest = {
                                 tripId: newTrip.id,
-                                destinationId: tripDest.id
+                                destinationId: newDest.id
                             }
                             addTripDestination(newTripDest)
                         })
@@ -73,10 +75,10 @@ export const CreateTripForm = () => {
 
                 tripExperiences.map(tripExp => {
                     createExperience(tripExp)
-                        .then((tripExp) => {
+                        .then((newExp) => {
                             let newTripExp = {
                                 tripId: newTrip.id,
-                                experienceId: tripExp.id
+                                experienceId: newExp.id
                             }
                             addTripExperience(newTripExp)
                         })
@@ -103,7 +105,7 @@ export const CreateTripForm = () => {
                     "country": ""
                 }
                 updateDestination(defaultDestination)
-                setDisplayDestForm(false)
+                setShowDestForm(false)
 
         } else if (resource === "experience") {
                 tripExperiences.push(experience)
@@ -114,7 +116,7 @@ export const CreateTripForm = () => {
                     "experienceTypeId": 0
                 }
                 updateExperience(defaultExperience)}
-                setDisplayExpForm(false)
+                setShowExpForm(false)
     } 
 
     const handleSubmit = (event) => {
@@ -143,73 +145,144 @@ export const CreateTripForm = () => {
             widget.open()
     }
 
+    const addDestinationForm = () => {
+        return <form>
+            <fieldset>
+                <label htmlFor="city"></label>
+                <input
+                    required autoFocus
+                    type="text"
+                    className="form-control"
+                    placeholder="City"
+                    value={destination.city}
+                    onChange={
+                        (event) => {
+                            const copy = {...destination}
+                            copy.city = event.target.value
+                            updateDestination(copy)
+                        }
+                    }
+                />
+            </fieldset>
+            <fieldset>
+                <label htmlFor="state"></label>
+                <input
+                    required
+                    type="text"
+                    className="form-control"
+                    placeholder="state"
+                    value={destination.state}
+                    onChange={
+                        (event) => {
+                            const copy = {...destination}
+                            copy.state = event.target.value
+                            updateDestination(copy)
+                        }
+                    }
+                />
+            </fieldset>
+            <fieldset>
+                <label htmlFor="country"></label>
+                <input
+                    required
+                    type="text"
+                    className="form-control"
+                    placeholder="country"
+                    value={destination.country}
+                    onChange={
+                        (event) => {
+                            const copy = {...destination}
+                            copy.country = event.target.value
+                            updateDestination(copy)
+                        }
+                    }
+                />
+            </fieldset>
+            <button onClick={(event) => handleSave(event, "destination")}>Save</button>
+        </form>
+    }
+
+    const addExperienceForm = () => {
+        return <form>
+            <fieldset>
+                <label htmlFor="title"></label>
+                <input
+                    required autoFocus
+                    type="text"
+                    className="form-control"
+                    placeholder="title"
+                    value={experience.title}
+                    onChange={
+                        (event) => {
+                            const copy = {...experience}
+                            copy.title = event.target.value
+                            updateExperience(copy)
+                        }
+                    }
+                />
+            </fieldset>
+            <fieldset>
+                <label htmlFor="address"></label>
+                <input
+                    required
+                    type="text"
+                    className="form-control"
+                    placeholder="address"
+                    value={experience.address}
+                    onChange={
+                        (event) => {
+                            const copy = {...experience}
+                            copy.address = event.target.value
+                            updateExperience(copy)
+                        }
+                    }
+                />
+            </fieldset>
+            <fieldset>
+                <label htmlFor="website"></label>
+                <input
+                    required
+                    type="text"
+                    className="form-control"
+                    placeholder="website"
+                    value={experience.websiteUrl}
+                    onChange={
+                        (event) => {
+                            const copy = {...experience}
+                            copy.websiteUrl = event.target.value
+                            updateExperience(copy)
+                        }
+                    }
+                />
+            </fieldset>
+            <fieldset>
+                <label htmlFor="experienceType"></label>
+                <select
+                    onChange={
+                        (event) => {
+                            const copy = {...experience}
+                            copy.experienceTypeId = parseInt(event.target.value)
+                            updateExperience(copy)
+                        }
+                    }
+                    className="form-control">
+                        <option value={0}
+                            className="form-control">
+                            Select experience type</option>
+                        {
+                            experienceTypes.map(expType => <option
+                            key={expType.id}
+                            value={expType.id}>
+                            {expType.name}</option>)
+                        }
+                </select>
+            </fieldset>
+            <button onClick={(event) => handleSave(event, "experience")}>Save</button>
+        </form>
+    }
+
     return <main>
         <h2>Start a New Trip</h2>
-        <section>
-            <h3>Destinations: </h3>
-            {
-                tripDestinations.map(tripDest => <p>{tripDest.city}, {tripDest.state} {tripDest.country}</p>)
-            }
-            <button onClick={(event) => setDisplayDestForm(!displayDestForm)}>Add Destination</button>
-            {
-                displayDestForm
-                ? <form>
-                <fieldset>
-                    <label htmlFor="city"></label>
-                    <input
-                        required autoFocus
-                        type="text"
-                        className="form-control"
-                        placeholder="City"
-                        value={destination.city}
-                        onChange={
-                            (event) => {
-                                const copy = {...destination}
-                                copy.city = event.target.value
-                                updateDestination(copy)
-                            }
-                        }
-                    />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="state"></label>
-                    <input
-                        required
-                        type="text"
-                        className="form-control"
-                        placeholder="state"
-                        value={destination.state}
-                        onChange={
-                            (event) => {
-                                const copy = {...destination}
-                                copy.state = event.target.value
-                                updateDestination(copy)
-                            }
-                        }
-                    />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="country"></label>
-                    <input
-                        required
-                        type="text"
-                        className="form-control"
-                        placeholder="country"
-                        value={destination.country}
-                        onChange={
-                            (event) => {
-                                const copy = {...destination}
-                                copy.country = event.target.value
-                                updateDestination(copy)
-                            }
-                        }
-                    />
-                </fieldset>
-                <button onClick={(event) => handleSave(event, "destination")}>Save</button>
-            </form>
-                : ""
-            }
-        </section>
         <form>
             <fieldset>
                 <label htmlFor="title"></label>
@@ -354,97 +427,54 @@ export const CreateTripForm = () => {
             </section>
         </form>
         <section>
+            <h3>Destinations: </h3>
+            <ul>
+                {
+                    tripDestinations.map(tripDest => {
+                        return <li>
+                            <p>{tripDest.city}, {tripDest.state} {tripDest.country}</p>
+                            <button onClick={() => {
+                                let index = tripDestinations.indexOf(tripDest)
+                                const copy = [...tripDestinations]
+                                copy.splice(index, 1)
+                                setTripDestinations(copy)
+                            }}>Delete</button>
+                        </li>
+                    })
+                }
+                <button onClick={(event) => setShowDestForm(!showDestForm)}>Add Destination</button>
+                {
+                    showDestForm
+                    ? addDestinationForm()
+                    : ""
+                }
+            </ul>
+        </section>
+        <section>
             <h3>Experiences: </h3>
-            {
-                tripExperiences.map(tripExp => {
-                    return <div>
-                        <p>{tripExp.title}</p>
-                        <p>{tripExp.address}</p>
-                        <a href={`${tripExp.websiteUrl}`}>{tripExp.websiteUrl}</a>
-                    </div>
-                })
-            }
-            <button onClick={(event) => setDisplayExpForm(!displayExpForm)}>Add Experience</button>
-            {
-                displayExpForm
-                ? <form>
-                <fieldset>
-                    <label htmlFor="title"></label>
-                    <input
-                        required autoFocus
-                        type="text"
-                        className="form-control"
-                        placeholder="title"
-                        value={experience.title}
-                        onChange={
-                            (event) => {
-                                const copy = {...experience}
-                                copy.title = event.target.value
-                                updateExperience(copy)
-                            }
-                        }
-                    />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="address"></label>
-                    <input
-                        required
-                        type="text"
-                        className="form-control"
-                        placeholder="address"
-                        value={experience.address}
-                        onChange={
-                            (event) => {
-                                const copy = {...experience}
-                                copy.address = event.target.value
-                                updateExperience(copy)
-                            }
-                        }
-                    />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="website"></label>
-                    <input
-                        required
-                        type="text"
-                        className="form-control"
-                        placeholder="website"
-                        value={experience.websiteUrl}
-                        onChange={
-                            (event) => {
-                                const copy = {...experience}
-                                copy.websiteUrl = event.target.value
-                                updateExperience(copy)
-                            }
-                        }
-                    />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="experienceType"></label>
-                    <select
-                        onChange={
-                            (event) => {
-                                const copy = {...experience}
-                                copy.experienceTypeId = parseInt(event.target.value)
-                                updateExperience(copy)
-                            }
-                        }
-                        className="form-control">
-                            <option value={0}
-                                className="form-control">
-                                Select experience type</option>
-                            {
-                                experienceTypes.map(expType => <option
-                                key={expType.id}
-                                value={expType.id}>
-                                {expType.name}</option>)
-                            }
-                    </select>
-                </fieldset>
-                <button onClick={(event) => handleSave(event, "experience")}>Save</button>
-            </form>
-                : ""
-            }
+            <ul>
+                {
+                    tripExperiences.map(tripExp => {
+                        return <li id={tripExp.title}>
+                                <p>{tripExp.title}</p>
+                                <a href={`${tripExp.websiteUrl}`}>{tripExp.websiteUrl}</a>
+                                <p>{tripExp.address}</p>
+                                <button onClick={() => {
+                                    let index = tripExperiences.indexOf(tripExp)
+                                    const copy = [...tripExperiences]
+                                    copy.splice(index, 1)
+                                    setTripExperiences(copy)
+                                }}>Delete</button>
+                        </li>
+                    })
+                }
+                <button onClick={(event) => setShowExpForm(!showExpForm)}>Add Experience</button>
+                {
+                    showExpForm
+                    ? addExperienceForm()
+                    : ""
+                }
+            </ul>
         </section>
         <button
             onClick={(event) => handleSave(event, "trip")}
