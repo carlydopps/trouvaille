@@ -2,8 +2,6 @@ import { Route, Routes } from "react-router-dom"
 import { Account } from "./components/account/Account"
 import { Login } from "./components/auth/Login"
 import { Register } from "./components/auth/Register"
-import { DestinationEdit } from "./components/destination/DestinationEdit"
-import { ExperienceEdit } from "./components/experience/ExperienceEdit"
 import { HomePage } from "./components/home/HomePage"
 import { LandingPage } from "./components/home/LandingPage"
 import { NavBar } from "./components/nav/NavBar"
@@ -23,8 +21,6 @@ export const Trouvaille = () => {
                     <Route path="/trips/create" element={<CreateTripForm />} />
                     <Route path="/my-trips" element={<MyTrips />} />
                     <Route path="/trip/:tripId" element={<Trip />} />
-                    <Route path="/experience-edit/:experienceId/:tripId" element={<ExperienceEdit />} />
-                    <Route path="/destination-edit/:destinationId/:tripId" element={<DestinationEdit />} />
                 </Route>
             </Route>
             <Route path="/login" element={<Login />} />
