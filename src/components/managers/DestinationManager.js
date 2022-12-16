@@ -1,3 +1,12 @@
+export const getDestination = (id) => {
+    return fetch(`http://localhost:8000/destinations/${id}`, {
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
+        }
+     })
+        .then(response => response.json())
+}
+
 export const getDestinations = () => {
     return fetch("http://localhost:8000/destinations", {
         headers:{
@@ -18,4 +27,16 @@ export const createDestination = (destination) => {
         body: JSON.stringify(destination)
      })
         .then(response => response.json())
+}
+
+export const saveDestination = (destination) => {
+    return fetch(`http://localhost:8000/destinations/${destination.id}`, {
+        method: "PUT",
+        headers:{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
+        },
+        body: JSON.stringify(destination)
+     })
 }

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { deleteTrip, getMyTrips } from "../managers/TripManager"
 
 export const MyTrips = () => {
 
     const [trips, setTrips] = useState([])
+    const navigate = useNavigate()
 
     const renderTrips = () => {
         getMyTrips()
@@ -51,15 +53,15 @@ export const MyTrips = () => {
                                         trip.experiences.map(experience => {
                                             return <li key={`experience--${experience.id}`}>
                                                 <p>{experience.title}</p>
-                                                <p>{experience.experience_type.name}</p>
-                                                <p>{experience.address}</p>
                                                 <a>{experience.website_url}</a>
+                                                <p>{experience.address}</p>
+                                                <p>{experience.experience_type.name}</p>
                                             </li>
                                         })
                                     }
                                 </ul>
                         </div>
-                        <button>Edit</button>
+                        <button onClick={() => navigate(`/trip/${trip.id}`)}>View</button>
                         <button onClick={(event) => {
                             event.preventDefault()
                             deleteTrip(trip.id)
