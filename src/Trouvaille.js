@@ -7,6 +7,7 @@ import { LandingPage } from "./components/home/LandingPage"
 import { NavBar } from "./components/nav/NavBar"
 import { CreateTripForm } from "./components/trip/CreateTripForm"
 import { MyTrips } from "./components/trip/MyTrips"
+import { Trip } from "./components/trip/Trip"
 import { Authorized } from "./components/views/Authorized"
 
 export const Trouvaille = () => {
@@ -19,6 +20,7 @@ export const Trouvaille = () => {
                     <Route path="/account/:userId" element={<Account />} />
                     <Route path="/trips/create" element={<CreateTripForm />} />
                     <Route path="/my-trips" element={<MyTrips />} />
+                    <Route path="/trip/:tripId" element={<Trip />} />
                 </Route>
             </Route>
             <Route path="/login" element={<Login />} />
