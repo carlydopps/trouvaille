@@ -1,18 +1,10 @@
 export const getExperience = (id) => {
-    return fetch(`http://localhost:8000/experiences/${id}`, {
-        headers:{
-            "Authorization": `Token ${localStorage.getItem("auth_token")}`
-        }
-     })
+    return fetch(`http://localhost:8000/experiences/${id}`)
         .then(response => response.json())
 }
 
-export const getExperiences = (id) => {
-    return fetch(`http://localhost:8000/experiences`, {
-        headers:{
-            "Authorization": `Token ${localStorage.getItem("auth_token")}`
-        }
-     })
+export const getExperiences = () => {
+    return fetch(`http://localhost:8000/experiences`)
         .then(response => response.json())
 }
 
