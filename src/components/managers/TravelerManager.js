@@ -1,3 +1,12 @@
+export const getTraveler = (id) => {
+    return fetch(`http://localhost:8000/travelers/${id}`, {
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
+        }
+     })
+        .then(response => response.json())
+}
+
 export const getAuthTraveler = () => {
     return fetch("http://localhost:8000/travelers/auth", {
         headers:{
@@ -8,11 +17,7 @@ export const getAuthTraveler = () => {
 }
 
 export const getTravelers = () => {
-    return fetch("http://localhost:8000/travelers", {
-        headers:{
-            "Authorization": `Token ${localStorage.getItem("auth_token")}`
-        }
-     })
+    return fetch("http://localhost:8000/travelers", {})
         .then(response => response.json())
 }
 
