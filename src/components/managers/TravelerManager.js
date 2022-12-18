@@ -17,7 +17,7 @@ export const getAuthTraveler = () => {
 }
 
 export const getTravelers = () => {
-    return fetch("http://localhost:8000/travelers", {})
+    return fetch("http://localhost:8000/travelers")
         .then(response => response.json())
 }
 
