@@ -25,7 +25,9 @@ export const NavBar = () => {
         <section className="nav">
             <button onClick={() => navigate(`/home`)} className="nav__home">Home</button>
             <button onClick={() => navigate(`/travelers`)} className="nav__button">Travelers</button>
-            <button onClick={() => navigate(`/destinations`)} className="nav__button">Destinations</button>
+            <button onClick={() => navigate(`/destinations`)} 
+            className="nav__button">Destinations</button>
+            <button onClick={() => navigate(`/experiences`)} className="nav__button">Experiences</button>
             {
                 (localStorage.getItem("auth_token") !== null) ?
                 <>
