@@ -1,18 +1,10 @@
 export const getDestination = (id) => {
-    return fetch(`http://localhost:8000/destinations/${id}`, {
-        headers:{
-            "Authorization": `Token ${localStorage.getItem("auth_token")}`
-        }
-     })
+    return fetch(`http://localhost:8000/destinations/${id}`)
         .then(response => response.json())
 }
 
 export const getDestinations = () => {
-    return fetch("http://localhost:8000/destinations", {
-        headers:{
-            "Authorization": `Token ${localStorage.getItem("auth_token")}`
-        }
-     })
+    return fetch("http://localhost:8000/destinations")
         .then(response => response.json())
 }
 
