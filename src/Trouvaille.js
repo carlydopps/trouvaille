@@ -12,6 +12,7 @@ import { TravelerList } from "./components/traveler/TravelerList"
 import { CreateTripForm } from "./components/trip/CreateTripForm"
 import { MyTrips } from "./components/trip/MyTrips"
 import { Trip } from "./components/trip/Trip"
+import { TripList } from "./components/trip/TripList"
 import { Authorized } from "./components/views/Authorized"
 
 export const Trouvaille = () => {
@@ -20,13 +21,14 @@ export const Trouvaille = () => {
             <Route element={<NavBar />}>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/home" element={<HomePage />} />
-                <Route path="/trip/:tripId" element={<Trip />} />
+                <Route path="/trips" element={<TripList />} />
                 <Route path="/travelers" element={<TravelerList />} />
                 <Route path="/destinations" element={<DestinationList />} />
                 <Route path="/experiences" element={<ExperienceList />} />
                 <Route element={<Authorized  />}>
                     <Route path="/account/:userId" element={<Account />} />
                     <Route path="/trips/create" element={<CreateTripForm />} />
+                    <Route path="/trip/:tripId" element={<Trip />} />
                     <Route path="/my-trips" element={<MyTrips />} />
                     <Route path="/travelers/:travelerId" element={<Traveler />} />
                 </Route>
