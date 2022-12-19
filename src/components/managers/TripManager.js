@@ -8,11 +8,7 @@ export const getTrip = (tripId) => {
 }
 
 export const getTrips = () => {
-    return fetch("http://localhost:8000/trips", {
-        headers:{
-            "Authorization": `Token ${localStorage.getItem("auth_token")}`
-        }
-     })
+    return fetch("http://localhost:8000/trips")
         .then(response => response.json())
 }
 

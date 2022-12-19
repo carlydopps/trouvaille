@@ -43,7 +43,8 @@ export const Trip = () => {
             "isPrivate": false,
             "experiences": [],
             "destinations": [],
-            "modifiedDate": ""
+            "modifiedDate": "",
+            "myTrip": false
         }
     )
 
@@ -67,7 +68,8 @@ export const Trip = () => {
                     duration: data.duration,
                     experiences: data.experiences,
                     destinations: data.destinations,
-                    modifiedDate: data.modified_date
+                    modifiedDate: data.modified_date,
+                    myTrip: data.my_trip
                 }
                 updateTrip(convertedTrip)
             })
@@ -157,8 +159,11 @@ export const Trip = () => {
                 <p>Privacy: {trip.isPrivate ? "Private" : "Public"}</p>
             </div>
             <div>
-                <button onClick={() => setShowTripEdit(true)}>Edit Details</button>
-                <button>Save</button>
+                {
+                    trip.myTrip
+                    ? <button onClick={() => setShowTripEdit(true)}>Edit Details</button>
+                    : ""
+                }
             </div>
         </section>
 
@@ -323,13 +328,19 @@ export const Trip = () => {
                             } else {
                                 return <li key={`destination--${destination.id}`}>
                                     <p>{destination.city}, {destination.state} {destination.country}</p>
-                                    <button onClick={() => {
-                                        setShowDestinationEdit({show: true, id: destination.id})
-                                        updateStateDestination(destination)
-                                    }}>Edit</button>
-                                    <button onClick={() => {deleteTripDestination(trip.id, destination.id)
-                                        .then(() => renderTrip())
-                                    }}>Delete</button>
+                                    {
+                                        trip.myTrip
+                                        ? <>
+                                            <button onClick={() => {
+                                                setShowDestinationEdit({show: true, id: destination.id})
+                                                updateStateDestination(destination)
+                                            }}>Edit</button>
+                                            <button onClick={() => {deleteTripDestination(trip.id, destination.id)
+                                                .then(() => renderTrip())
+                                            }}>Delete</button>
+                                        </>
+                                        : ""
+                                    }
                                 </li>
                             }
                         }}
@@ -412,21 +423,27 @@ export const Trip = () => {
                                     <a href={`${experience.website_url}`}>{experience.website_url}</a>
                                     <p>{experience.address}</p>
                                     <p>{experience.experience_type.name}</p>
-                                    <button onClick={() => {
-                                        setShowExperienceEdit({show: true, id: experience.id})
+                                    {
+                                        trip.myTrip
+                                        ? <>
+                                            <button onClick={() => {
+                                                setShowExperienceEdit({show: true, id: experience.id})
 
-                                        let convertedExp = {
-                                            id: experience.id,
-                                            title: experience.title,
-                                            address: experience.address,
-                                            websiteUrl: experience.website_url,
-                                            experienceTypeId: experience.experience_type.id
-                                        }
-                                        updateStateExperience(convertedExp)
-                                    }}>Edit</button>
-                                    <button onClick={() => {deleteTripExperience(trip.id, experience.id)
-                                        .then(() => renderTrip())
-                                    }}>Delete</button>
+                                                let convertedExp = {
+                                                    id: experience.id,
+                                                    title: experience.title,
+                                                    address: experience.address,
+                                                    websiteUrl: experience.website_url,
+                                                    experienceTypeId: experience.experience_type.id
+                                                }
+                                                updateStateExperience(convertedExp)
+                                            }}>Edit</button>
+                                            <button onClick={() => {deleteTripExperience(trip.id, experience.id)
+                                                .then(() => renderTrip())
+                                            }}>Delete</button>
+                                        </>
+                                        : ""
+                                    }
                                 </li>
                             }
                         }}
