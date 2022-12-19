@@ -22,7 +22,6 @@ export const Trouvaille = () => {
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/home" element={<HomePage />} />
                 <Route path="/trips" element={<TripList />} />
-                {/* <Route path="/trip/:tripId" element={<Trip />} /> */}
                 <Route path="/travelers" element={<TravelerList />} />
                 <Route path="/destinations" element={<DestinationList />} />
                 <Route path="/experiences" element={<ExperienceList />} />
