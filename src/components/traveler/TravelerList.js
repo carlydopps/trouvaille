@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
-import { getTravelers } from "../managers/TravelerManager"
+import { getTravelers, getTravelersWithAuth } from "../managers/TravelerManager"
 import { Link, useNavigate } from "react-router-dom"
+import { createSubscription, deleteSubscription } from "../managers/SubscriptionManager"
 
 export const TravelerList = () => {
 
@@ -8,31 +9,53 @@ export const TravelerList = () => {
 
     const navigate = useNavigate()
 
+    const renderTravelers = () => {
+        if (localStorage.getItem("auth_token")) {
+            getTravelersWithAuth().then(data => setTravelers(data))
+        } else {
+            getTravelers().then(data => setTravelers(data))
+        }
+    }
+
     useEffect(
         () => {
-            getTravelers()
-                .then(data => setTravelers(data))
+            renderTravelers()
         },
         []
     )
 
+    const subscribe = (travelerId) => {
+        const newSubscription = {travelerId: travelerId}
+        createSubscription(newSubscription).then(() => renderTravelers())
+    }
+
+    const unsubscribe = (travelerId) => {
+        deleteSubscription(travelerId).then(() => renderTravelers())
+    }
+
     return <>
         <h1>Travelers</h1>
-        <section>
+        <ul>
             {
                 travelers.map(traveler => {
-                    return <button key={`traveler--${traveler.id}`} onClick={() => 
-                        {
-                            localStorage.getItem("auth_token")
-                            ? navigate(`/travelers/${traveler.id}`)
-                            : navigate(`/login`)
-                        }}>
+                    return <li key={`traveler--${traveler.id}`}>
                             <img src={traveler.profile_image_url} alt="Profile Image" className="profile-image"/>
                             <h4>{traveler.full_name}</h4>
-                                <Link to={`/traveler/${traveler.id}`}>@{traveler.username}</Link>
-                        </button>
+                            {localStorage.getItem("auth_token")
+                                ? <Link to={`/travelers/${traveler.id}`}>@{traveler.username}</Link>
+                                : <Link to={`/login`}>@{traveler.username}</Link>
+                            }
+                            {localStorage.getItem("auth_token")
+                                ? traveler.myself
+                                    ? ""
+                                    : traveler.subscribed
+                                        ? <button onClick={() => unsubscribe(traveler.id)}>Unfollow</button>
+                                        : <button onClick={() => subscribe(traveler.id)}>Follow</button>
+                                : ""
+                            }
+                        </li>
                 })
             }
-        </section>
+        </ul>
     </>
 }
