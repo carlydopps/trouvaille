@@ -24,12 +24,12 @@ export const TravelerList = () => {
         []
     )
 
-    const subscribe = (travelerId) => {
+    const follow = (travelerId) => {
         const newSubscription = {travelerId: travelerId}
         createSubscription(newSubscription).then(() => renderTravelers())
     }
 
-    const unsubscribe = (travelerId) => {
+    const unfollow = (travelerId) => {
         deleteSubscription(travelerId).then(() => renderTravelers())
     }
 
@@ -48,9 +48,9 @@ export const TravelerList = () => {
                             {localStorage.getItem("auth_token")
                                 ? traveler.myself
                                     ? ""
-                                    : traveler.subscribed
-                                        ? <button onClick={() => unsubscribe(traveler.id)}>Unfollow</button>
-                                        : <button onClick={() => subscribe(traveler.id)}>Follow</button>
+                                    : traveler.following
+                                        ? <button onClick={() => unfollow(traveler.id)}>Unfollow</button>
+                                        : <button onClick={() => follow(traveler.id)}>Follow</button>
                                 : <button onClick={() => navigate(`/login`)}>Login to Follow</button>
                             }
                         </li>
