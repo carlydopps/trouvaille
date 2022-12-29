@@ -22,7 +22,7 @@ export const getTravelers = () => {
 }
 
 export const getTravelersWithAuth = () => {
-    return fetch("http://localhost:8000/travelers?subscription=true", {
+    return fetch("http://localhost:8000/travelers?auth=required", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }
