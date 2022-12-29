@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Outlet, useNavigate } from "react-router-dom"
 import { getAuthTraveler } from "../managers/TravelerManager"
+import { AccountNav } from "./AccountNav"
 
 
 export const NavBar = () => {
@@ -30,17 +31,8 @@ export const NavBar = () => {
             className="nav__button">Destinations</button>
             <button onClick={() => navigate(`/experiences`)} className="nav__button">Experiences</button>
             {
-                (localStorage.getItem("auth_token") !== null) ?
-                <>
-                    <button onClick={() => navigate(`/account/${user.id}`)} className="nav__button">Account</button>
-                    <button onClick={() => navigate(`/my-trips`)} className="nav__button">My Trips</button>
-                    <button className="nav__button" 
-                        onClick={() => {
-                            localStorage.removeItem("auth_token")
-                            navigate('/login')
-                        }}
-                        >Logout</button>
-                </>
+                (localStorage.getItem("auth_token") !== null) 
+                ? <AccountNav user={user}/>
                 : <>
                     <button onClick={() => navigate("/login")} className="nav__button">Login</button>
                     <button onClick={() => navigate("/register")} className="nav__button">Register</button>
