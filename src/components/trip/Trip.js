@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { saveDestination } from "../managers/DestinationManager"
 import { getDurations } from "../managers/DurationManager"
 import { saveExperience } from "../managers/ExperienceManager"
 import { getExperienceTypes } from "../managers/ExperienceTypeManager"
+import { createFavorite, deleteFavorite } from "../managers/FavoriteManager"
 import { getSeasons } from "../managers/SeasonManager"
 import { getStyles } from "../managers/StyleManager"
 import { deleteTripDestination } from "../managers/TripDestinationManager"
 import { deleteTripExperience } from "../managers/TripExperienceManager"
 import { getTrip, saveTrip } from "../managers/TripManager"
+import './Trip.css'
+
 
 export const Trip = () => {
 
@@ -44,7 +47,9 @@ export const Trip = () => {
             "experiences": [],
             "destinations": [],
             "modifiedDate": "",
-            "myTrip": false
+            "myTrip": false,
+            "favorite": false,
+            "comments": []
         }
     )
 
@@ -69,7 +74,9 @@ export const Trip = () => {
                     experiences: data.experiences,
                     destinations: data.destinations,
                     modifiedDate: data.modified_date,
-                    myTrip: data.my_trip
+                    myTrip: data.my_trip,
+                    favorite: data.favorite,
+                    comments: data.trip_comments
                 }
                 updateTrip(convertedTrip)
             })
@@ -145,9 +152,22 @@ export const Trip = () => {
         renderTrip()
     }
 
+    const favorite = (tripId) => {
+        const newFavoriteTrip = {tripId: tripId}
+        createFavorite(newFavoriteTrip).then(() => renderTrip())
+    }
+
+    const unfavorite = (tripId) => {
+        deleteFavorite(tripId).then(() => renderTrip())
+    }
+
     const viewTrip = () => {
 
         return <section>
+            {trip.favorite
+                ? <button onClick={() => unfavorite(tripId)}>Unfavorite</button>
+                : <button onClick={() => favorite(tripId)}>Favorite</button>
+            }
             <div>
                 <p>{trip.title}</p>
                 <p>{trip.summary}</p>
@@ -308,7 +328,7 @@ export const Trip = () => {
             </form>
             <button onClick={(event) => handleSave(event, "trip")}>Save</button>
             {
-                trip.is_draft
+                trip.isDraft
                 ? <button onClick={(event) => handleSubmit(event)}>Post</button>
                 : ""
             }
@@ -543,6 +563,16 @@ export const Trip = () => {
         </section>
         <section>
             {viewExperiences()}
+        </section>
+        <section>
+            <h4>Comments</h4>
+            {trip.comments.map(comment => 
+                <div>
+                    <img src={comment.traveler.profile_image_url} alt='Profile image'className='profile-img'></img>
+                    <Link to={`/travelers/${comment.traveler.id}`}>{comment.traveler.full_name}</Link>
+                    <p>{comment.message}</p>
+                </div>
+            )}
         </section>
     </>
 }
