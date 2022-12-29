@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { createSubscription, deleteSubscription } from "../managers/SubscriptionManager"
 import { getTraveler } from "../managers/TravelerManager"
 
@@ -11,9 +11,14 @@ export const Traveler = () => {
         fullName: "",
         username: "",
         bio: "",
-        profileImage: ""
-
+        profileImage: "",
+        subscribed: "",
+        myself: "",
+        followerCount: 0,
+        traveledTrips: []
     })
+
+    const navigate = useNavigate()
 
     const renderTraveler = () => {
         getTraveler(travelerId)
@@ -25,7 +30,9 @@ export const Traveler = () => {
                     bio: data.bio,
                     profileImage: data.profile_image_url,
                     subscribed: data.subscribed,
-                    myself: data.myself
+                    myself: data.myself,
+                    followerCount: data.follower_count,
+                    traveledTrips: data.traveled_trips
                 }
                 setTraveler(convertedTraveler)
             })
@@ -56,6 +63,21 @@ export const Traveler = () => {
                 : <button onClick={() => subscribe(traveler.id)}>Follow</button>
         }
         <h4>{traveler.fullName}</h4>
-            <p>@{traveler.username}</p>
+        <p>@{traveler.username}</p>
+        <p>{traveler.followerCount} followers</p>
+        <p>{traveler.traveledTrips.length} trips</p>
+        <h4>Trips</h4>
+        <ul>
+            {
+                traveler.traveledTrips.map(trip => 
+                    <button key={`trip--${trip.id}`} onClick={() => navigate(`/trip/${trip.id}`)}>
+                        <p>{trip.title}</p>
+                        <p>{trip.style.name}</p>
+                        <p>{trip.season.name}</p>
+                        <p>{trip.duration.extent}</p>
+                    </button>
+                )
+            }
+        </ul>
     </section>      
 }

@@ -51,7 +51,7 @@ export const TravelerList = () => {
                                     : traveler.subscribed
                                         ? <button onClick={() => unsubscribe(traveler.id)}>Unfollow</button>
                                         : <button onClick={() => subscribe(traveler.id)}>Follow</button>
-                                : ""
+                                : <button onClick={() => navigate(`/login`)}>Login to Follow</button>
                             }
                         </li>
                 })
