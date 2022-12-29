@@ -12,6 +12,15 @@ export const getTrips = () => {
         .then(response => response.json())
 }
 
+export const getTripsWithAuth = () => {
+    return fetch("http://localhost:8000/trips?auth=required", {
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
+        }
+     })
+        .then(response => response.json())
+}
+
 export const getMyTrips = () => {
     return fetch("http://localhost:8000/trips?status=created", {
         headers:{
