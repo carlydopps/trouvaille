@@ -1,0 +1,114 @@
+.page-traveler {
+    display: flex;
+    flex-direction: column;
+}
+
+.img-traveler-cover {
+    width: 100%;
+    height: 50rem;
+    object-fit: cover;
+    margin-top: -10rem;
+}
+
+.traveler-profile {
+    border: solid 1rem white;
+    background: white;
+    border-radius: 15%;
+    margin-top: -20rem;
+    padding: 2rem 2rem;
+}
+
+.traveler-profile-details, .traveler-profile-trip-heading {
+    padding-left: 18rem;
+}
+
+.traveler-profile-trip-heading {
+    display: flex;
+    flex-direction: column;
+}
+
+.traveler-profile-trip-heading > button {
+    width: 5rem;
+    margin-left: 75%;
+}
+
+.traveler-profile-name {
+    margin-bottom: 0;
+    font-size: xx-large;
+}
+
+.traveler-profile-username {
+    margin-top: 0;
+}
+
+.traveler-profile-image {
+    margin-top: -8rem;
+    margin-left: 15rem;
+    height: 15rem;
+    width: 15rem;
+}
+
+.profile-info {
+    display: flex;
+}
+
+.profile-info > p {
+    margin: 0 2rem 0 0;
+}
+
+.traveler-trips {
+    display: flex;
+    margin: 0 40rem;
+    justify-content: center;
+    padding: 0 5rem;
+}
+
+.traveler-trip-grid {
+    display: grid;
+    padding: 0;
+    grid-template-columns: repeat(2);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 1rem;
+}
+
+.traveler-trip-grid > button {
+    width: 30rem;
+    height: 100%;
+    object-fit: cover;
+    display: flex;
+    align-items: top;
+    justify-content: left;
+}
+
+.traveler-trip-grid > button > p {
+    border-color: #AB8466;
+    background-color: #AB8466;
+    height: 1rem;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    align-items: center;
+    text-align: center;
+    border-radius: 1.25rem;
+    color: whitesmoke;
+}
+
+.traveler-trip-grid button:nth-child(1) {
+    grid-row:  1 / span 2;
+    grid-column: 1;
+    width: 40rem;
+    border-radius: 10%;
+}
+
+.traveler-trip-grid button:nth-child(2) {
+    grid-row: 1;
+    grid-column: 2;
+    height: 30rem;
+    border-radius: 10%;
+}
+
+.traveler-trip-grid button:nth-child(3) {
+    grid-row: 2;
+    grid-column: 2;
+    height: 30rem;
+    border-radius: 10%;
+}

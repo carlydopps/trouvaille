@@ -2,10 +2,12 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { createSubscription, deleteSubscription } from "../managers/SubscriptionManager"
 import { getTraveler } from "../managers/TravelerManager"
+import './Traveler.css'
 
 export const Traveler = () => {
 
     const {travelerId} = useParams()
+    const [viewStatus, setViewStatus] = useState(false)
     const [traveler, setTraveler] = useState({
         id: 0,
         fullName: "",
@@ -54,30 +56,44 @@ export const Traveler = () => {
         deleteSubscription(travelerId).then(() => renderTraveler())
     }
 
-    return <section>
-        <img src={traveler.profileImage} alt="Profile Image" className="profile-image"/>
-        {traveler.myself
-            ? ""
-            : traveler.subscribed
-                ? <button onClick={() => unsubscribe(traveler.id)}>Unfollow</button>
-                : <button onClick={() => subscribe(traveler.id)}>Follow</button>
-        }
-        <h4>{traveler.fullName}</h4>
-        <p>@{traveler.username}</p>
-        <p>{traveler.followerCount} followers</p>
-        <p>{traveler.traveledTrips.length} trips</p>
-        <h4>Trips</h4>
-        <ul>
-            {
-                traveler.traveledTrips.map(trip => 
-                    <button key={`trip--${trip.id}`} onClick={() => navigate(`/trip/${trip.id}`)}>
-                        <p>{trip.title}</p>
-                        <p>{trip.style.name}</p>
-                        <p>{trip.season.name}</p>
-                        <p>{trip.duration.extent}</p>
-                    </button>
-                )
+    return <main className="page-traveler">
+        <section>
+            <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1672375661/Trouvaille/yu8uaslizfcafh2xffkn_t7fdk5.jpg" className="img-traveler-cover"></img>
+        </section>
+        <section className="traveler-profile">
+            <img src={traveler.profileImage} alt="Profile Image" className="profile-image traveler-profile-image"/>
+            {traveler.myself
+                ? ""
+                : traveler.subscribed
+                    ? <button onClick={() => unsubscribe(traveler.id)}>Unfollow</button>
+                    : <button onClick={() => subscribe(traveler.id)}>Follow</button>
             }
-        </ul>
-    </section>      
+            <div className="traveler-profile-details">
+                <h4 className="traveler-profile-name">{traveler.fullName}</h4>
+                <p className="traveler-profile-username">@{traveler.username}</p>
+                <div className="profile-info">
+                    <p>{traveler.followerCount} followers</p>
+                    <p>{traveler.traveledTrips.length} trips</p>
+                </div>
+                <p>{traveler.bio}</p>
+            </div>
+            <div className="traveler-profile-trip-heading">
+                <h2>Recent Trips</h2>
+                <button onClick={()=> setViewStatus(true)}>View All</button>
+            </div>
+            <section className="traveler-trips">
+                <div>
+                    <ul className="traveler-trip-grid">
+                        {
+                            traveler.traveledTrips.map(trip => 
+                                <button key={`trip--${trip.id}`} onClick={() => navigate(`/trip/${trip.id}`)} className="">
+                                    <p>{trip.destinations[0].city}, {trip.destinations[0].state}</p>
+                                </button>
+                            )
+                        }
+                    </ul>
+                </div>
+            </section>
+        </section>
+    </main>      
 }
