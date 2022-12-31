@@ -50,7 +50,7 @@ export const HomePage = () => {
             {
                 travelers.map(traveler => {
                     return <div key={`traveler--${traveler.id}`}>
-                            <img src={traveler.profile_image_url} alt="Profile Image" className="profile-image"/>
+                            <img src={traveler.profile_img} alt="Profile Image" className="profile-image"/>
                             <h4>{traveler.full_name}</h4>
                                 <p>@{traveler.username}</p>
                         </div>
