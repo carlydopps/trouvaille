@@ -28,7 +28,8 @@ export const Account = () => {
                 traveler.lastName = lastName
                 traveler.username = data.username
                 traveler.bio = data.bio
-                traveler.profileImg = data.profile_image_url
+                traveler.profileImg = data.profile_img
+                traveler.coverImg = data.cover_img
 
                 updateTraveler(traveler)})
     }
