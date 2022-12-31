@@ -19,13 +19,14 @@ export const Register = () => {
 
         if (password.current.value === verifyPassword.current.value) {
             const newUser = {
-                "first_name": firstName.current.value,
-                "last_name": lastName.current.value,
+                "firstName": firstName.current.value,
+                "lastName": lastName.current.value,
                 "username": username.current.value,
                 "email": email.current.value,
                 "password": password.current.value,
                 "bio": bio.current.value,
-                "profile_image_url": "https://res.cloudinary.com/dupram4w7/image/upload/v1663620931/Screen_Shot_2022-09-19_at_2_ey3w9e.png"
+                "profileImg": "https://res.cloudinary.com/dupram4w7/image/upload/v1663620931/Screen_Shot_2022-09-19_at_2_ey3w9e.png",
+                "coverImg": "https://res.cloudinary.com/dupram4w7/image/upload/v1672466537/Trouvaille/pexels-krivec-ales-547119_xsvwvy.jpg"
             }
 
             registerUser(newUser)
