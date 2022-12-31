@@ -11,7 +11,7 @@ export const Traveler = () => {
         fullName: "",
         username: "",
         bio: "",
-        profileImage: "",
+        profileImg: "",
         subscribed: "",
         myself: "",
         followerCount: 0,
@@ -28,7 +28,8 @@ export const Traveler = () => {
                     fullName: data.full_name,
                     username: data.username,
                     bio: data.bio,
-                    profileImage: data.profile_image_url,
+                    profileImg: data.profile_img,
+                    coverImg: data.cover_img,
                     subscribed: data.subscribed,
                     myself: data.myself,
                     followerCount: data.follower_count,
@@ -55,7 +56,7 @@ export const Traveler = () => {
     }
 
     return <section>
-        <img src={traveler.profileImage} alt="Profile Image" className="profile-image"/>
+        <img src={traveler.profileImg} alt="Profile Image" className="profile-image"/>
         {traveler.myself
             ? ""
             : traveler.subscribed
