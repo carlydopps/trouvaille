@@ -568,7 +568,7 @@ export const Trip = () => {
             <h4>Comments</h4>
             {trip.comments.map(comment => 
                 <div>
-                    <img src={comment.traveler.profile_image_url} alt='Profile image'className='profile-img'></img>
+                    <img src={comment.traveler.profile_img} alt='Profile image'className='profile-img'></img>
                     <Link to={`/travelers/${comment.traveler.id}`}>{comment.traveler.full_name}</Link>
                     <p>{comment.message}</p>
                 </div>
