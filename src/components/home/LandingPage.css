@@ -1,0 +1,135 @@
+.background-landing {
+    width: 100%;
+    height: 100%;
+    margin-top: -12rem;
+}
+
+.img-landing {
+    width: 100%;
+    height: 100%;
+}
+
+.img-landingTitle {
+    margin-bottom: -5rem;
+}
+
+.img-landing-collage1 {
+    border: solid white 2rem;
+    height: 20rem;
+    width: 20rem;
+    margin-top: -50rem;
+    margin-left: 60%;
+}
+
+.content-landing {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    padding-top: 5rem;
+    padding-bottom: 10rem;
+}
+
+.overlay {
+    position:fixed;
+    width: 100%;
+    height: 110vh;
+    background-color: rgba(34, 75, 73, 0.442);
+}
+
+.landing-header { 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.landing-header h1{
+    padding-top: 0;
+    height: 7rem;
+    width: 45rem;
+    justify-content: center;
+}
+
+.h1-landing {
+    font-size: 80px;
+    font-weight: bold;
+    padding: 1rem;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
+.typewriter h1 {
+    font-family: 'Abel', sans-serif;
+    font-weight: 400;
+    overflow: hidden;
+    border-right: .15em solid orange;
+    white-space: nowrap;
+    width: 49rem;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation: 
+      typing 5s steps(40, end),
+      blink-caret 1s step-end infinite;
+}
+
+@keyframes typing {
+from { width: 0 }
+to { width: 49rem }
+}
+
+@keyframes blink-caret {
+from, to { border-color: transparent }
+50% { border-color: #AB8466; }
+}
+
+.btn-explore {
+    color: whitesmoke;
+    background-color: #AB8466;
+    border: none;
+    box-shadow: 0 0.2rem 0.5rem 0 #876a52, 0 0.2rem 0.5rem 0 #876a52;
+    height: 2.5rem;
+    width: 18rem;
+    padding: 0.5rem 1rem;
+    margin: 7rem;
+    align-items: center;
+    text-align: center;
+}
+
+.btn-explore:hover {
+    box-shadow: 0 0.5rem 1rem 0 #AB8466, 0 0.5rem 1rem 0 #AB8466;
+    background-color: #c49672;
+    border-color: #c49672;
+}
+
+.landing-summary {
+    font-weight: 200;
+    font-family: 'Caveat', cursive;
+    padding-top: 5rem;;
+    width: 50rem;
+    font-size: 2rem;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.landing-summary_second{
+    font-size: 1.25rem;
+}
+
+.footer-landing {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    padding: 3rem;
+    position: relative;
+    height: 10rem;
+    left: 0;
+    bottom: 0;
+}
