@@ -3,7 +3,9 @@ import { getTrips } from "../managers/TripManager"
 import { getTravelers } from "../managers/TravelerManager"
 import { getDestinations } from "../managers/DestinationManager"
 import "./HomePage.css"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { ImageCarousel } from "../ImageCarousel"
 
 export const HomePage = () => {
 
@@ -28,46 +30,53 @@ export const HomePage = () => {
         []
     )
 
-    return <>
-        <h1>Trouvaille</h1>
-        <section>
-            <h2>Trips</h2>
-            <button onClick={() => navigate('/trips/create')} >Start Planning!</button>
-            {
-                trips.map(trip => {
-                    return <div key={`trip--${trip.id}`}>
-                            <h4>{trip.title}</h4>
-                            {
-                                trip.destinations.map(tripDestination => <p key={`tripDestination--${tripDestination.id}`}>{tripDestination.city}, {tripDestination.state}</p>)
-                            }
-                            <p>{trip.duration.extent}</p>
-                        </div>
-                })
-            }
+    return <main className="home-page">
+        {/* <button onClick={() => navigate('/trips/create')} >Start Planning!</button> */}
+        <section className="home-content">
+            <section className="home-heading">
+                <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1672518306/Trouvaille/coloradovibes_hrvest.jpg'></img>
+                <div>
+                    <h2>Take the road less traveled</h2>
+                    <p>Whether it's stumbling across a hidden back street, a quaint cafe, or connecting with a local, trouvaille describes those magical moments we experience in our journeys.</p>
+                    <a className="home-explore-link">&mdash; Start Exploring  </a>
+                </div>
+            </section>
+            <section className="home-trips">
+                <div>
+                    <h2>Adventure</h2>
+                    <p>See where other travelers are going and have been - peek at hidden places around the world</p>
+                </div>
+                <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1672525771/Trouvaille/pexels-min-an-1375560_rxfhwd.jpg'></img>
+                <ul>
+                    <ImageCarousel trips={trips}/>
+                </ul>
+            </section>
+            <section>
+                <h2>Travelers</h2>
+                {
+                    travelers.map(traveler => {
+                        return <div key={`traveler--${traveler.id}`}>
+                                <img src={traveler.profile_img} alt="Profile Image" className="profile-image"/>
+                                <h4>{traveler.full_name}</h4>
+                                {localStorage.getItem("auth_token")
+                                    ? <Link to={`/travelers/${traveler.id}`}>@{traveler.username}</Link>
+                                    : <Link to={`/login`}>@{traveler.username}</Link>
+                                }
+                            </div>
+                    })
+                }
+            </section>
+            <section>
+                <h2>Destinations</h2>
+                {
+                    destinations.map(destination => {
+                        return <div key={`destination--${destination.id}`}>
+                                <h4>{destination.city}</h4>
+                                    <p>{destination.state}, {destination.country}</p>
+                            </div>
+                    })
+                }
+            </section>
         </section>
-        <section>
-            <h2>Travelers</h2>
-            {
-                travelers.map(traveler => {
-                    return <div key={`traveler--${traveler.id}`}>
-                            <img src={traveler.profile_img} alt="Profile Image" className="profile-image"/>
-                            <h4>{traveler.full_name}</h4>
-                                <p>@{traveler.username}</p>
-                        </div>
-                })
-            }
-        </section>
-        <section>
-            <h2>Destinations</h2>
-            {
-                destinations.map(destination => {
-                    return <div key={`destination--${destination.id}`}>
-                            <h4>{destination.city}</h4>
-                                <p>{destination.state}, {destination.country}</p>
-                        </div>
-                })
-            }
-        </section>
-    </>
-
+    </main>
 }

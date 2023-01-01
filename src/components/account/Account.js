@@ -20,12 +20,8 @@ export const Account = () => {
             .then(data => {
 
                 let traveler = {}
-                let name = data.full_name.split(" ")
-                const lastName = name.pop()
-                const firstName = name.join(" ")
-
-                traveler.firstName = firstName
-                traveler.lastName = lastName
+                traveler.firstName = data.first_name
+                traveler.lastName = data.last_name
                 traveler.username = data.username
                 traveler.bio = data.bio
                 traveler.profileImg = data.profile_img
@@ -76,8 +72,7 @@ export const Account = () => {
 
     const defaultDisplay = () => {
 
-        return <>
-            <section>
+        return <section className="account-info">
                 <h4>Personal Information</h4>
                 <div>
                     <p>First Name: {traveler.firstName}</p>
@@ -85,109 +80,103 @@ export const Account = () => {
                     <p>Username: {traveler.username}</p>
                     <p>Bio: {traveler.bio}</p>
                 </div>
-                <button onClick={() => updateClickStatus(true)}>Edit Profile</button>
-            </section>
-        </>
+                <button onClick={() => updateClickStatus(true)} className="btn">Edit Profile</button>
+        </section>
     }
 
     const editDetails = () => {
         return <section className="body-contact">
-        <form>
-        <h4>Edit Profile Information</h4>
-        <button onClick={(event) => showWidget(event)}>
-                    Update photo
-        </button>
-        <fieldset>
-            <div>
-                <label htmlFor="firstName">First Name: </label>
-                <input 
-                    type="text"
-                    className="form-control"
-                    placeholder={traveler.firstName}
-                    value={traveler.firstName}
-                    onChange={
-                        (event) => {
-                            const copy = {...traveler}
-                            copy.firstName = event.target.value
-                            updateTraveler(copy)
-                        }
-                    } />
-            </div>
-        </fieldset>
-        <fieldset>
-            <div className="form-group">
-                <label htmlFor="lastName">Last Name: </label>
-                <input 
-                    type="text"
-                    className="form-control"
-                    placeholder={traveler.lastName}
-                    value={traveler.lastName}
-                    onChange={
-                        (event) => {
-                            const copy = {...traveler}
-                            copy.lastName = event.target.value
-                            updateTraveler(copy)
-                        }
-                    } />
-            </div>
-        </fieldset>
-        <fieldset>
-            <div className="form-group">
-                <label htmlFor="username">Username: </label>
-                <input 
-                    type="text"
-                    className="form-control"
-                    placeholder={traveler.username}
-                    value={traveler.username}
-                    onChange={
-                        (event) => {
-                            const copy = {...traveler}
-                            copy.username = event.target.value
-                            updateTraveler(copy)
-                        }
-                    } />
-            </div>
-        </fieldset>
-        <fieldset>
-            <label htmlFor="bio"> Bio: </label>
-            <input
-                required
-                type="text" 
-                className="form-control"
-                placeholder={traveler.bio}
-                value={traveler.bio}
-                onChange={
-                    (event) => {
-                        const copy = {...traveler}
-                        copy.bio = event.target.value
-                        updateTraveler(copy)
-                    }
-                } />
-        </fieldset>
-        <button 
-            onClick={(event) => handleSave(event)}>
-            Save
-        </button>
-        <button 
-            onClick={(event) => handleCancel(event)}>
-            Cancel
-        </button>
-    </form>
+            <form>
+                <h4>Edit Profile Information</h4>
+                <button onClick={(event) => showWidget(event)} className="btn">Update photo</button>
+                <fieldset>
+                    <div>
+                        <label htmlFor="firstName">First Name: </label>
+                        <input 
+                            type="text"
+                            className="form-control"
+                            placeholder={traveler.firstName}
+                            value={traveler.firstName}
+                            onChange={
+                                (event) => {
+                                    const copy = {...traveler}
+                                    copy.firstName = event.target.value
+                                    updateTraveler(copy)
+                                }
+                            } />
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div className="form-group">
+                        <label htmlFor="lastName">Last Name: </label>
+                        <input 
+                            type="text"
+                            className="form-control"
+                            placeholder={traveler.lastName}
+                            value={traveler.lastName}
+                            onChange={
+                                (event) => {
+                                    const copy = {...traveler}
+                                    copy.lastName = event.target.value
+                                    updateTraveler(copy)
+                                }
+                            } />
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div className="form-group">
+                        <label htmlFor="username">Username: </label>
+                        <input 
+                            type="text"
+                            className="form-control"
+                            placeholder={traveler.username}
+                            value={traveler.username}
+                            onChange={
+                                (event) => {
+                                    const copy = {...traveler}
+                                    copy.username = event.target.value
+                                    updateTraveler(copy)
+                                }
+                            } />
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="bio"> Bio: </label>
+                    <input
+                        required
+                        type="text" 
+                        className="form-control"
+                        placeholder={traveler.bio}
+                        value={traveler.bio}
+                        onChange={
+                            (event) => {
+                                const copy = {...traveler}
+                                copy.bio = event.target.value
+                                updateTraveler(copy)
+                            }
+                        } />
+                </fieldset>
+                <button onClick={(event) => handleSave(event)} className="btn">Save</button>
+                <button onClick={(event) => handleCancel(event)} className="btn">Cancel</button>
+        </form>
     </section>
     }
 
 
-    return <>
-        <main>
-            <img src={traveler.profileImg} className="profile-image"/>
-            <section>
-                <h1>Hi, {traveler.firstName}!</h1>
+    return <main className="page-account">
+        <section>
+            <img src={traveler.coverImg} className="account-img-cover"/>
+        </section>
+        <section className="account-profile">
+            <img src={traveler.profileImg} className="profile-image account-img-profile"/>
+            <section className="account-profile-details">
+                <h1 className="account-profile-name">Hi {traveler.firstName}!</h1>
                 {
                     clickStatus
                     ? editDetails()
                     : defaultDisplay()
                 }
             </section>
-        </main>
-    </>    
+        </section>
+    </main>
 }

@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { getAuthTraveler } from "../managers/TravelerManager"
 import { deleteTrip, getMyTrips } from "../managers/TripManager"
 
 export const MyTrips = () => {
 
     const [trips, setTrips] = useState([])
+    const [authUser, setAuthUser] = useState({})
     const navigate = useNavigate()
 
     const renderTrips = () => {
@@ -13,13 +15,14 @@ export const MyTrips = () => {
     }
     useEffect(
         () => {
+            getAuthTraveler().then(data => setAuthUser(data))
             renderTrips()
         },
         []
     )
 
     return <>
-        <h2>My Trips</h2>
+        <h2>{authUser.first_name}'s Trips</h2>
         <ul>
             {
                 trips.map(trip => {

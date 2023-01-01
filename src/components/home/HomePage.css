@@ -1,7 +1,136 @@
+.home-page {
+    background-color: #FFFAF6;
+}
+
+.home-content, .home-trips {
+    background-color: #FFFAF6;
+    margin: 0 8%;
+    padding-top: 4rem;
+}
+
 .profile-image {
     justify-content: center;
     height: 9rem;
     width: 9rem;
     border-radius: 100%;
     align-self: center;
+}
+
+.home-heading, .home-trips {
+    display: flex;
+}
+
+.home-heading > img{
+    width: 40%;
+    height: 40%;
+    margin-left: 5%;
+}
+
+.home-heading > div {
+    width: 30%;
+    height: auto;
+    font-size: 1vw;
+    background-color: rgba(255, 255, 255, 0.885);
+    margin: 10rem 0 0 -8rem;
+    padding: 4rem;
+    box-shadow: 0 0.2rem 1rem 0 rgba(189, 190, 191, 0.404), 0 0.2rem 0.5rem 0 rgba(172, 172, 173, 0.218);
+    object-fit: cover;
+}
+
+.home-trips > div {
+    width: 100%;
+    height: auto;
+    margin: 3rem -15rem -3rem 2rem;
+    font-size: 1vw;
+    background-color: rgba(255, 255, 255, 0.885);
+    padding: 4rem 15rem 4rem 4rem;
+    box-shadow: 0 0.2rem 1rem 0 rgba(189, 190, 191, 0.404), 0 0.2rem 0.5rem 0 rgba(172, 172, 173, 0.218);
+    object-fit: cover;
+    /* z-index: 1; */
+}
+
+.home-trips > img {
+    width: 50%;
+    height: 50%;
+    margin: 7rem 0 0 0;
+}
+
+.home-heading > div > h2, .home-trips > div > h2 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3rem;
+    margin: 0;
+    letter-spacing: 0.1rem;
+}
+
+.home-heading > div > p, a, .home-trips > div > p {
+    padding-left: 2rem;
+}
+
+.home-heading > div > a:hover {
+    color: rgb(251, 186, 88);
+}
+
+.home-explore-link {
+    font-family: 'Abel', sans-serif;
+    color: orange;
+    font-weight: bold;
+}
+
+.home-trips {
+    display: flex;
+    justify-content: left;
+}
+
+.home-trip-grid {
+    display: grid;
+    padding: 0;
+    grid-template-columns: repeat(2);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 1rem;
+}
+
+.home-trip-grid > button {
+    width: 20rem;
+    height: 100%;
+    display: flex;
+    align-items: top;
+    background-size: cover;
+    justify-content: left;
+}
+
+.home-trip-grid > button:hover {
+    box-shadow: 0 0.5rem 1rem 0 rgba(61, 61, 61, 0.24), 0 0.5rem 1rem 0 rgba(63, 63, 63, 0.19);
+}
+
+.home-trip-grid > button > p {
+    border-color: #AB8466;
+    background-color: #AB8466;
+    height: 1rem;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    align-items: center;
+    text-align: center;
+    border-radius: 1.25rem;
+    color: whitesmoke;
+}
+
+.home-trip-grid button:nth-child(1) {
+    grid-row:  1 / span 2;
+    grid-column: 1;
+    width: 40rem;
+    border-radius: 10%;
+}
+
+.home-trip-grid button:nth-child(2) {
+    grid-row: 1;
+    grid-column: 2;
+    height: 20rem;
+    border-radius: 10%;
+}
+
+.home-trip-grid button:nth-child(3) {
+    grid-row: 2;
+    grid-column: 2;
+    height: 20rem;
+    border-radius: 10%;
 }

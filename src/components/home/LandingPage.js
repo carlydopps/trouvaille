@@ -15,7 +15,7 @@ export const LandingPage = () => {
                 <div className="landing-header">
                     <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1672372171/Trouvaille/Trouvaille_700_300_px_vly6tj.png' alt='Trouvaille' className='img-landingTitle'/>
                 </div>
-                <div class="typewriter">
+                <div className="typewriter">
                     <h1>a chance encounter with something wonderful.</h1>
                 </div>
                 {/* <p className='landing-summary'>Whether it's stumbling across a hidden back street,<br/>a quaint cafe, or connecting with a local,<br/>
