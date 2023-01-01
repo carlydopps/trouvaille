@@ -9,7 +9,7 @@ import { getSeasons } from "../managers/SeasonManager"
 import { getStyles } from "../managers/StyleManager"
 import { deleteTripDestination } from "../managers/TripDestinationManager"
 import { deleteTripExperience } from "../managers/TripExperienceManager"
-import { getTrip, saveTrip } from "../managers/TripManager"
+import { deleteTrip, getTrip, saveTrip } from "../managers/TripManager"
 import './Trip.css'
 
 
@@ -38,6 +38,7 @@ export const Trip = () => {
         {
             "title": "",
             "summary": "",
+            "coverImg": "",
             "styleId": 0,
             "seasonId": 0,
             "durationId": 0,
@@ -62,6 +63,7 @@ export const Trip = () => {
                     id: data.id,
                     title: data.title,
                     summary: data.summary,
+                    coverImg: data.cover_img,
                     styleId: data.style.id,
                     seasonId: data.season.id,
                     durationId: data.duration.id,
@@ -555,6 +557,19 @@ export const Trip = () => {
     }
 
     return <>
+        <button onClick={() => navigate('/my-trips')}>Return to your trips</button>
+        <section>
+            {
+                trip.isDraft
+                ? <button onClick={(event) => handleSubmit(event)}>Post</button>
+                : ""
+            }
+            <button onClick={(event) => {
+                event.preventDefault()
+                deleteTrip(tripId)
+                .then(() => navigate('/my-trips'))
+            }}>Delete</button>
+        </section>
         <section>
             {showTripEdit ? editTrip() : viewTrip()}
         </section>
@@ -569,7 +584,7 @@ export const Trip = () => {
             {trip.comments.map(comment => 
                 <div>
                     <img src={comment.traveler.profile_img} alt='Profile image'className='profile-img'></img>
-                    <Link to={`/travelers/${comment.traveler.id}`}>{comment.traveler.full_name}</Link>
+                    <Link to={`/travelers/${comment.traveler.id}`}>{comment.traveler.first_name}</Link>
                     <p>{comment.message}</p>
                 </div>
             )}

@@ -27,7 +27,7 @@ export const Traveler = () => {
             .then(data => {
                 const convertedTraveler = {
                     id: data.id,
-                    fullName: data.full_name,
+                    fullName: data.first_name + " " + data.last_name,
                     username: data.username,
                     bio: data.bio,
                     profileImg: data.profile_img,
@@ -59,10 +59,10 @@ export const Traveler = () => {
 
     return <main className="page-traveler">
         <section>
-            <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1672375661/Trouvaille/yu8uaslizfcafh2xffkn_t7fdk5.jpg" className="img-traveler-cover"></img>
+            <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1672375661/Trouvaille/yu8uaslizfcafh2xffkn_t7fdk5.jpg" className="traveler-img-cover"></img>
         </section>
         <section className="traveler-profile">
-            <img src={traveler.profileImage} alt="Profile Image" className="profile-image traveler-profile-image"/>
+            <img src={traveler.profileImg} alt="Profile Image" className="profile-image traveler-img-profile"/>
             {traveler.myself
                 ? ""
                 : traveler.subscribed
@@ -80,17 +80,24 @@ export const Traveler = () => {
             </div>
             <div className="traveler-profile-trip-heading">
                 <h2>Recent Trips</h2>
-                <button onClick={()=> setViewStatus(true)}>View All</button>
+                <button onClick={()=> setViewStatus(!viewStatus)}>{viewStatus ? 'Close' : 'View All'}</button>
             </div>
             <section className="traveler-trips">
                 <div>
                     <ul className="traveler-trip-grid">
-                        {
-                            traveler.traveledTrips.map(trip => 
-                                <button key={`trip--${trip.id}`} onClick={() => navigate(`/trip/${trip.id}`)} className="">
+                        {viewStatus
+                            ? <>
+                                {traveler.traveledTrips.map(trip => 
+                                    <button key={`trip--${trip.id}`} onClick={() => navigate(`/trip/${trip.id}`)} style={{backgroundImage: `url(${trip.cover_img})`}}>
+                                        <p>{trip.destinations[0].city}, {trip.destinations[0].state}</p>
+                                    </button>)}
+                            </>
+                            : <>
+                                {traveler.traveledTrips.slice(0,3).map(trip => 
+                                <button key={`trip--${trip.id}`} onClick={() => navigate(`/trip/${trip.id}`)} style={{backgroundImage: `url(${trip.cover_img})`}}>
                                     <p>{trip.destinations[0].city}, {trip.destinations[0].state}</p>
-                                </button>
-                            )
+                                </button>)}
+                            </>
                         }
                     </ul>
                 </div>

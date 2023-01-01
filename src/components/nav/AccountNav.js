@@ -51,7 +51,7 @@ export const AccountNav = ({user}) => {
                         onClick={handleClose}
                         component={Link}
                         to={`/my-trips`}
-                        className="accountnav-menu menu-projects">My Trips</MenuItem>
+                        className="accountnav-menu menu-projects">Your Trips</MenuItem>
                     <MenuItem 
                         onClick={handleLogout} 
                         className="accountnav-menu menu-logout">Logout</MenuItem>

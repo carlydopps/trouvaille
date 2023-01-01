@@ -1,25 +1,24 @@
 .page-traveler {
     display: flex;
     flex-direction: column;
+    background-color: #FFFAF6;
 }
 
-.img-traveler-cover {
+.traveler-img-cover {
     width: 100%;
-    height: 50rem;
+    height: 70rem;
     object-fit: cover;
     margin-top: -10rem;
 }
 
 .traveler-profile {
-    border: solid 1rem white;
+    border: solid 1rem rgba(255, 255, 255, 0.524);
     background: white;
     border-radius: 15%;
-    margin-top: -20rem;
-    padding: 2rem 2rem;
-}
-
-.traveler-profile-details, .traveler-profile-trip-heading {
-    padding-left: 18rem;
+    width: 65%;
+    margin: -30rem auto 0 auto;
+    padding: 2rem 0 10rem 12%;
+    box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.24), 1rem 0 1rem 0 rgba(13, 13, 13, 0.19);
 }
 
 .traveler-profile-trip-heading {
@@ -29,7 +28,7 @@
 
 .traveler-profile-trip-heading > button {
     width: 5rem;
-    margin-left: 75%;
+    margin-left: 55rem;
 }
 
 .traveler-profile-name {
@@ -41,9 +40,8 @@
     margin-top: 0;
 }
 
-.traveler-profile-image {
+.traveler-img-profile {
     margin-top: -8rem;
-    margin-left: 15rem;
     height: 15rem;
     width: 15rem;
 }
@@ -58,9 +56,7 @@
 
 .traveler-trips {
     display: flex;
-    margin: 0 40rem;
-    justify-content: center;
-    padding: 0 5rem;
+    justify-content: left;
 }
 
 .traveler-trip-grid {
@@ -72,12 +68,16 @@
 }
 
 .traveler-trip-grid > button {
-    width: 30rem;
+    width: 20rem;
     height: 100%;
-    object-fit: cover;
     display: flex;
     align-items: top;
+    background-size: cover;
     justify-content: left;
+}
+
+.traveler-trip-grid > button:hover {
+    box-shadow: 0 0.5rem 1rem 0 rgba(61, 61, 61, 0.24), 0 0.5rem 1rem 0 rgba(63, 63, 63, 0.19);
 }
 
 .traveler-trip-grid > button > p {
@@ -102,13 +102,13 @@
 .traveler-trip-grid button:nth-child(2) {
     grid-row: 1;
     grid-column: 2;
-    height: 30rem;
+    height: 20rem;
     border-radius: 10%;
 }
 
 .traveler-trip-grid button:nth-child(3) {
     grid-row: 2;
     grid-column: 2;
-    height: 30rem;
+    height: 20rem;
     border-radius: 10%;
 }

@@ -18,6 +18,7 @@
 .navbar-btn {
     font-size: medium;
     font-family: 'Abel', sans-serif;
+    letter-spacing: .15em;
     border: none;
     background-color: transparent;
     color: white;

@@ -9,6 +9,7 @@ export const NavBar = () => {
     const [user, setUser] = useState({})
     const [background, setBackground] = useState("")
     const [text, setText] = useState("")
+    const [homeImg, setHomeImg] = useState("")
     const location = useLocation()
     const navigate = useNavigate()
 
@@ -30,9 +31,11 @@ export const NavBar = () => {
             if (window.location.pathname === "/") {
                 setBackground('transparent');
                 setText('white')
+                setHomeImg('https://res.cloudinary.com/dupram4w7/image/upload/v1672460293/Trouvaille/Trouvaille_1_rxks06.png')
             } else {
-                setBackground('#A3B8AB')
-                setText('white')
+                setBackground('rgba(255, 255, 255, 0.524)')
+                setText('#AB8466')
+                setHomeImg('https://res.cloudinary.com/dupram4w7/image/upload/v1672513789/Trouvaille/image_2_bqurbu.png')
             }
         },
         [location]
@@ -41,7 +44,7 @@ export const NavBar = () => {
     return <>
         <section className="navbar" style={{backgroundColor: background}}>
             <button onClick={() => navigate(`/home`)} className="navbar-btn-home">
-                <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1672460293/Trouvaille/Trouvaille_1_rxks06.png' alt="Home" className="home-img"></img>
+                <img src={homeImg} alt="Home" className="home-img"></img>
             </button>
             <button onClick={() => navigate(`/trips`)} className="navbar-btn" style={{color: text}}>Trips</button>
             <button onClick={() => navigate(`/travelers`)} className="navbar-btn" style={{color: text}}>Travelers</button>
