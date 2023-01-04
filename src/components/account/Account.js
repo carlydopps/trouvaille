@@ -168,7 +168,7 @@ export const Account = () => {
             <img src={traveler.coverImg} className="account-img-cover"/>
         </section>
         <section className="account-profile">
-            <img src={traveler.profileImg} className="profile-image account-img-profile"/>
+            <img src={traveler.profileImg} className="profile-img account-img-profile"/>
             <section className="account-profile-details">
                 <h1 className="account-profile-name">Hi {traveler.firstName}!</h1>
                 {

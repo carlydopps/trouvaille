@@ -83,20 +83,8 @@
     justify-content: right;
 }
 
-fieldset {
-    border: none;
-}
-
 .auth-title{
     font-size: 3rem;
     font-family: 'Caveat', cursive;
     margin-bottom: 0;
-}
-
-input {
-    font-family: 'Mulish', sans-serif;
-}
-
-textarea {
-    font-family: 'Mulish', sans-serif;
 }

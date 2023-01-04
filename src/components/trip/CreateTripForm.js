@@ -9,6 +9,7 @@ import { getStyles } from "../managers/StyleManager"
 import { addTripDestination } from "../managers/TripDestinationManager"
 import { addTripExperience } from "../managers/TripExperienceManager"
 import { createTrip } from "../managers/TripManager"
+import './CreateTripForm.css'
 
 export const CreateTripForm = () => {
 
@@ -18,28 +19,31 @@ export const CreateTripForm = () => {
     const [experienceTypes, setExperienceTypes] = useState([])
     const [tripDestinations, setTripDestinations] = useState([])
     const [tripExperiences, setTripExperiences] = useState([])
+    const [images, updateImages] = useState([])
     const [showDestForm, setShowDestForm] = useState(false)
     const [showExpForm, setShowExpForm] = useState(false)
     const [destination, updateDestination] = useState({
-        "city": "",
-        "state": "",
-        "country": ""
+        city: "",
+        state: "",
+        country: ""
     })
     const [experience, updateExperience] = useState({
-        "title": "",
-        "address": "",
-        "websiteUrl": "",
-        "experienceTypeId": 0
+        title: "",
+        address: "",
+        websiteUrl: "",
+        experienceTypeId: 0,
+        image: ""
     })
     const [trip, updateTrip] = useState({
-        "title": "",
-        "summary": "",
-        "styleId": 0,
-        "seasonId": 0,
-        "durationId": 0,
-        "isDraft": false,
-        "isUpcoming": false,
-        "isPrivate": false
+        title: "",
+        summary: "",
+        styleId: 0,
+        seasonId: 0,
+        durationId: 0,
+        isDraft: false,
+        isUpcoming: false,
+        isPrivate: false,
+        profileImg: ""
     })
 
     const navigate = useNavigate()
@@ -100,9 +104,9 @@ export const CreateTripForm = () => {
             
                 tripDestinations.push(destination)
                 const defaultDestination = {
-                    "city": "",
-                    "state": "",
-                    "country": ""
+                    city: "",
+                    state: "",
+                    country: ""
                 }
                 updateDestination(defaultDestination)
                 setShowDestForm(false)
@@ -110,10 +114,11 @@ export const CreateTripForm = () => {
         } else if (resource === "experience") {
                 tripExperiences.push(experience)
                 const defaultExperience = {
-                    "title": "",
-                    "address": "",
-                    "websiteUrl": "",
-                    "experienceTypeId": 0
+                    title: "",
+                    address: "",
+                    websiteUrl: "",
+                    experienceTypeId: 0,
+                    image: ""
                 }
                 updateExperience(defaultExperience)}
                 setShowExpForm(false)
@@ -127,7 +132,7 @@ export const CreateTripForm = () => {
         sendTrip(tripPost)
     }
 
-    const showWidget = (event) => {
+    const showTripWidget = (event) => {
         
         event.preventDefault()
 
@@ -139,8 +144,26 @@ export const CreateTripForm = () => {
         (error, result) => {
             if (!error && result && result.event === "success") {
                 const copy = {...trip}
-                copy.image = result.info.url
+                copy.profileImg = result.info.url
                 updateTrip(copy)
+            }})
+            widget.open()
+    }
+
+    const showExperienceWidget = (event) => {
+        
+        event.preventDefault()
+
+        let widget = window.cloudinary.createUploadWidget(
+        {
+            cloudName: "dupram4w7",
+            uploadPreset: "huvsusnz"
+        },
+        (error, result) => {
+            if (!error && result && result.event === "success") {
+                const copy = {...experience}
+                copy.image = result.info.url
+                updateExperience(copy)
             }})
             widget.open()
     }
@@ -277,211 +300,241 @@ export const CreateTripForm = () => {
                         }
                 </select>
             </fieldset>
+            <button onClick={(event) => showExperienceWidget(event)} className="cloudinary-button">Add photo</button>
             <button onClick={(event) => handleSave(event, "experience")}>Save</button>
         </form>
     }
 
-    return <main>
+    return <main className="page-trip-create">
         <h2>Start a New Trip</h2>
-        <form>
-            <fieldset>
-                <label htmlFor="title"></label>
-                <input
-                    required autoFocus
-                    type="text"
-                    className="form-control"
-                    placeholder="Title of the trip"
-                    value={trip.title}
-                    onChange={
-                        (event) => {
-                            const copy = {...trip}
-                            copy.title = event.target.value
-                            updateTrip(copy)
+        <section className="trip-create-details">
+            <form>
+                <fieldset>
+                    <label htmlFor="title"></label>
+                    <input
+                        required autoFocus
+                        type="text"
+                        className="form-control"
+                        placeholder="Title of the trip"
+                        value={trip.title}
+                        onChange={
+                            (event) => {
+                                const copy = {...trip}
+                                copy.title = event.target.value
+                                updateTrip(copy)
+                            }
                         }
+                    />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="summary"></label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Summary of the trip"
+                        value={trip.summary}
+                        onChange={
+                            (event) => {
+                                const copy = {...trip}
+                                copy.summary = event.target.value
+                                updateTrip(copy)
+                            }
+                        }
+                    />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="style"></label>
+                    <select
+                        onChange={
+                            (event) => {
+                                const copy = {...trip}
+                                copy.styleId = parseInt(event.target.value)
+                                updateTrip(copy)
+                            }
+                        }
+                        className="form-control">
+                            <option value={0}
+                                className="form-control">
+                                Select style</option>
+                            {
+                                styles.map(style => <option
+                                key={style.id}
+                                value={style.id}>
+                                {style.name}</option>)
+                            }
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="season"></label>
+                    <select
+                        onChange={
+                            (event) => {
+                                const copy = {...trip}
+                                copy.seasonId = parseInt(event.target.value)
+                                updateTrip(copy)
+                            }
+                        }
+                        className="form-control">
+                            <option value={0}
+                                className="form-control">
+                                Select season</option>
+                            {
+                                seasons.map(season => <option
+                                key={season.id}
+                                value={season.id}>
+                                {season.name}</option>)
+                            }
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="duration"></label>
+                    <select
+                        onChange={
+                            (event) => {
+                                const copy = {...trip}
+                                copy.durationId = parseInt(event.target.value)
+                                updateTrip(copy)
+                            }
+                        }
+                        className="form-control">
+                            <option value={0}
+                                className="form-control">
+                                Select duration</option>
+                            {
+                                durations.map(duration => <option
+                                key={duration.id}
+                                value={duration.id}>
+                                {duration.extent}</option>)
+                            }
+                    </select>
+                </fieldset>
+                <section>
+                    {
+                        trip.image !== ""
+                        ? <img src={trip.image} alt="" className="image-tripForm"/>
+                        : ""
                     }
-                />
-            </fieldset>
-            <fieldset>
-                <label htmlFor="summary"></label>
-                <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Summary of the trip"
-                    value={trip.summary}
-                    onChange={
-                        (event) => {
-                            const copy = {...trip}
-                            copy.summary = event.target.value
-                            updateTrip(copy)
-                        }
-                    }
-                />
-            </fieldset>
-            <fieldset>
-                <label htmlFor="style"></label>
-                <select
-                    onChange={
-                        (event) => {
-                            const copy = {...trip}
-                            copy.styleId = parseInt(event.target.value)
-                            updateTrip(copy)
-                        }
-                    }
-                    className="form-control">
-                        <option value={0}
-                            className="form-control">
-                            Select style</option>
-                        {
-                            styles.map(style => <option
-                            key={style.id}
-                            value={style.id}>
-                            {style.name}</option>)
-                        }
-                </select>
-            </fieldset>
-            <fieldset>
-                <label htmlFor="season"></label>
-                <select
-                    onChange={
-                        (event) => {
-                            const copy = {...trip}
-                            copy.seasonId = parseInt(event.target.value)
-                            updateTrip(copy)
-                        }
-                    }
-                    className="form-control">
-                        <option value={0}
-                            className="form-control">
-                            Select season</option>
-                        {
-                            seasons.map(season => <option
-                            key={season.id}
-                            value={season.id}>
-                            {season.name}</option>)
-                        }
-                </select>
-            </fieldset>
-            <fieldset>
-                <label htmlFor="duration"></label>
-                <select
-                    onChange={
-                        (event) => {
-                            const copy = {...trip}
-                            copy.durationId = parseInt(event.target.value)
-                            updateTrip(copy)
-                        }
-                    }
-                    className="form-control">
-                        <option value={0}
-                            className="form-control">
-                            Select duration</option>
-                        {
-                            durations.map(duration => <option
-                            key={duration.id}
-                            value={duration.id}>
-                            {duration.extent}</option>)
-                        }
-                </select>
-            </fieldset>
-            <section>
-                {
-                    trip.image !== ""
-                    ? <img src={trip.image} alt="" className="image-tripForm"/>
-                    : ""
-                }
-                
-                <button onClick={(event) => showWidget(event)}
-                    className="cloudinary-button">
-                    Add photo
+                    <button onClick={(event) => showTripWidget(event)} className="cloudinary-button">Add photo</button>
+                </section>
+                <section>
+                    <fieldset>
+                        <label htmlFor="isPrivate"></label>
+                        <input
+                            type="checkbox"
+                            name="isPrivate"
+                            value={trip.isPrivate}
+                            onChange={
+                                (event) => {
+                                    const copy = {...trip}
+                                    copy.isPrivate = event.target.checked
+                                    updateTrip(copy)
+                                }}/>Private
+                    </fieldset>
+                    <fieldset>
+                        <label htmlFor="isUpcoming"></label>
+                        <input
+                            type="checkbox"
+                            name="isUpcoming"
+                            value={trip.isUpcoming}
+                            onChange={
+                                (event) => {
+                                    const copy = {...trip}
+                                    copy.isUpcoming = event.target.checked
+                                    updateTrip(copy)
+                                }}/>Upcoming Trip
+                    </fieldset>
+                </section>
+            </form>
+        </section>
+        <section className="trip-create-destinations">
+            <div className="trip-create-heading">
+                <h3>Destinations: </h3>
+                <button onClick={(event) => setShowDestForm(!showDestForm)} className="btn-add">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
+                    <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                    </svg>
                 </button>
-            </section>
+            </div>
             <section>
-                <fieldset>
-                    <label htmlFor="isPrivate"></label>
-                    <input
-                        type="checkbox"
-                        className="form-control"
-                        name="isPrivate"
-                        value={trip.isPrivate}
-                        onChange={
-                            (event) => {
-                                const copy = {...trip}
-                                copy.isPrivate = event.target.checked
-                                updateTrip(copy)
-                            }}/>Private
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="isUpcoming"></label>
-                    <input
-                        type="checkbox"
-                        className="form-control"
-                        name="isUpcoming"
-                        value={trip.isUpcoming}
-                        onChange={
-                            (event) => {
-                                const copy = {...trip}
-                                copy.isUpcoming = event.target.checked
-                                updateTrip(copy)
-                            }}/>Upcoming Trip
-                </fieldset>
+                {showDestForm ? addDestinationForm() : ""}
             </section>
-        </form>
-        <section>
-            <h3>Destinations: </h3>
-            <ul>
+            <section className="card-list cards-destinations">
                 {
                     tripDestinations.map(tripDest => {
-                        return <li>
-                            <p>{tripDest.city}, {tripDest.state} {tripDest.country}</p>
-                            <button onClick={() => {
-                                let index = tripDestinations.indexOf(tripDest)
-                                const copy = [...tripDestinations]
-                                copy.splice(index, 1)
-                                setTripDestinations(copy)
-                            }}>Delete</button>
-                        </li>
+                        return <div>
+                            <div className="icon-btns">
+                                <button onClick={() => {
+                                        let index = tripDestinations.indexOf(tripDest)
+                                        const copy = [...tripDestinations]
+                                        copy.splice(index, 1)
+                                        setTripDestinations(copy)
+                                    }} className="icon-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div className="card card-destination">
+                                <img className="card-img"/>
+                                <div className="card-preview">
+                                    <h4>{tripDest.city}</h4>
+                                    <p>{tripDest.city}, {tripDest.state} {tripDest.country}</p>
+                                </div>
+                            </div>
+                        </div>
                     })
                 }
-                <button onClick={(event) => setShowDestForm(!showDestForm)}>Add Destination</button>
-                {
-                    showDestForm
-                    ? addDestinationForm()
-                    : ""
-                }
-            </ul>
+            </section>
         </section>
-        <section>
-            <h3>Experiences: </h3>
-            <ul>
+        <section className="trip-create-experiences">
+            <div className="trip-create-heading">
+                <h4>Experiences: </h4>
+                <button onClick={(event) => setShowExpForm(!showExpForm)} className="btn-add">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
+                    <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                    </svg>
+                </button>
+            </div>
+            <section>
+                {showExpForm ? addExperienceForm() : ""}
+            </section>
+            <section className="card-list cards-experiences">
                 {
                     tripExperiences.map(tripExp => {
-                        return <li id={tripExp.title}>
-                                <p>{tripExp.title}</p>
-                                <a href={`${tripExp.websiteUrl}`}>{tripExp.websiteUrl}</a>
-                                <p>{tripExp.address}</p>
+                        return <div>
+                            <div className="icon-btns">
                                 <button onClick={() => {
-                                    let index = tripExperiences.indexOf(tripExp)
-                                    const copy = [...tripExperiences]
-                                    copy.splice(index, 1)
-                                    setTripExperiences(copy)
-                                }}>Delete</button>
-                        </li>
+                                        let index = tripExperiences.indexOf(tripExp)
+                                        const copy = [...tripExperiences]
+                                        copy.splice(index, 1)
+                                        setTripExperiences(copy)
+                                    }} className="icon-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div className="card card-experience">
+                                <img src={tripExp.image} alt="Experience Image" className="card-img"/>
+                                <div className="card-preview">
+                                    <h4>{tripExp.title}</h4>
+                                    <a href={`${tripExp.websiteUrl}`}>{tripExp.websiteUrl}</a>
+                                    <p>{tripExp.address}</p>
+                                </div>
+                            </div>
+                        </div>
                     })
                 }
-                <button onClick={(event) => setShowExpForm(!showExpForm)}>Add Experience</button>
-                {
-                    showExpForm
-                    ? addExperienceForm()
-                    : ""
-                }
-            </ul>
+            </section>
         </section>
-        <button
-            onClick={(event) => handleSave(event, "trip")}
-            >Save</button>
-        <button
-            onClick={(event) => handleSubmit(event)}
-            >Post</button>
+        <div className="trip-create-btns">
+            <button
+                onClick={(event) => handleSave(event, "trip")} className="btn"
+                >Save</button>
+            <button
+                onClick={(event) => handleSubmit(event)} className="btn"
+                >Post</button>
+        </div>
     </main>
     
 }

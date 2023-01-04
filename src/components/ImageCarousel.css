@@ -4,6 +4,7 @@
 
 .carousel-item.active {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
@@ -13,5 +14,18 @@
 .img-carousel {
     width: 85%;
     height: auto;
-    margin: 2rem;
+    margin: 3rem 0 0 0;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 0.1rem;
+    color: #AB8466;
+}
+
+.img-carousel-p {
+    margin-top: 1rem;
+    text-decoration: none;
+    padding: 0;
+}
+
+.img-carousel-p:hover {
+    color: #e0ac84;
 }

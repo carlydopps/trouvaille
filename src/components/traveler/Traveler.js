@@ -62,7 +62,7 @@ export const Traveler = () => {
             <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1672375661/Trouvaille/yu8uaslizfcafh2xffkn_t7fdk5.jpg" className="traveler-img-cover"></img>
         </section>
         <section className="traveler-profile">
-            <img src={traveler.profileImg} alt="Profile Image" className="profile-image traveler-img-profile"/>
+            <img src={traveler.profileImg} alt="Profile Image" className="profile-img traveler-img-profile"/>
             {traveler.myself
                 ? ""
                 : traveler.subscribed
@@ -87,16 +87,18 @@ export const Traveler = () => {
                     <ul className="traveler-trip-grid">
                         {viewStatus
                             ? <>
-                                {traveler.traveledTrips.map(trip => 
-                                    <button key={`trip--${trip.id}`} onClick={() => navigate(`/trip/${trip.id}`)} style={{backgroundImage: `url(${trip.cover_img})`}}>
+                                {traveler.traveledTrips.map(trip => <button key={`trip--${trip.id}`} 
+                                    onClick={() => navigate(`/trip/${trip.id}`)} 
+                                    style={{backgroundImage: `url(${trip.cover_img})`}}>
                                         <p>{trip.destinations[0].city}, {trip.destinations[0].state}</p>
                                     </button>)}
                             </>
                             : <>
-                                {traveler.traveledTrips.slice(0,3).map(trip => 
-                                <button key={`trip--${trip.id}`} onClick={() => navigate(`/trip/${trip.id}`)} style={{backgroundImage: `url(${trip.cover_img})`}}>
-                                    <p>{trip.destinations[0].city}, {trip.destinations[0].state}</p>
-                                </button>)}
+                                {traveler.traveledTrips.slice(0,3).map(trip => <button key={`trip--${trip.id}`} 
+                                    onClick={() => navigate(`/trip/${trip.id}`)} 
+                                    style={{backgroundImage: `url(${trip.cover_img})`}}>
+                                        <p>{trip.destinations[0].city}, {trip.destinations[0].state}</p>
+                                    </button>)}
                             </>
                         }
                     </ul>

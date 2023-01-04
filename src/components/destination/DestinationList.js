@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { getDestinations } from "../managers/DestinationManager"
 
 export const DestinationList = ({searchTermState}) => {
 
     const [destinations, setDestinations] = useState([])
     const [filteredDestinations, setFilteredDestinations] = useState([])
+    const navigate = useNavigate()
 
     useEffect(
         () => {
@@ -31,17 +33,21 @@ export const DestinationList = ({searchTermState}) => {
         [searchTermState]
     )
 
-    return <>
+    return <main className="travelers-main">
         <h1>Destinations</h1>
-        <section>
+        <section className="card-list">
             {
                 filteredDestinations.map(destination => {
                     return <div key={`destination--${destination.id}`}>
-                            <h4>{destination.city}</h4>
+                        <button onClick={() => navigate(`/destinations`)} className="card">
+                            <div className="card-preview">
+                                <h4>{destination.city}</h4>
                                 <p>{destination.state}, {destination.country}</p>
-                        </div>
+                            </div>
+                        </button>
+                    </div>
                 })
             }
         </section>
-    </>
+    </main>
 }

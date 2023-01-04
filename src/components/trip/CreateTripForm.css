@@ -1,0 +1,67 @@
+.page-trip-create {
+    padding: 8rem;  
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    margin: 0 auto;
+    width: 60%
+}
+
+.trip-create-details {
+    padding: 3rem 6rem 3rem 3rem;
+}
+
+.trip-create-btns {
+    display: flex;
+    justify-content: center;
+}
+
+.trip-create-btns button {
+}
+
+.trip-create-experiences {
+
+}
+
+.trip-create-destinations {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.trip-create-experiences {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.trip-create-heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.trip-create-experiences button {
+    justify-content: right;
+}
+
+.cards-experiences, .cards-destinations{
+    width: auto;
+    height: auto;
+}
+
+.card-experience, .card-destination {
+    width: 17rem;
+    height: 19rem;
+}
+
+.card-experience img, .card-destination img {
+    width: 15rem;;
+    height: 10rem;
+    object-fit: cover;
+}
+
+.card-experience div, .card-destination div {
+    width: 15rem;
+    height: 12rem;
+}
