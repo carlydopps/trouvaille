@@ -1,0 +1,169 @@
+
+.profile-img {
+    justify-content: center;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 100%;
+    align-self: center;
+    object-fit: cover;
+}
+
+.icon-btns {
+    display: flex;
+    justify-content: right;
+    margin-right: 3rem;
+    margin-bottom: -6rem;
+}
+
+.icon-btn {
+    display: flex;
+    justify-content: left;
+    align-items: flex-end;
+    border: none;
+    width: auto;
+    background-color: transparent;
+    width: 5rem;
+    height: 5rem;
+    z-index: 1;
+    color: orange;
+}
+
+.icon-btn svg {
+    font-size: larger;
+}
+
+.icon-btn button:hover {
+    border-bottom: 0.3rem solid #AB8466;
+}
+
+.btn-false {
+    border: none;
+    width: auto;
+    background-color: transparent;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 100%;
+}
+
+.card-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto; 
+    margin: 2rem auto;
+    width: 80%;
+}
+
+.card {
+    color: rgb(71, 71, 71);
+    border: 0.1rem solid whitesmoke;
+    background-color: transparent;
+    border-radius: 2%;
+    margin: 2rem;
+    width: auto;
+    height: auto;
+    box-shadow: 0.3rem 0.3rem 0.3rem 0.3rem rgba(212, 212, 212, 0.274);
+    display: grid;
+    justify-content: center;
+}
+
+.card:hover {
+    box-shadow: 0 0.5rem 1rem 0 rgba(61, 61, 61, 0.24), 0 0.5rem 1rem 0 rgba(63, 63, 63, 0.19);
+}
+
+.card-preview {
+    margin-bottom: 0;
+    margin-top: -5rem;
+    padding-left: 2rem;
+    position: relative;
+    z-index: 2;
+    height: 16rem;
+    border-radius: 2%;
+    text-align: left;
+}
+
+.card-img {
+    border-radius: 2%;
+    width: 30rem;
+    height: 20rem;
+    object-fit: cover;
+    margin: 1rem;
+    position: relative;
+}
+
+.card-img-profile {
+    margin: -5rem auto 0 auto;
+    width: 8rem;
+    height: 8rem;
+    z-index: 1;
+}
+
+.card-preview h4 {
+    margin: 6rem 0 0 0;
+    font-weight: 500;
+    font-family: 'Bebas Neue', cursive;
+    font-weight: 500;
+    letter-spacing: 0.15rem;
+    border-radius: 5%;
+}
+
+.card-details {
+    padding: 0;
+    margin: 0; 
+    list-style: none;
+    text-align: left;
+    font-size: medium;
+}
+
+.card-details p {
+    margin: 0;
+}
+
+.feedback {
+    padding: 1rem;
+    background-color: #ffb489;
+    color: white;
+    border-radius: 1.25rem;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    width: 40%;
+    transform: translate(-50%, -50%);
+    animation: 1s slideDown;
+}
+
+.btn-add {
+    color: white;
+    background-color: #D59461;
+    border: none;
+    border-radius: 100%;
+    width: 3rem;
+    height: 3rem;
+}
+
+.btn {
+    border-color: #D59461;
+    background-color: #D59461;
+    height: 2.6rem;
+    width: 10rem;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    align-items: center;
+    text-align: center;
+    border-radius: 0.25rem;
+    color: white;
+}
+
+.btn:hover {
+    box-shadow: 0 0.2rem 0.5rem 0 rgba(157, 157, 157, 0.24), 0 0.2rem 0.5rem 0 rgba(164, 164, 164, 0.19);
+    background-color: #e7af85;
+    border-color: #e7af85;
+    color: white;
+}
+
+textarea {
+    font-family: 'Mulish', sans-serif;
+}
+
+fieldset {
+    border: none;
+}

@@ -65,6 +65,7 @@
     grid-template-columns: repeat(2);
     grid-template-rows: repeat(2, 1fr);
     grid-gap: 1rem;
+    justify-content: center;
 }
 
 .traveler-trip-grid > button {
