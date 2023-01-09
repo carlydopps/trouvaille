@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# Trouvaille
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A platform where travelers can discover and share personal adventures for those who want to take the road less traveled
+<br />
+<br />
+## Application Overview
 
-## Available Scripts
+Trouvaille enables travelers to discover, create, and share personal adventures with others. People often struggle to find rare experiences, which leads to visiting tourist traps instead. The goal of Trouvaille is to make those rare experiences more accessible and, in turn, create a trip full of “hidden gems” and unique adventures. An added goal is to build connections with other travelers and to make trips more meaningful by filling them with places recommended from someone they know or now follow.
+<br />
+<br />
 
-In the project directory, you can run:
+trou·vaille *(n)*: a chance encounter with something wonderful
+<br />
+<br />
 
-### `npm start`
+## Technologies Used
+[![My Skills](https://skills.thijs.gg/icons?i=js,py,react,django,html,css,git)](https://skills.thijs.gg)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Cloudinary](https://res.cloudinary.com/dupram4w7/image/upload/v1668534325/Screen_Shot_2022-11-15_at_11.43.47_AM_ozrpxh.png)
+<br />
+<br />
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- Users can login and register with a username and password
+- Users can create and edit their profiles
+- Users can create, view, edit, and delete trips
+- Users can create, view, edit, and delete experiences
+- Users can view, filter, and search for trips, destinations, and experiences
+- Users can comment on and favorite trips
+- Users can follow other users
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Project List](https://res.cloudinary.com/dupram4w7/image/upload/v1673290805/Trouvaille/Screen_Shot_2023-01-09_at_12.46.40_PM_nsjegm.png)
+<br />
 
-### `npm run build`
+## Running This Application
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Client Side
+1. Clone the project repository and change directories in the terminal
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+git clone git@github.com:carlydopps/trouvaille.git
+cd trouvaille-client
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Start server
 
-### `npm run eject`
+```
+npm install --save react-router-dom
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Server Side
+1. Clone the repository and change directories in the terminal
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+git clone git@github.com:carlydopps/trouvaille-server.git
+cd trouvaille-server
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Initialize virtual environment
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+pipenv shell
+```
 
-## Learn More
+3. Start Django shell
+```
+python manage.py shell
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Demo Login
 
-### Code Splitting
+To view the application as a current traveler, please log in with the following:
+- username: ryandopps
+- password: test
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+You can also register as a new user by clicking the 'Register' link in the top, right-hand corner.
+<br />
+<br />
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## ERD
+![ERD](https://res.cloudinary.com/dupram4w7/image/upload/v1673294937/Trouvaille/Screen_Shot_2023-01-09_at_2.06.34_PM_pobfrp.png)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Created by Carly Doppelheuer
+[![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/carlydopps) [![My Skills](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/carlydoppelheuer/)
