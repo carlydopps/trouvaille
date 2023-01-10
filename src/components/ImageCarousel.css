@@ -1,0 +1,32 @@
+.carousel-item {
+    width: 100%;
+}
+
+.carousel-item.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 28vw;
+    height: 50vh;
+}
+
+.img-carousel {
+    width: 28vw;
+    height: 20rem;
+    margin: 2rem 0 0 0;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 0.1rem;
+    color: #AB8466;
+    object-fit: cover;
+}
+
+.img-carousel-p {
+    margin-top: 1rem;
+    text-decoration: none;
+}
+
+.img-carousel-p:hover {
+    color: #e0ac84;
+}
