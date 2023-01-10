@@ -1,0 +1,242 @@
+.trip-create-container {
+    display: flex;
+    background-image: url('https://res.cloudinary.com/dupram4w7/image/upload/v1673204301/Trouvaille/image_5_mb8b2r.png');
+    background-size: cover;
+}
+
+.img-background {
+    width: 40%;
+    height: 100%;
+    object-fit: cover;
+    border-right: 1rem solid #AB8366;
+}
+
+.page-trip-create {
+    padding: 8rem;  
+    display: flex;
+    flex-direction: column;
+    justify-content: top; 
+    margin: 5rem auto;
+    width: 60%;
+    height: auto;
+    background-color: white;
+}
+
+.page-trip-create h2 {
+    margin: 0 auto;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 0.5rem;
+}
+
+.trip-create-heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Form Details ------------------------------------ */
+.trip-create-details {
+    padding: 3rem 6rem 3rem 3rem;
+}
+
+.trip-create-details > form > section {
+    margin: 2rem auto;
+}
+
+/* Buttons ------------------------------------ */
+.trip-create-btns {
+    display: flex;
+    justify-content: center;
+}
+
+.trip-create-btns button {
+    margin: 1rem;
+}
+
+.trip-create-experiences button {
+    justify-content: right;
+}
+
+.form-experience > button {
+    width: auto;
+    height: auto;
+}
+
+.btns-experience-form div {
+    display: flex;
+    justify-content: center;
+}
+
+/* Destinations ------------------------------------ */
+.trip-create-destinations {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cards-destinations {
+    display: flex;
+    align-items: left;
+}
+
+.card-destination {
+    width: auto;
+    height: 5rem;
+    margin: 0;
+}
+
+.card-destination:hover {
+    border-bottom: 0.2rem solid #ab84663f;
+}
+
+.card-destination-details {
+    position: relative;
+    z-index: 2;
+    border-radius: 2%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-destination-details > h4 {
+    margin: 0;
+    font-weight: 500;
+    font-family: 'Caveat', cursive;
+    font-size: xx-large;
+}
+
+.card-destination-details > p {
+    margin: 0;
+}
+
+/* Experiences ------------------------------------ */
+.trip-create-experiences {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cards-experiences {
+    width: auto;
+    height: auto;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 3rem;
+}
+
+.card-experience {
+    width: 23rem;
+    height: 25rem;
+}
+
+.card-experience img {
+    width: 20rem;
+    height: 15rem;
+    object-fit: cover;
+}
+
+.card-experience div {
+    width: 15rem;
+    height: 12rem;
+}
+
+.card-experience-preview {
+    padding-left: 1rem;
+    z-index: 2;
+    border-radius: 2%;
+    text-align: left;
+}
+
+.card-experience-preview > h4 {
+    font-weight: 500;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 0.15rem;
+    font-size: larger;
+    justify-content: left;
+    margin: 0;
+}
+
+.card-experience-preview > p {
+    margin: 0;
+    font-size: medium;
+}
+
+/* Forms ------------------------------------ */
+.form-experience {
+    width: 23rem;
+    height: 25rem;
+    margin: 2rem;
+    padding: 1rem;
+}
+
+.form-destination {
+    width: 60%;
+    height: auto;
+    margin: 1rem auto;
+}
+
+.form-trip {
+    width: 60%;
+    margin: 0 auto;
+}
+
+/* Image Grid ------------------------------------ */
+.trip-create-images {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.trip-create-images-heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.trip-create-images-grid {
+    display: grid;
+    padding: 0;
+    grid-template-columns: repeat(4);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 1rem;
+    justify-content: center;
+}
+
+.trip-create-images-grid img {
+    width: 20rem;
+    height: 100%;
+    display: flex;
+    align-items: top;
+    justify-content: left;
+    object-fit: cover;
+    border-radius: 2%;
+}
+
+.trip-create-images-grid img:nth-child(1) {
+    grid-row:  1 / span 2;
+    grid-column: 1;
+    width: 40rem;
+}
+
+.trip-create-images-grid img:nth-child(2) {
+    grid-row: 1;
+    grid-column: 2;
+    height: 20rem;
+}
+
+.trip-create-images-grid img:nth-child(3) {
+    grid-row: 2;
+    grid-column: 2;
+    height: 20rem;
+}
+
+.trip-create-images-grid img:nth-child(4) {
+    grid-row: 1;
+    grid-column: 3;
+    height: 20rem;
+}
+
+.trip-create-images-grid img:nth-child(5) {
+    grid-row: 2;
+    grid-column: 3;
+    height: 20rem;
+}

@@ -1,0 +1,65 @@
+.page-travelers {
+    display: flex;
+    flex-direction: column;
+}
+
+.page-travelers h2 {
+    font-family: 'Bebas Neue', cursive;
+    margin: 1rem auto;
+    letter-spacing: 1rem;
+}
+
+.travelers-heading-slogan {
+    font-family: 'Bebas Neue', cursive;
+    margin: 1rem auto;
+    letter-spacing: 0.2rem;
+}
+
+
+.heading-travelers {
+    letter-spacing: 0.8rem;
+    display: flex;
+    margin-top: -10rem;
+}
+
+.heading-travelers > div {
+    margin: 40vh -30rem 0 10rem;
+    z-index: 1;
+}
+
+.heading-travelers > img {
+    width: 120vw;
+    height: 80vh;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+.heading-travelers-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    color: #AB8466;
+    padding: 2rem;
+    margin: 6rem;
+    width: 15%;
+    border-left: 0.5rem solid #AB8466;
+}
+
+.traveler-list-img-cover {
+    width: 65%;
+    height: 30rem;
+    object-fit: cover;
+}
+
+.cards-travelers {
+    margin-top: 0;
+}
+
+.input-search {
+    border: none;
+    border-bottom: 0.2rem solid gray;
+    box-shadow: 0.2rem 0.2rem rgba(211, 211, 211, 0.511);
+    margin: 5rem 8rem 2rem 0;
+    outline: none;
+}

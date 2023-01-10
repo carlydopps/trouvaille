@@ -1,0 +1,294 @@
+.landing-page {
+    background-image: url('https://res.cloudinary.com/dupram4w7/image/upload/v1672612283/Trouvaille/Untitled_design_13_j4bsrk.png');
+    background-size: cover;
+    background-position: relative;
+    margin-bottom: -10rem;
+}
+
+.background-landing {
+    width: 100%;
+    height: 100%;
+    margin-top: -12rem;
+}
+
+.img-landing {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.img-landingTitle {
+    margin-bottom: -5rem;
+}
+
+.img-landing-collage1 {
+    border: solid white 2rem;
+    height: 20rem;
+    width: 20rem;
+    margin-top: -50rem;
+    margin-left: 60%;
+}
+
+.content-landing {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    padding-top: 5rem;
+    padding-bottom: 10rem;
+    position: relative;
+}
+
+.overlay {
+    position:fixed;
+    width: 100%;
+    height: 110vh;
+    background-color: rgba(34, 75, 73, 0.442);
+}
+
+.landing-main {
+    margin-top: -6rem;
+    z-index: 1;
+    position: relative;
+}
+
+/* Heading ------------------------------------ */
+.landing-header { 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.landing-header h1{
+    padding-top: 0;
+    height: 7rem;
+    width: 45rem;
+    justify-content: center;
+}
+
+.landing-header button {
+    align-items: right;
+    justify-content: right;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+
+.landing-header svg {
+    color: rgba(255, 255, 255, 0.558);
+    align-items: right;
+    width: 5rem;
+    height: 5rem;
+    margin: 5rem -20rem 0 0;
+}
+
+.h1-landing {
+    font-size: 80px;
+    font-weight: bold;
+    padding: 1rem;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
+.landing-summary {
+    font-weight: 200;
+    font-family: 'Caveat', cursive;
+    padding-top: 5rem;;
+    width: 50rem;
+    font-size: 2rem;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.landing-summary_second{
+    font-size: 1.25rem;
+}
+
+.landing-heading, .landing-trips {
+    display: flex;
+}
+
+.landing-heading > img{
+    width: 40%;
+    height: 40%;
+    margin-left: 5%;
+    border: 2rem solid white;
+}
+
+.landing-heading > div {
+    width: 33%;
+    height: auto;
+    font-size: 1vw;
+    background-color: rgba(255, 255, 255, 0.885);
+    margin: 10rem 0 0 -8rem;
+    padding: 5rem 4rem;
+    box-shadow: 0 0.2rem 1rem 0 rgba(189, 190, 191, 0.404), 0 0.2rem 0.5rem 0 rgba(172, 172, 173, 0.218);
+    object-fit: cover;
+}
+
+.landing-heading > div > h2, .landing-trips > div > h2 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3rem;
+    margin: 0;
+    letter-spacing: 0.1rem;
+}
+
+.landing-heading > div > h2 {
+    padding-top: 1rem;
+}
+
+.landing-heading > div > p {
+    padding-left: 2rem;
+}
+
+.landing-heading > div > a:hover {
+    color: rgb(251, 186, 88);
+}
+
+/* Typewriter ------------------------------------ */
+.typewriter h1 {
+    font-family: 'Abel', sans-serif;
+    font-weight: 400;
+    overflow: hidden;
+    border-right: .15em solid #FF9659;
+    white-space: nowrap;
+    width: 62rem;
+    margin: 0 auto;
+    color: white;
+    letter-spacing: .15em;
+    animation: 
+      typing 4s steps(40, end),
+      blink-caret 1s step-end infinite;
+}
+
+@keyframes typing {
+from { width: 0 }
+to { width: 62rem }
+}
+
+@keyframes blink-caret {
+from, to { border-color: transparent }
+50% { border-color: #AB8466; }
+}
+
+/* Buttons ------------------------------------ */
+.btn-explore {
+    color: whitesmoke;
+    background-color: #AB8466;
+    border: none;
+    box-shadow: 0 0.2rem 0.5rem 0 #876a52, 0 0.2rem 0.5rem 0 #876a52;
+    height: 2.5rem;
+    width: 18rem;
+    padding: 0.5rem 1rem;
+    margin: 7rem;
+    align-items: center;
+    text-align: center;
+}
+
+.btn-explore:hover {
+    box-shadow: 0 0.5rem 1rem 0 #AB8466, 0 0.5rem 1rem 0 #AB8466;
+    background-color: #c49672;
+    border-color: #c49672;
+}
+
+.landing-explore-link {
+    font-family: 'Abel', sans-serif;
+    color: #FF9659;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Trips ------------------------------------ */
+.landing-content, .landing-trips {
+    margin: 0 8%;
+    padding-top: 4rem;
+}
+
+.landing-trips > div {
+    width: 100%;
+    height:45rem;
+    margin: 3rem -15rem -3rem 2rem;
+    font-size: 1vw;
+    background-color: rgba(255, 255, 255, 0.885);
+    padding: 4rem 12rem 4rem 4rem;
+    box-shadow: 0 0.2rem 1rem 0 rgba(189, 190, 191, 0.404), 0 0.2rem 0.5rem 0 rgba(172, 172, 173, 0.218);
+    object-fit: cover;
+}
+
+.landing-trips > img {
+    width: 50%;
+    height: 50%;
+    margin: 7rem 0 0 0;
+    border: 2rem solid white;
+}
+
+.landing-trips > div > p {
+    padding-top: 1rem;
+    padding-right: 10rem;
+}
+
+/* Travelers ------------------------------------ */
+.landing-travelers {
+    display: flex;
+    padding: 2rem;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.885);
+    margin: 8rem auto 8rem -10%;
+}
+
+.landing-travelers > h2 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3rem;
+    margin: 0 2rem 0 -7rem;
+}
+
+.landing-travelers > svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.landing-travelers > svg:hover {
+    color: orange;
+}
+
+/* Cards ------------------------------------ */
+.landing-card-list {
+    display: flex;
+    margin: 2rem;
+    justify-content: center;
+}
+
+.landing-card-list > button {
+    margin: 1.5rem;
+    border: none;
+    background-color: transparent;
+}
+
+.landing-card-list > button > img {
+    justify-content: center;
+    height: 12rem;
+    width: 12rem;
+    border-radius: 100%;
+    align-self: center;
+    object-fit: cover;
+}
+
+.landing-card-list > button > p {
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: black;
+}

@@ -1,0 +1,111 @@
+.destinations-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.destination-list-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5rem;
+}
+
+.destination-list-heading h4 {
+    font-family: 'Satisfy', cursive;
+    font-size: 3rem;
+}
+
+.search-bar-destination {
+    margin: 3rem !important;
+    background-color: #F8F6FA !important;
+}
+
+.destination-list-img-cover-bottom {
+    width: 55%;
+    height: 25rem;
+    object-fit: cover;
+    margin: 8rem auto -5rem 0;
+}
+
+.destination-list-img-cover-top {
+    width: 85%;
+    height: 35rem;
+    object-fit: cover;
+    margin: 5rem 0 5rem auto;
+    border: 1rem solid white;
+}
+
+.heading-destinations-details {
+    margin: 28rem -15rem auto -35rem;
+    z-index: 1;
+    padding: 2rem 2rem 4rem 4rem;
+    border: 1rem solid white;
+    width: 50%;
+    background-color: white;
+    color: #AB8366;
+}
+
+.heading-destinations-details h1 {
+    font-family: 'Abel', sans-serif;
+    font-size: 3rem;
+    margin: 0;
+}
+.heading-destinations-details h2 {
+    font-family: 'Satisfy', cursive;
+    font-size: 4rem;
+    margin-bottom: rem;
+}
+
+.heading-destinations-details p {
+    margin: 0;
+}
+
+/* Grid ------------------------------------ */
+.destinations-grid {
+    display: grid;
+    padding: 0;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-gap: 0.5rem;
+    margin: 0 auto;
+}
+
+.destinations-grid > div {
+    display: flex;
+    width: 20vw;
+    height: 30vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.destinations-grid > div > button{
+    border: none;
+    background-color: transparent;
+}
+
+.destinations-grid > div > div > div > h4 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.destinations-grid > img {
+    width: 25vw;
+    height: 30vh;
+    align-items: top;
+    object-fit: cover;
+}
+
+.destinations-grid div:nth-child(1) {
+    grid-row:  1;
+    grid-column: 1;
+}
+
+.destinations-grid div:nth-child(2) {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.destinations-grid div:nth-child(3) {
+    grid-row: 1;
+    grid-column: 3;
+}
