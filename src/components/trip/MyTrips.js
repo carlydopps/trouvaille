@@ -32,6 +32,22 @@ export const MyTrips = () => {
         }, [trips]
     )
 
+    const setTextColor = (copy, property, defaultFilter, secondaryFilter) => {
+
+        const orange = "#ff9659"
+        const gray = "rgb(103, 103, 103)"
+
+        if (status[property] === true) {
+            copy[defaultFilter] = orange
+            copy[secondaryFilter] = gray
+        } else {
+            copy[secondaryFilter] = orange
+            copy[defaultFilter] = gray
+        }
+
+        return copy
+    }
+
     useEffect(
         () => {
             if (status === {}) {
@@ -39,50 +55,36 @@ export const MyTrips = () => {
             } else {
                 let selectedTrips = [...trips]
                 let copy = {...textColors}
-
-                if ("isDraft" in status) {
-                    selectedTrips = selectedTrips.filter(trip => trip.is_draft === status.isDraft)
-
-                    if (status.isDraft === true) {
-                        copy["draft"] = "#ff9659"
-                        copy["post"] = "rgb(103, 103, 103)"
-                    } else {
-                        copy["post"] = "#ff9659"
-                        copy["draft"] = "rgb(103, 103, 103)"
+                const gray = "rgb(103, 103, 103)"
+                const properties = [
+                    {
+                        pyProperty: "is_draft",
+                        jsProperty: "isDraft",
+                        defaultFilter: "draft",
+                        secondaryFilter: "post"
+                    },
+                    {
+                        pyProperty: "is_private",
+                        jsProperty: "isPrivate",
+                        defaultFilter: "private",
+                        secondaryFilter: "public"
+                    },
+                    {
+                        pyProperty: "is_upcoming",
+                        jsProperty: "isUpcoming",
+                        defaultFilter: "upcoming",
+                        secondaryFilter: "past"
                     }
-                } else {
-                    copy["draft"] = "rgb(103, 103, 103)"
-                    copy["post"] = "rgb(103, 103, 103)"
-                }
+                ]
 
-                if ("isPrivate" in status) {
-                    selectedTrips = selectedTrips.filter(trip => trip.is_private === status.isPrivate)
-
-                    if (status.isPrivate === true) {
-                        copy["private"] = "#ff9659"
-                        copy["public"] = "rgb(103, 103, 103)"
+                for (const i of properties) {
+                    if (i.jsProperty in status) {
+                        selectedTrips = selectedTrips.filter(trip => trip[i.pyProperty] === status[i.jsProperty])
+                        copy = setTextColor(copy, i.jsProperty, i.defaultFilter, i.secondaryFilter)
                     } else {
-                        copy["public"] = "#ff9659"
-                        copy["private"] = "rgb(103, 103, 103)"
+                        copy[i.defaultFilter] = gray
+                        copy[i.secondaryFilter] = gray
                     }
-                } else {
-                    copy["private"] = "rgb(103, 103, 103)"
-                    copy["public"] = "rgb(103, 103, 103)"
-                }
-
-                if ("isUpcoming" in status) {
-                    selectedTrips = selectedTrips.filter(trip => trip.is_upcoming === status.isUpcoming)
-
-                    if (status.isUpcoming === true) {
-                        copy["upcoming"] = "#ff9659"
-                        copy["past"] = "rgb(103, 103, 103)"
-                    } else {
-                        copy["past"] = "#ff9659"
-                        copy["upcoming"] = "rgb(103, 103, 103)"
-                    }
-                } else {
-                    copy["upcoming"] = "rgb(103, 103, 103)"
-                    copy["past"] = "rgb(103, 103, 103)"
                 }
 
                 updateFilteredTrips(selectedTrips)
