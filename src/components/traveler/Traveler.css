@@ -1,34 +1,39 @@
 .page-traveler {
     display: flex;
     flex-direction: column;
-    background-color: #FFFAF6;
+    background-color: white;
+    justify-content: center;
 }
 
 .traveler-img-cover {
     width: 100%;
     height: 70rem;
     object-fit: cover;
-    margin-top: -10rem;
+    margin-top: -15rem;
 }
 
 .traveler-profile {
     border: solid 1rem rgba(255, 255, 255, 0.524);
     background: white;
-    border-radius: 15%;
-    width: 65%;
-    margin: -30rem auto 0 auto;
-    padding: 2rem 0 10rem 12%;
-    box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.24), 1rem 0 1rem 0 rgba(13, 13, 13, 0.19);
+    border-radius: 10rem;
+    width: 75%;
+    margin: -40rem auto 7rem auto;
+    padding: 5rem;
 }
 
-.traveler-profile-trip-heading {
+/* Profile Heading ------------------------------------ */
+.traveler-profile-heading {
     display: flex;
-    flex-direction: column;
+    align-items: center;
 }
 
-.traveler-profile-trip-heading > button {
-    width: 5rem;
-    margin-left: 55rem;
+/* Profile Details ------------------------------------ */
+.traveler-profile-details {
+    margin: 2rem;
+}
+
+.traveler-profile-details div, .traveler-profile-details p {
+    margin: 2rem;
 }
 
 .traveler-profile-name {
@@ -41,7 +46,7 @@
 }
 
 .traveler-img-profile {
-    margin-top: -8rem;
+    margin: -12rem 0 0 5rem;
     height: 15rem;
     width: 15rem;
 }
@@ -54,27 +59,40 @@
     margin: 0 2rem 0 0;
 }
 
+/* Trips ------------------------------------ */
 .traveler-trips {
     display: flex;
-    justify-content: left;
+    justify-content: center;
 }
 
+.traveler-profile-trip-heading {
+    display: flex;
+    justify-content: space-between;
+    padding: 5rem 5rem 0 5rem;
+    margin: 0 auto;
+}
+
+.traveler-profile-trip-heading > button {
+    width: 7rem;
+}
+
+/* Grid ------------------------------------ */
 .traveler-trip-grid {
     display: grid;
     padding: 0;
     grid-template-columns: repeat(2);
-    grid-template-rows: repeat(2, 1fr);
+    grid-auto-rows: auto;
     grid-gap: 1rem;
-    justify-content: center;
 }
 
 .traveler-trip-grid > button {
-    width: 20rem;
-    height: 100%;
+    width: 20vw;
+    height: 60vh;
     display: flex;
     align-items: top;
     background-size: cover;
     justify-content: left;
+    border: none;
 }
 
 .traveler-trip-grid > button:hover {
@@ -84,7 +102,7 @@
 .traveler-trip-grid > button > p {
     border-color: #AB8466;
     background-color: #AB8466;
-    height: 1rem;
+    height: auto;
     padding: 0.5rem 1rem;
     margin: 1rem;
     align-items: center;
@@ -96,7 +114,8 @@
 .traveler-trip-grid button:nth-child(1) {
     grid-row:  1 / span 2;
     grid-column: 1;
-    width: 40rem;
+    width: 30vw;
+    height: 41rem;
     border-radius: 10%;
 }
 
@@ -110,6 +129,17 @@
 .traveler-trip-grid button:nth-child(3) {
     grid-row: 2;
     grid-column: 2;
+    height: 20rem;
+    border-radius: 10%;
+}
+
+.traveler-trip-grid button:nth-child(2n+4) {
+    width: 30vw;
+    height: 20rem;
+    border-radius: 10%;
+}
+
+.traveler-trip-grid button:nth-child(2n+3) {
     height: 20rem;
     border-radius: 10%;
 }

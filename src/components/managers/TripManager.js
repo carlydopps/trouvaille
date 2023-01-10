@@ -1,3 +1,5 @@
+import { Token } from "./TokenManager"
+
 export const getTrip = (tripId) => {
     return fetch(`http://localhost:8000/trips/${tripId}`, {
         headers:{
@@ -8,14 +10,9 @@ export const getTrip = (tripId) => {
 }
 
 export const getTrips = () => {
-    return fetch("http://localhost:8000/trips")
-        .then(response => response.json())
-}
-
-export const getTripsWithAuth = () => {
-    return fetch("http://localhost:8000/trips?auth=required", {
+    return fetch("http://localhost:8000/trips", {
         headers:{
-            "Authorization": `Token ${localStorage.getItem("auth_token")}`
+            "Authorization": Token()
         }
      })
         .then(response => response.json())

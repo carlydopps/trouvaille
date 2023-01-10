@@ -1,3 +1,7 @@
+h1 {font-family: 'Bebas Neue', cursive;}
+div {font-family: 'Montserrat', sans-serif;}
+p {margin: 0;}
+fieldset {border: none;}
 
 .profile-img {
     justify-content: center;
@@ -8,86 +12,55 @@
     object-fit: cover;
 }
 
-.icon-btns {
-    display: flex;
-    justify-content: right;
-    margin-right: 3rem;
-    margin-bottom: -6rem;
-}
-
-.icon-btn {
-    display: flex;
-    justify-content: left;
-    align-items: flex-end;
-    border: none;
-    width: auto;
-    background-color: transparent;
-    width: 5rem;
-    height: 5rem;
-    z-index: 1;
-    color: orange;
-}
-
-.icon-btn svg {
-    font-size: larger;
-}
-
-.icon-btn button:hover {
-    border-bottom: 0.3rem solid #AB8466;
-}
-
-.btn-false {
-    border: none;
-    width: auto;
-    background-color: transparent;
-    width: 5rem;
-    height: 5rem;
-    border-radius: 100%;
-}
-
+/* Cards ------------------------------------ */
 .card-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto; 
-    margin: 2rem auto;
     width: 80%;
+    grid-gap: 0;
+    margin: 5rem auto;
+}
+
+.card-list > div {
+    margin: 0;
 }
 
 .card {
     color: rgb(71, 71, 71);
-    border: 0.1rem solid whitesmoke;
-    background-color: transparent;
-    border-radius: 2%;
-    margin: 2rem;
-    width: auto;
-    height: auto;
-    box-shadow: 0.3rem 0.3rem 0.3rem 0.3rem rgba(212, 212, 212, 0.274);
+    border: none;
+    background-color: white;
+    width: 90%;
+    height: 95%;
+    padding: 1rem;
+    box-shadow: 0rem 0.3rem 0.3rem 0.3rem rgba(212, 212, 212, 0.109);
     display: grid;
     justify-content: center;
+    font-family: 'Abel', sans-serif;
 }
 
 .card:hover {
-    box-shadow: 0 0.5rem 1rem 0 rgba(61, 61, 61, 0.24), 0 0.5rem 1rem 0 rgba(63, 63, 63, 0.19);
+    box-shadow: 0rem 0.3rem 0.3rem 0.3rem rgba(212, 212, 212, 0.274);
 }
 
 .card-preview {
-    margin-bottom: 0;
-    margin-top: -5rem;
-    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
     position: relative;
+    height: 12rem;
     z-index: 2;
-    height: 16rem;
-    border-radius: 2%;
     text-align: left;
+    justify-content: center;
 }
 
 .card-img {
-    border-radius: 2%;
-    width: 30rem;
-    height: 20rem;
+    width: 20vw;
+    height: 40vh;
     object-fit: cover;
-    margin: 1rem;
+    margin: 0;
     position: relative;
+    border-radius: 0;
 }
 
 .card-img-profile {
@@ -98,12 +71,15 @@
 }
 
 .card-preview h4 {
-    margin: 6rem 0 0 0;
+    margin: 0;
     font-weight: 500;
     font-family: 'Bebas Neue', cursive;
     font-weight: 500;
     letter-spacing: 0.15rem;
-    border-radius: 5%;
+}
+
+.card-preview p {
+    margin: 0;
 }
 
 .card-details {
@@ -118,28 +94,83 @@
     margin: 0;
 }
 
-.feedback {
-    padding: 1rem;
-    background-color: #ffb489;
-    color: white;
-    border-radius: 1.25rem;
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    width: 40%;
-    transform: translate(-50%, -50%);
-    animation: 1s slideDown;
+/* Icons ------------------------------------ */
+.icon-btns {
+    display: flex;
+    justify-content: right;
+    margin-right: 15%;
+    margin-bottom: -15%;
 }
 
-.btn-add {
-    color: white;
-    background-color: #D59461;
+.icon-btn {
+    display: flex;
+    justify-content: left;
+    align-items: flex-end;
     border: none;
-    border-radius: 100%;
+    background-color: transparent;
+    width: 5rem;
+    height: 5rem;
+    z-index: 1;
+    color: gray;
+}
+
+.icon-btn > svg {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.22);
+    border-radius: 45%;
     width: 3rem;
     height: 3rem;
+    padding: 0.6rem;
 }
 
+.icon-btn:hover, .icon-btn-edge:hover {
+    color: #ddac86;
+}
+
+.icon-btn button:hover {
+    border-bottom: 0.3rem solid #AB8466;
+}
+
+.icon-btns-edge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: -1rem;
+    margin-bottom: -9rem;
+}
+
+.icon-btns-edge-single {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 0.2rem;
+    margin-bottom: -4.5rem;
+}
+
+.icon-btn-edge {
+    display: flex;
+    justify-content: right;
+    align-items: flex-end;
+    border: none;
+    width: auto;
+    background-color: transparent;
+    width: 5rem;
+    height: 2rem;
+    z-index: 1;
+    color: rgb(223, 223, 223);
+    margin: 0 -0.5rem 2.5rem 0;
+}
+
+.icon-profile {
+    margin: 0 1rem;
+    align-items: center;
+}
+
+.forward-arrow svg:hover {
+    color: rgba(255, 255, 255, 0.655)
+}
+
+/* Buttons ------------------------------------ */
 .btn {
     border-color: #D59461;
     background-color: #D59461;
@@ -153,17 +184,131 @@
     color: white;
 }
 
-.btn:hover {
+.btn:hover, .btn-add:hover {
     box-shadow: 0 0.2rem 0.5rem 0 rgba(157, 157, 157, 0.24), 0 0.2rem 0.5rem 0 rgba(164, 164, 164, 0.19);
     background-color: #e7af85;
     border-color: #e7af85;
     color: white;
 }
 
-textarea {
-    font-family: 'Mulish', sans-serif;
+.btn-add {
+    color: white;
+    background-color: #D59461;
+    border: none;
+    border-radius: 100%;
+    width: 3rem;
+    height: 3rem;
 }
 
-fieldset {
+.btn-return {
+    background-color: transparent;
     border: none;
+    color: #D49461;
+}
+
+.btn-return:hover {
+    color: #f6ba88;
+}
+
+.btn-false {
+    border: none;
+    width: auto;
+    background-color: transparent;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 100%;
+}
+
+.btn-orange, .icon-orange svg {
+    background-color: #FF9659;
+}
+
+.btn-brown, .icon-brown svg {
+    background-color: #AB8466;
+}
+
+.btn-green, .icon-green svg {
+    background-color: #86cfb2;
+}
+
+.btn-orangeBrown, .icon-orangeBrown svg {
+    background-color: #D49461;
+}
+
+.btn-orange:hover, .icon-orange svg:hover {
+    background-color: #ffb285;
+}
+
+.btn-brown:hover, .icon-brown svg:hover {
+    background-color: #c6a48a;
+}
+
+.btn-green:hover, .icon-green svg:hover {
+    background-color: #a3e4ca;
+}
+
+.btn-orangeBrown:hover, .icon-orangeBrown svg:hover {
+    background-color: #e3a97a;
+}
+
+/* Image Upload ------------------------------------ */
+.img-upload {
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+}
+
+.upload-thumbnail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-thumbnail button, .btn-upload-thumbnail {
+    background-color: gray;
+    border: none;
+    color: white;
+    margin: 2rem 0;
+}
+
+.upload-thumbnail button:hover, .btn-upload-thumbnail:hover {
+    background-color: rgb(156, 156, 156);
+}
+
+/* Search ------------------------------------ */
+.search-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: -4rem auto 2rem auto;
+    background-color: white;
+    width: 60vw;
+    border-radius: 1rem;
+    box-shadow: 0 0.2rem 0.5rem 0 rgba(157, 157, 157, 0.24), 0 0.2rem 0.5rem 0 rgba(164, 164, 164, 0.19) !important;
+}
+
+.input-search {
+    width: 50vw;
+    height: 3rem;
+    border-radius: 0.5rem;
+    background-color: whitesmoke;
+    margin: 2rem !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: 0 0.2rem 0.5rem 0 rgba(157, 157, 157, 0.24), 0 0.2rem 0.5rem 0 rgba(164, 164, 164, 0.19) !important;
+}
+
+/* Feedback ------------------------------------ */
+.feedback {
+    padding: 1rem;
+    background-color: #ffb489;
+    color: white;
+    border-radius: 1.25rem;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    width: 40%;
+    transform: translate(-50%, -50%);
+    animation: 1s slideDown;
 }

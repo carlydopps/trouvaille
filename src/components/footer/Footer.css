@@ -1,0 +1,15 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 5rem;
+    background-color: white;
+    height: 15rem;
+}
+
+.img-footer {
+    height: 7rem;
+    width: 9rem;
+    margin: 2rem;
+}

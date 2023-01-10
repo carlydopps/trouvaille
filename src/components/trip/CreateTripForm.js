@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { Footer } from "../footer/Footer"
+import { DeleteIcon } from "../icons/Icons"
 import { createDestination } from "../managers/DestinationManager"
 import { getDurations } from "../managers/DurationManager"
 import { createExperience } from "../managers/ExperienceManager"
 import { getExperienceTypes } from "../managers/ExperienceTypeManager"
+import { createImage } from "../managers/ImageManager"
 import { getSeasons } from "../managers/SeasonManager"
 import { getStyles } from "../managers/StyleManager"
 import { addTripDestination } from "../managers/TripDestinationManager"
@@ -43,21 +46,18 @@ export const CreateTripForm = () => {
         isDraft: false,
         isUpcoming: false,
         isPrivate: false,
-        profileImg: ""
+        coverImg: ""
     })
 
     const navigate = useNavigate()
 
     useEffect(
         () => {
-            getStyles()
-                .then(data => setStyles(data))
-            getSeasons()
-                .then(data => setSeasons(data))
-            getDurations()
-                .then(data => setDurations(data))
-            getExperienceTypes()
-                .then(data => setExperienceTypes(data))
+            window.scrollTo(0, 0)
+            getStyles().then(data => setStyles(data))
+            getSeasons().then(data => setSeasons(data))
+            getDurations().then(data => setDurations(data))
+            getExperienceTypes().then(data => setExperienceTypes(data))
         },
         []
     )
@@ -87,6 +87,15 @@ export const CreateTripForm = () => {
                             addTripExperience(newTripExp)
                         })
                 })
+
+                images.map(image => {
+                    let newImg = {
+                        imgUrl: image.imgUrl,
+                        tripId: newTrip.id,
+                        order: image.order
+                    }
+                    createImage(newImg)
+                })
             })
             .then(() => navigate(`/my-trips`))
     }
@@ -98,6 +107,9 @@ export const CreateTripForm = () => {
 
             let tripDraft = structuredClone(trip)
             tripDraft.isDraft = true
+            if (tripDraft.coverImg === "") {
+                tripDraft.coverImg = "https://res.cloudinary.com/dupram4w7/image/upload/v1673144063/Trouvaille/pexels-marina-leonova-7634434_mnw6wt.jpg"
+            }
             sendTrip(tripDraft)
 
         } else if (resource === "destination") {
@@ -112,16 +124,21 @@ export const CreateTripForm = () => {
                 setShowDestForm(false)
 
         } else if (resource === "experience") {
-                tripExperiences.push(experience)
-                const defaultExperience = {
-                    title: "",
-                    address: "",
-                    websiteUrl: "",
-                    experienceTypeId: 0,
-                    image: ""
-                }
-                updateExperience(defaultExperience)}
-                setShowExpForm(false)
+            if (experience.image === "") {
+                experience.image = "https://res.cloudinary.com/dupram4w7/image/upload/v1673157703/Trouvaille/pexels-min-an-1098872_rpk0hi.jpg"
+            }
+
+            tripExperiences.push(experience)
+            const defaultExperience = {
+                title: "",
+                address: "",
+                websiteUrl: "",
+                experienceTypeId: 0,
+                image: ""
+            }
+            updateExperience(defaultExperience)
+            setShowExpForm(false)
+        }
     } 
 
     const handleSubmit = (event) => {
@@ -129,7 +146,20 @@ export const CreateTripForm = () => {
 
         let tripPost = structuredClone(trip)
         tripPost.isDraft = false
+        if (tripPost.coverImg === "") {
+            tripPost.coverImg = "https://res.cloudinary.com/dupram4w7/image/upload/v1673144063/Trouvaille/pexels-marina-leonova-7634434_mnw6wt.jpg"
+        }
         sendTrip(tripPost)
+    }
+
+    const handleCancel = (event, resource) => {
+        event.preventDefault()
+
+        if (resource === "destination") {
+            setShowDestForm(false)
+        } else if (resource === "experience") {
+            setShowExpForm(false)
+        }
     }
 
     const showTripWidget = (event) => {
@@ -144,8 +174,30 @@ export const CreateTripForm = () => {
         (error, result) => {
             if (!error && result && result.event === "success") {
                 const copy = {...trip}
-                copy.profileImg = result.info.url
+                copy.coverImg = result.info.url
                 updateTrip(copy)
+            }})
+            widget.open()
+    }
+
+    const showWidget = (event) => {
+        
+        event.preventDefault()
+
+        let widget = window.cloudinary.createUploadWidget(
+        {
+            cloudName: "dupram4w7",
+            uploadPreset: "huvsusnz"
+        },
+        (error, result) => {
+            if (!error && result && result.event === "success") {
+                const copy = [...images]
+                let order = 1
+                if (copy.length !== 0){
+                    order = (copy.slice(-1)[0].order) + 1
+                }
+                copy.push({imgUrl: result.info.url, order: order})
+                updateImages(copy)
             }})
             widget.open()
     }
@@ -221,7 +273,8 @@ export const CreateTripForm = () => {
                     }
                 />
             </fieldset>
-            <button onClick={(event) => handleSave(event, "destination")}>Save</button>
+            <button onClick={(event) => handleSave(event, "destination")} className="btn">Save</button>
+            <button onClick={(event) => handleCancel(event, "destination")} className="btn">Cancel</button>
         </form>
     }
 
@@ -300,12 +353,23 @@ export const CreateTripForm = () => {
                         }
                 </select>
             </fieldset>
-            <button onClick={(event) => showExperienceWidget(event)} className="cloudinary-button">Add photo</button>
-            <button onClick={(event) => handleSave(event, "experience")}>Save</button>
+            {
+                experience.image !== ""
+                ? <img src={experience.image} alt="" className="image-tripForm"/>
+                : ""
+            }
+            <div className="btns-experience-form">
+                <button onClick={(event) => showExperienceWidget(event)} className="btn btn-upload-thumbnail">Add photo</button>
+                <div >
+                    <button onClick={(event) => handleSave(event, "experience")} className="btn">Save</button>
+                    <button onClick={(event) => handleCancel(event, "experience")} className="btn">Cancel</button>
+                </div>
+            </div>
         </form>
     }
 
-    return <main className="page-trip-create">
+    return <>
+    <main className="page-trip-create">
         <h2>Start a New Trip</h2>
         <section className="trip-create-details">
             <form>
@@ -409,14 +473,6 @@ export const CreateTripForm = () => {
                     </select>
                 </fieldset>
                 <section>
-                    {
-                        trip.image !== ""
-                        ? <img src={trip.image} alt="" className="image-tripForm"/>
-                        : ""
-                    }
-                    <button onClick={(event) => showTripWidget(event)} className="cloudinary-button">Add photo</button>
-                </section>
-                <section>
                     <fieldset>
                         <label htmlFor="isPrivate"></label>
                         <input
@@ -428,7 +484,7 @@ export const CreateTripForm = () => {
                                     const copy = {...trip}
                                     copy.isPrivate = event.target.checked
                                     updateTrip(copy)
-                                }}/>Private
+                                }}/> Private
                     </fieldset>
                     <fieldset>
                         <label htmlFor="isUpcoming"></label>
@@ -441,14 +497,22 @@ export const CreateTripForm = () => {
                                     const copy = {...trip}
                                     copy.isUpcoming = event.target.checked
                                     updateTrip(copy)
-                                }}/>Upcoming Trip
+                                }}/> Upcoming Trip
                     </fieldset>
+                </section>
+                <section className="upload-thumbnail">
+                    {
+                        trip.coverImg !== ""
+                        ? <img src={trip.coverImg} alt="" className="img-upload"/>
+                        : ""
+                    }
+                    <button onClick={(event) => showTripWidget(event)} className="btn btn-green">Add thumbnail</button>
                 </section>
             </form>
         </section>
         <section className="trip-create-destinations">
             <div className="trip-create-heading">
-                <h3>Destinations: </h3>
+                <h4>Destinations</h4>
                 <button onClick={(event) => setShowDestForm(!showDestForm)} className="btn-add">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
                     <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
@@ -456,30 +520,29 @@ export const CreateTripForm = () => {
                 </button>
             </div>
             <section>
-                {showDestForm ? addDestinationForm() : ""}
+                {
+                    showDestForm ? addDestinationForm() : ""
+                }
             </section>
             <section className="card-list cards-destinations">
                 {
                     tripDestinations.map(tripDest => {
-                        return <div>
-                            <div className="icon-btns">
+                        return <div className="destination">
+                            <div className="card-destination">
+                                <div className="card-destination-details">
+                                    <h4>{tripDest.city}</h4>
+                                    <p>{tripDest.state}, {tripDest.country}</p>
+                                </div>
+                            </div>
+                            <div className="icon-btns-edge destination-icons">
                                 <button onClick={() => {
                                         let index = tripDestinations.indexOf(tripDest)
                                         const copy = [...tripDestinations]
                                         copy.splice(index, 1)
                                         setTripDestinations(copy)
-                                    }} className="icon-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
-                                    </svg>
+                                    }} className="icon-btn-edge destination-icon">
+                                    <DeleteIcon/>
                                 </button>
-                            </div>
-                            <div className="card card-destination">
-                                <img className="card-img"/>
-                                <div className="card-preview">
-                                    <h4>{tripDest.city}</h4>
-                                    <p>{tripDest.city}, {tripDest.state} {tripDest.country}</p>
-                                </div>
                             </div>
                         </div>
                     })
@@ -488,7 +551,7 @@ export const CreateTripForm = () => {
         </section>
         <section className="trip-create-experiences">
             <div className="trip-create-heading">
-                <h4>Experiences: </h4>
+                <h4>Experiences</h4>
                 <button onClick={(event) => setShowExpForm(!showExpForm)} className="btn-add">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
                     <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
@@ -496,27 +559,27 @@ export const CreateTripForm = () => {
                 </button>
             </div>
             <section>
-                {showExpForm ? addExperienceForm() : ""}
+                {
+                    showExpForm ? addExperienceForm() : ""
+                }
             </section>
             <section className="card-list cards-experiences">
                 {
                     tripExperiences.map(tripExp => {
                         return <div>
-                            <div className="icon-btns">
+                            <div className="icon-btns-edge-single">
                                 <button onClick={() => {
                                         let index = tripExperiences.indexOf(tripExp)
                                         const copy = [...tripExperiences]
                                         copy.splice(index, 1)
                                         setTripExperiences(copy)
-                                    }} className="icon-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
-                                    </svg>
+                                    }} className="icon-btn-edge">
+                                        <DeleteIcon/>
                                 </button>
                             </div>
                             <div className="card card-experience">
                                 <img src={tripExp.image} alt="Experience Image" className="card-img"/>
-                                <div className="card-preview">
+                                <div className="card-experience-preview">
                                     <h4>{tripExp.title}</h4>
                                     <a href={`${tripExp.websiteUrl}`}>{tripExp.websiteUrl}</a>
                                     <p>{tripExp.address}</p>
@@ -527,14 +590,28 @@ export const CreateTripForm = () => {
                 }
             </section>
         </section>
+        <section className="trip-images">
+            <div className="trip-images-heading">
+                <h4>Images</h4>
+                <button onClick={(event) => showWidget(event)} className="btn-add"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
+                    <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                    </svg>
+                </button>
+            </div>
+            <div className="trip-create-images-grid">
+                {
+                    images !== []
+                    ? images.map(image => <img src={image.imgUrl} alt="Trip image" key={`img--${image.imgUrl}`} />)
+                    : ""
+                }
+            </div>
+        </section>
         <div className="trip-create-btns">
-            <button
-                onClick={(event) => handleSave(event, "trip")} className="btn"
-                >Save</button>
-            <button
-                onClick={(event) => handleSubmit(event)} className="btn"
-                >Post</button>
+            <button onClick={(event) => handleSave(event, "trip")} className="btn">Save</button>
+            <button onClick={(event) => handleSubmit(event)} className="btn">Post</button>
         </div>
     </main>
-    
+    <Footer/>
+</>
 }

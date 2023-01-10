@@ -1,0 +1,34 @@
+.page-experiences {
+    display: flex;
+    flex-direction: column;
+    margin-top: -10rem;
+}
+
+.page-experiences > h1 {
+    text-align: center;
+}
+
+.heading-experiences {
+    display: flex;
+    justify-content: right;
+    margin-top: 5rem;
+    padding: 5rem 0;
+}
+
+.heading-experiences-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    color: #AB8466;
+    padding: 2rem;
+    margin-right: 10rem;
+    width: 15%;
+    letter-spacing: 0.5rem;
+}
+
+.experience-list-img-cover {
+    width: 65%;
+    height: 30rem;
+    object-fit: cover;
+}
