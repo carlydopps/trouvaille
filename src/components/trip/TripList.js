@@ -44,6 +44,7 @@ export const TripList = () => {
             </div>
             <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1672636798/Trouvaille/pexels-feelalivenow-9309828_rz3qph.jpg" alt=""/>
         </div>
+        <button onClick={() => navigate('/trips/create')} className="home-btn-create trips-btn-create" >Start Planning!</button>
         <section className="card-list card-list-trips">
             {
                 trips.map(trip => {
