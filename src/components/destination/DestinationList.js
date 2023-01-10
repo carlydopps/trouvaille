@@ -43,7 +43,7 @@ export const DestinationList = ({searchTermState}) => {
     useEffect(
         () => {
             setViewDestinations(true)
-            const searchedDestinations = destinations.filter(destination => destination.city.toLowerCase().startsWith(searchTerms.toLowerCase()))
+            const searchedDestinations = destinations.filter(destination => destination.city.toLowerCase().startsWith(searchTerms.toLowerCase()) || destination.state.toLowerCase().startsWith(searchTerms.toLowerCase()))
             setFilteredDestinations(searchedDestinations)
         },
         [searchTerms]

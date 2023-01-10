@@ -355,7 +355,7 @@ export const CreateTripForm = () => {
             </fieldset>
             {
                 experience.image !== ""
-                ? <img src={experience.image} alt="" className="image-tripForm"/>
+                ? <img src={experience.image} alt="" className="image-tripForm img-upload"/>
                 : ""
             }
             <div className="btns-experience-form">
@@ -368,7 +368,7 @@ export const CreateTripForm = () => {
         </form>
     }
 
-    return <>
+    return <div className="trip-create-container">
     <main className="page-trip-create">
         <h2>Start a New Trip</h2>
         <section className="trip-create-details">
@@ -602,7 +602,7 @@ export const CreateTripForm = () => {
             <div className="trip-create-images-grid">
                 {
                     images !== []
-                    ? images.map(image => <img src={image.imgUrl} alt="Trip image" key={`img--${image.imgUrl}`} />)
+                    ? images.map(image => <img src={image.imgUrl} className="" alt="Trip image" key={`img--${image.imgUrl}`} />)
                     : ""
                 }
             </div>
@@ -612,6 +612,5 @@ export const CreateTripForm = () => {
             <button onClick={(event) => handleSubmit(event)} className="btn">Post</button>
         </div>
     </main>
-    <Footer/>
-</>
+</div>
 }
