@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom"
 import { Account } from "./components/account/Account"
 import { Login } from "./components/auth/Login"
 import { Register } from "./components/auth/Register"
-import { DestinationContainer } from "./components/destination/DestinationContainer"
+import { DestinationList } from "./components/destination/DestinationList"
 import { ExperienceList } from "./components/experience/ExperienceList"
 import { HomePage } from "./components/home/HomePage"
 import { LandingPage } from "./components/home/LandingPage"
@@ -23,7 +23,7 @@ export const Trouvaille = () => {
                 <Route path="/home" element={<HomePage />} />
                 <Route path="/trips" element={<TripList />} />
                 <Route path="/travelers" element={<TravelerList />} />
-                <Route path="/destinations" element={<DestinationContainer />} />
+                <Route path="/destinations" element={<DestinationList />} />
                 <Route path="/experiences" element={<ExperienceList />} />
                 <Route element={<Authorized  />}>
                     <Route path="/account/:userId" element={<Account />} />

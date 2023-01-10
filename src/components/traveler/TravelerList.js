@@ -1,28 +1,45 @@
 import { useEffect, useState } from "react"
-import { getTravelers, getTravelersWithAuth } from "../managers/TravelerManager"
-import { Link, useNavigate } from "react-router-dom"
+import { getTravelers } from "../managers/TravelerManager"
+import { useNavigate } from "react-router-dom"
 import { createSubscription, deleteSubscription } from "../managers/SubscriptionManager"
 import './TravelerList.css'
+import { UnfollowIcon, FollowIcon } from "../icons/Icons"
 
 export const TravelerList = () => {
 
     const [travelers, setTravelers] = useState([])
+    const [searchTerms, setSearchTerms] = useState("")
+    const [filteredTravelers, setFilteredTravelers] = useState([])
 
     const navigate = useNavigate()
 
     const renderTravelers = () => {
-        if (localStorage.getItem("auth_token")) {
-            getTravelersWithAuth().then(data => setTravelers(data))
-        } else {
-            getTravelers().then(data => setTravelers(data))
-        }
+        getTravelers().then(data => setTravelers(data))
     }
 
     useEffect(
         () => {
             renderTravelers()
+            window.scrollTo(0, 0)
         },
         []
+    )
+
+    useEffect(
+        () => {
+            setFilteredTravelers(travelers)
+        },
+        [travelers]
+    )
+
+    useEffect(
+        () => {
+            const searchedTravelers = travelers.filter(traveler => {
+                return traveler.first_name.toLowerCase().startsWith(searchTerms.toLowerCase()) || traveler.username.toLowerCase().startsWith(searchTerms.toLowerCase())
+            })
+            setFilteredTravelers(searchedTravelers)
+        },
+        [searchTerms]
     )
 
     const follow = (travelerId) => {
@@ -34,28 +51,32 @@ export const TravelerList = () => {
         deleteSubscription(travelerId).then(() => renderTravelers())
     }
 
-    return <main className="travelers-main">
-        <h1>Travelers</h1>
-        <section className="card-list">
+    return <main className="page-travelers">
+        <section className="heading-travelers">
+            <div>
+                <h1>Travelers</h1>
+                <h3>Explorers</h3>
+                <h5>Friends</h5>
+            </div>
+            <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1673298690/Trouvaille/pexels-helena-lopes-697243_p6cajz.jpg" alt="Travelers cover image"></img>
+        </section>
+        <div className="search-bar">
+            <input onChange={(event) => setSearchTerms(event.target.value)}
+            type="text" placeholder="Find new travelers" className="input-search"/>
+        </div>
+        <h4 className="travelers-heading-slogan">Follow travelers of all types to inspire your next trip</h4>
+        <section className="card-list cards-travelers">
             {
-                travelers.map(traveler => {
+                filteredTravelers.map(traveler => {
                     return <div key={`traveler--${traveler.id}`}>
                         <div className="icon-btns">
-                            {localStorage.getItem("auth_token")
+                            {
+                                localStorage.getItem("auth_token")
                                 ? traveler.myself
                                     ? <button className="btn-false"></button>
                                     : traveler.following
-                                        ? <button onClick={() => unfollow(traveler.id)}className="icon-btn">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" className="bi bi-check-circle-fill" viewBox="0 0 16 16">
-                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                                            </svg>
-                                        </button>
-                                        : <button onClick={() => follow(traveler.id)} className="icon-btn">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" className="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                                            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                                            <path fillRule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
-                                            </svg>
-                                        </button>
+                                        ? <button onClick={() => unfollow(traveler.id)} className="icon-btn"><UnfollowIcon/></button>
+                                        : <button onClick={() => follow(traveler.id)} className="icon-btn"><FollowIcon/></button>
                                 : <button onClick={() => navigate(`/login`)}>Login to Follow</button>
                             }
                         </div>

@@ -8,22 +8,23 @@
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
+    width: 28vw;
+    height: 50vh;
 }
 
 .img-carousel {
-    width: 85%;
-    height: auto;
-    margin: 3rem 0 0 0;
+    width: 28vw;
+    height: 20rem;
+    margin: 2rem 0 0 0;
     font-family: 'Bebas Neue', cursive;
     letter-spacing: 0.1rem;
     color: #AB8466;
+    object-fit: cover;
 }
 
 .img-carousel-p {
     margin-top: 1rem;
     text-decoration: none;
-    padding: 0;
 }
 
 .img-carousel-p:hover {

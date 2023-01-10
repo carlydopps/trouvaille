@@ -1,19 +1,25 @@
 .trip-page {
     margin: 5rem;
+    height: 100vh;
 }
 
 .trip-details {
     display: flex;
     flex-direction: column;
-    justify-content: center; 
     margin: 5rem auto;
 }
 
-.trip-details-details {
+.trip-details-info {
     width: 60%;
     margin: 0 auto;
 }
 
+.trip-details-info h4{
+    font-family: 'Caveat', cursive;
+    font-size: 3rem;
+}
+
+/* Destinations ------------------------------------ */
 .trip-destinations {
     display: flex;
     flex-direction: column;
@@ -22,6 +28,11 @@
     width: 60%;
 }
 
+.destination {
+    display: flex;
+}
+
+/* Experiences ------------------------------------ */
 .trip-experiences {
     display: flex;
     flex-direction: column;
@@ -30,14 +41,7 @@
     width: 60%;
 }
 
-.trip-comments {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    margin: 5rem auto;
-    width: 60%;
-}
-
+/* Images ------------------------------------ */
 .profile-img {
     justify-content: center;
     height: 9rem;
@@ -51,28 +55,18 @@
     flex-direction: column;
 }
 
-.trip-heading-btns{
-    display: flex;
-    justify-content: space-between;
-    margin: 5rem auto;
-}
-
-.trip-image-heading button {
-    width: 5rem;
-    margin-left: 55rem;
-}
-
 .trip-images {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.trip-images-btns {
+.trip-images-heading {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
+/* Image Grid ------------------------------------ */
 .trip-images-grid {
     display: grid;
     padding: 0;
@@ -80,6 +74,7 @@
     grid-template-rows: repeat(2, 1fr);
     grid-gap: 1rem;
     justify-content: center;
+    margin-top: -6rem;
 }
 
 .trip-images-grid img {
@@ -122,9 +117,21 @@
     height: 20rem;
 }
 
-.trip-favorite-icon {
-    width: auto;
-    height: auto;
+/* Buttons ------------------------------------ */
+.trip-heading-btns{
+    display: flex;
+    justify-content: space-between;
+    margin-left: -3rem;
+}
+
+.trip-image-heading button {
+    width: 5rem;
+    margin-left: 55rem;
+}
+
+.trip-images-btns {
+    display: flex;
+    justify-content: center;
 }
 
 .trip-btns {
@@ -132,4 +139,92 @@
     margin: 0 auto;
     display: flex;
     justify-content: right;
+    align-items: center;
 }
+
+/* Icons ------------------------------------ */
+.trip-icon, .destination-icon {
+    width: auto;
+    height: auto;
+}
+
+.post-icon {
+    border-radius: 45%;
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    color: white;
+}
+
+.post-icon svg {
+    background-color: #86cfb2;
+    color: white;
+}
+
+.destination-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: flex-start;
+    width: 3rem;
+    height: 3rem;
+    margin: 0 0.5rem;
+}
+
+.destination-icon {
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    border: none;
+    width: auto;
+    background-color: transparent;
+    z-index: 1;
+}
+
+/* Comments ------------------------------------ */
+.trip-comments {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    margin: 15rem auto;
+    width: 60%;
+}
+
+.comment {
+    display: flex;
+}
+
+.comment > img {
+    width: 4rem;
+    height: 4rem;
+}
+
+.comment-form {
+    display: flex;
+    width: 100vw;
+    align-items: center;
+}
+
+.comment-form form {
+    width: 50%;
+}
+
+.comment-form > form > fieldset{
+   height: 5rem;
+   padding-top: 0;
+}
+
+.comment-form button {
+    background-color: #FF9659;
+    margin: 0;
+    height: 2.3rem;
+}
+
+.comment > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    font-family: 'Abel', sans-serif;
+}
+

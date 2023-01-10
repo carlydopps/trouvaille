@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import { Footer } from "../footer/Footer"
 import { getAuthTraveler, saveTraveler } from "../managers/TravelerManager"
 import "./Account.css"
 
@@ -16,9 +17,8 @@ export const Account = () => {
     })
 
     const renderUser = () => {
-        getAuthTraveler(travelerId)
+        getAuthTraveler()
             .then(data => {
-
                 let traveler = {}
                 traveler.firstName = data.first_name
                 traveler.lastName = data.last_name
@@ -72,13 +72,16 @@ export const Account = () => {
 
     const defaultDisplay = () => {
 
-        return <section className="account-info">
-                <h4>Personal Information</h4>
-                <div>
-                    <p>First Name: {traveler.firstName}</p>
-                    <p>Last Name: {traveler.lastName}</p>
-                    <p>Username: {traveler.username}</p>
-                    <p>Bio: {traveler.bio}</p>
+        return <section className="body-contact">
+                <div className="account-grid">
+                        <p>First Name: </p>
+                        <p>Last Name: </p>
+                        <p>Username: </p>
+                        <p>Bio: </p>
+                        <p>{traveler.firstName}</p>
+                        <p>{traveler.lastName}</p>
+                        <p>{traveler.username}</p>
+                        <p>{traveler.bio}</p>
                 </div>
                 <button onClick={() => updateClickStatus(true)} className="btn">Edit Profile</button>
         </section>
@@ -86,8 +89,7 @@ export const Account = () => {
 
     const editDetails = () => {
         return <section className="body-contact">
-            <form>
-                <h4>Edit Profile Information</h4>
+            <form className="accountForm">
                 <button onClick={(event) => showWidget(event)} className="btn">Update photo</button>
                 <fieldset>
                     <div>
@@ -163,20 +165,21 @@ export const Account = () => {
     }
 
 
-    return <main className="page-account">
-        <section>
-            <img src={traveler.coverImg} className="account-img-cover"/>
-        </section>
-        <section className="account-profile">
-            <img src={traveler.profileImg} className="profile-img account-img-profile"/>
-            <section className="account-profile-details">
-                <h1 className="account-profile-name">Hi {traveler.firstName}!</h1>
-                {
-                    clickStatus
-                    ? editDetails()
-                    : defaultDisplay()
-                }
+    return <>
+        <main className="main-account">
+            <div className="img-stack">
+                <img src={traveler.coverImg} className="img-stack-bottom"/>
+                <img src={traveler.profileImg} className="img-stack-top"/>
+            </div>
+            <section className="body-account">
+                <section className="account-profile-details">
+                    <h1 className="h1-account">Hi, {traveler.firstName}!</h1>
+                    {
+                        clickStatus ? editDetails() : defaultDisplay()
+                    }
+                </section>
             </section>
-        </section>
-    </main>
+        </main>
+        <Footer/>
+    </>
 }
