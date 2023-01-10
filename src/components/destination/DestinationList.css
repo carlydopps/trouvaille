@@ -8,11 +8,19 @@
     flex-direction: column;
     align-items: center;
     padding: 5rem;
+    background-color: #AB8366;
+    border-bottom: 3rem solid #b59884;
+}
+
+.destination-list-heading h1 {
+    color: white;
+    letter-spacing: 0.2rem;
 }
 
 .destination-list-heading h4 {
     font-family: 'Satisfy', cursive;
     font-size: 3rem;
+    color: white;
 }
 
 .search-bar-destination {

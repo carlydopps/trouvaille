@@ -214,7 +214,7 @@
 .trip-create-images-grid img:nth-child(1) {
     grid-row:  1 / span 2;
     grid-column: 1;
-    width: 40rem;
+    width: 25rem;
 }
 
 .trip-create-images-grid img:nth-child(2) {

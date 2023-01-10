@@ -84,7 +84,7 @@ export const TravelerList = () => {
                             <img src={traveler.cover_img} alt="Cover Image" className="card-img"/>
                             <img src={traveler.profile_img} alt="Profile Image" className="profile-img card-img-profile"/>
                             <div className="card-preview">
-                                <h4>{traveler.full_name}</h4>
+                                <h4 className="traveler-list-name">{traveler.full_name}</h4>
                                 <div className="card-details">
                                     <p>@{traveler.username}</p>
                                     <p>{traveler.traveled_trips.length} trips</p>
