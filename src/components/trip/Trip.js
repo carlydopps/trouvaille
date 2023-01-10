@@ -446,7 +446,11 @@ export const Trip = () => {
         return <>
             <div className="trip-create-heading">
                 <h4>Destinations</h4>
-                <button onClick={(event) => setShowDestForm(!showDestForm)} className="btn-add"><PlusIcon/></button>
+                {
+                    trip.myTrip
+                    ? <button onClick={(event) => setShowDestForm(!showDestForm)} className="btn-add"><PlusIcon/></button>
+                    : ""
+                }
             </div>
             <section>
                 {showDestForm ? destinationForm() : ""}
@@ -540,11 +544,15 @@ export const Trip = () => {
         return <>
             <div className="trip-create-heading">
                 <h4>Experiences</h4>
-                <button onClick={(event) => {
-                    setShowExperienceEdit({show: true, id: 0, action: "create"})
-                    }} className="btn-add">
-                    <PlusIcon/>
-                </button>
+                {
+                    trip.myTrip
+                    ? <button onClick={(event) => {
+                        setShowExperienceEdit({show: true, id: 0, action: "create"})
+                        }} className="btn-add">
+                        <PlusIcon/>
+                    </button>
+                    : ""
+                }
             </div>
             <section>
                 {showExperienceEdit.show && showExperienceEdit.action ==="create" ? experienceForm("create") : ""}
@@ -676,7 +684,7 @@ export const Trip = () => {
             </fieldset>
             <div className="upload-thumbnail">
                 {
-                    stateExperience.image !== ""
+                    stateExperience.image !== "" && action === "create"
                     ? <img src={stateExperience.image} alt="" className="img-upload"/>
                     : ""
                 }
@@ -693,7 +701,7 @@ export const Trip = () => {
 
     return <main className="trip-page">
         <section className="trip-heading-btns">
-            <button onClick={() => navigate('/my-trips')} className="btn-return">
+            <button onClick={() => {trip.myTrip ? navigate('/my-trips') : navigate('/trips')}} className="btn-return">
                 <BackArrow/>
             </button>
         </section>
