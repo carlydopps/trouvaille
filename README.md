@@ -73,7 +73,7 @@ python manage.py shell
 ## Demo Login
 
 To view the application as a current traveler, please log in with the following:
-- username: ryandopps
+- username: sam
 - password: test
 
 You can also register as a new user by clicking the 'Register' link in the top, right-hand corner.
