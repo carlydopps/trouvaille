@@ -33,6 +33,9 @@ trou·vaille *(n)*: a chance encounter with something wonderful
 ![Project List](https://res.cloudinary.com/dupram4w7/image/upload/v1673290805/Trouvaille/Screen_Shot_2023-01-09_at_12.46.40_PM_nsjegm.png)
 <br />
 
+## Live Demo
+Under construction! Will be linked here soon
+
 ## Running This Application
 
 ### Client Side
