@@ -1,6 +1,6 @@
 # Trouvaille
 
-A platform where travelers can discover and share personal adventures for those who want to take the road less traveled
+A platform for travelers to discover and share personal adventures for those who want to take the road less traveled
 <br />
 <br />
 ## Application Overview
