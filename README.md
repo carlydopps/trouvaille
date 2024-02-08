@@ -5,7 +5,7 @@ A platform for travelers to discover and share personal adventures for those who
 <br />
 ## Application Overview
 
-Trouvaille enables travelers to discover, create, and share personal adventures with each other. It can be difficult to find rare experiences in places you've never visited before, which leads to visiting tourist traps instead. The goal of Trouvaille is to make those personal experiences more accessible among fellow travelers and, in turn, create a trip full of “hidden gems” and unique adventures. An added goal is to build connections with other travelers and to make trips more meaningful by filling them with places recommended from someone they know or now follow.
+Trouvaille enables travelers to discover, create, and share personal adventures with each other. It can be difficult to find rare experiences in new places, which often leads to visiting tourist traps instead. The goal of Trouvaille is to make those personal experiences more accessible among fellow travelers and, in turn, create a trip full of “hidden gems” and unique adventures. An added goal is to build connections with other travelers and to make trips more meaningful by filling them with places recommended from someone they know or now follow.
 <br />
 <br />
 
@@ -39,7 +39,7 @@ Under construction! Will be linked here soon
 ## Running This Application
 
 ### Client Side
-1. Clone the project repository and change directories in the terminal
+1. Clone the repository and change directories in the terminal
 
 ```
 git clone git@github.com:carlydopps/trouvaille.git
@@ -54,7 +54,8 @@ npm start
 ```
 
 ### Server Side
-1. Clone the repository and change directories in the terminal
+[Backend Repo](https://github.com/carlydopps/trouvaille-server)
+1. Clone the backend repository and change directories in the terminal
 
 ```
 git clone git@github.com:carlydopps/trouvaille-server.git
