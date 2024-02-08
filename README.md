@@ -54,8 +54,7 @@ npm start
 ```
 
 ### Server Side
-[Backend Repo](https://github.com/carlydopps/trouvaille-server)
-1. Clone the backend repository and change directories in the terminal
+1. Clone the [backend repository](https://github.com/carlydopps/trouvaille-server) and change directories in the terminal
 
 ```
 git clone git@github.com:carlydopps/trouvaille-server.git
