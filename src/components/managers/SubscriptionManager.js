@@ -1,5 +1,5 @@
 export const createSubscription = (subscription) => {
-    return fetch("https://trouvaille-server.vercel.app/subscriptions", {
+    return fetch("http://127.0.0.1:8000subscriptions", {
         method: "POST",
         headers:{
             'Accept': 'application/json',
@@ -12,7 +12,7 @@ export const createSubscription = (subscription) => {
 }
 
 export const deleteSubscription = (travelerId) => {
-    return fetch(`https://trouvaille-server.vercel.app/subscriptions/0/unfollow?traveler=${travelerId}`, {
+    return fetch(`http://127.0.0.1:8000subscriptions/0/unfollow?traveler=${travelerId}`, {
         method: "DELETE",
         headers:{
             'Accept': 'application/json',
