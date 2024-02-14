@@ -1,5 +1,5 @@
 export const addTripExperience = (tripExperience) => {
-    return fetch("https://trouvaille-server.vercel.app/trip_experiences", {
+    return fetch("http://127.0.0.1:8000trip_experiences", {
         method: "POST",
         headers:{
             'Accept': 'application/json',
@@ -12,7 +12,7 @@ export const addTripExperience = (tripExperience) => {
 }
 
 export const deleteTripExperience = (tripId, experienceId) => {
-    return fetch(`https://trouvaille-server.vercel.app/trips/${tripId}/remove_experience?experience=${experienceId}`, {
+    return fetch(`http://127.0.0.1:8000trips/${tripId}/remove_experience?experience=${experienceId}`, {
         method: "DELETE",
         headers:{
             'Accept': 'application/json',
