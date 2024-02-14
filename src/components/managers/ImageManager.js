@@ -1,5 +1,5 @@
 export const createImage = (image) => {
-    return fetch("http://localhost:8000/images", {
+    return fetch("https://trouvaille-server.vercel.app/images", {
         method: "POST",
         headers:{
             'Accept': 'application/json',

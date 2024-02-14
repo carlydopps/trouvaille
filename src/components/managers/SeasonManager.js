@@ -1,5 +1,5 @@
 export const getSeasons = () => {
-    return fetch("http://localhost:8000/seasons", {
+    return fetch("https://trouvaille-server.vercel.app/seasons", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }

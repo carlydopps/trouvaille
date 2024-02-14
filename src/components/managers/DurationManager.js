@@ -1,5 +1,5 @@
 export const getDurations = () => {
-    return fetch("http://localhost:8000/durations", {
+    return fetch("https://trouvaille-server.vercel.app/durations", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }

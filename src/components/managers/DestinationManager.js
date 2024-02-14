@@ -1,15 +1,15 @@
 export const getDestination = (id) => {
-    return fetch(`http://localhost:8000/destinations/${id}`)
+    return fetch(`https://trouvaille-server.vercel.app/destinations/${id}`)
         .then(response => response.json())
 }
 
 export const getDestinations = () => {
-    return fetch("http://localhost:8000/destinations")
+    return fetch("https://trouvaille-server.vercel.app/destinations")
         .then(response => response.json())
 }
 
 export const createDestination = (destination) => {
-    return fetch("http://localhost:8000/destinations", {
+    return fetch("https://trouvaille-server.vercel.app/destinations", {
         method: "POST",
         headers:{
             'Accept': 'application/json',
@@ -22,7 +22,7 @@ export const createDestination = (destination) => {
 }
 
 export const saveDestination = (destination) => {
-    return fetch(`http://localhost:8000/destinations/${destination.id}`, {
+    return fetch(`https://trouvaille-server.vercel.app/destinations/${destination.id}`, {
         method: "PUT",
         headers:{
             'Accept': 'application/json',

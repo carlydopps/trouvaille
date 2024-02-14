@@ -1,5 +1,5 @@
 export const createFavorite = (favoriteTrip) => {
-    return fetch("http://localhost:8000/favorite_trips", {
+    return fetch("https://trouvaille-server.vercel.app/favorite_trips", {
         method: "POST",
         headers:{
             'Accept': 'application/json',
@@ -12,7 +12,7 @@ export const createFavorite = (favoriteTrip) => {
 }
 
 export const deleteFavorite = (tripId) => {
-    return fetch(`http://localhost:8000/favorite_trips/0/unfavorite?trip=${tripId}`, {
+    return fetch(`https://trouvaille-server.vercel.app/favorite_trips/0/unfavorite?trip=${tripId}`, {
         method: "DELETE",
         headers:{
             'Accept': 'application/json',

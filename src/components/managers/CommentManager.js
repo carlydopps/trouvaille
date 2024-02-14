@@ -1,5 +1,5 @@
 export const postComment = (comment) => {
-    return fetch("http://localhost:8000/comments", {
+    return fetch("https://trouvaille-server.vercel.app/comments", {
         method: "POST",
         headers:{
             'Accept': 'application/json',
