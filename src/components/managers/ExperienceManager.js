@@ -1,15 +1,15 @@
 export const getExperience = (id) => {
-    return fetch(`http://127.0.0.1:8000experiences/${id}`)
+    return fetch(`http://127.0.0.1:8000/experiences/${id}`)
         .then(response => response.json())
 }
 
 export const getExperiences = () => {
-    return fetch(`http://127.0.0.1:8000experiences`)
+    return fetch(`http://127.0.0.1:8000/experiences`)
         .then(response => response.json())
 }
 
 export const createExperience = (experience) => {
-    return fetch("http://127.0.0.1:8000experiences", {
+    return fetch("http://127.0.0.1:8000/experiences", {
         method: "POST",
         headers:{
             'Accept': 'application/json',
@@ -23,7 +23,7 @@ export const createExperience = (experience) => {
 
 
 export const saveExperience = (experience) => {
-    return fetch(`http://127.0.0.1:8000experiences/${experience.id}`, {
+    return fetch(`http://127.0.0.1:8000/experiences/${experience.id}`, {
         method: "PUT",
         headers:{
             'Accept': 'application/json',

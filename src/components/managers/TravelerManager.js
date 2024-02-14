@@ -1,7 +1,7 @@
 import { Token } from "./TokenManager"
 
 export const getTraveler = (id) => {
-    return fetch(`http://127.0.0.1:8000travelers/${id}`, {
+    return fetch(`http://127.0.0.1:8000/travelers/${id}`, {
         headers:{
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }
@@ -10,7 +10,7 @@ export const getTraveler = (id) => {
 }
 
 export const getAuthTraveler = () => {
-    return fetch("http://127.0.0.1:8000travelers/auth", {
+    return fetch("http://127.0.0.1:8000/travelers/auth", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }
@@ -19,7 +19,7 @@ export const getAuthTraveler = () => {
 }
 
 export const getTravelers = () => {
-    return fetch("http://127.0.0.1:8000travelers", {
+    return fetch("http://127.0.0.1:8000/travelers", {
         headers:{
             "Authorization": Token()
         }
@@ -28,7 +28,7 @@ export const getTravelers = () => {
 }
 
 export const saveTraveler = traveler => {
-    return fetch(`http://127.0.0.1:8000travelers/${traveler.id}`, {
+    return fetch(`http://127.0.0.1:8000/travelers/${traveler.id}`, {
         method: "PUT",
         headers: {
             'Accept': 'application/json',

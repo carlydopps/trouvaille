@@ -1,5 +1,5 @@
 export const addTripDestination = (tripDestination) => {
-    return fetch("http://127.0.0.1:8000trip_destinations", {
+    return fetch("http://127.0.0.1:8000/trip_destinations", {
         method: "POST",
         headers:{
             'Accept': 'application/json',
@@ -12,7 +12,7 @@ export const addTripDestination = (tripDestination) => {
 }
 
 export const deleteTripDestination = (tripId, destinationId) => {
-    return fetch(`http://127.0.0.1:8000trips/${tripId}/remove_destination?destination=${destinationId}`, {
+    return fetch(`http://127.0.0.1:8000/trips/${tripId}/remove_destination?destination=${destinationId}`, {
         method: "DELETE",
         headers:{
             'Accept': 'application/json',
