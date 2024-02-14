@@ -1,15 +1,15 @@
 export const getExperience = (id) => {
-    return fetch(`http://localhost:8000/experiences/${id}`)
+    return fetch(`https://trouvaille-server.vercel.app/experiences/${id}`)
         .then(response => response.json())
 }
 
 export const getExperiences = () => {
-    return fetch(`http://localhost:8000/experiences`)
+    return fetch(`https://trouvaille-server.vercel.app/experiences`)
         .then(response => response.json())
 }
 
 export const createExperience = (experience) => {
-    return fetch("http://localhost:8000/experiences", {
+    return fetch("https://trouvaille-server.vercel.app/experiences", {
         method: "POST",
         headers:{
             'Accept': 'application/json',
@@ -23,7 +23,7 @@ export const createExperience = (experience) => {
 
 
 export const saveExperience = (experience) => {
-    return fetch(`http://localhost:8000/experiences/${experience.id}`, {
+    return fetch(`https://trouvaille-server.vercel.app/experiences/${experience.id}`, {
         method: "PUT",
         headers:{
             'Accept': 'application/json',

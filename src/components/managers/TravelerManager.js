@@ -1,7 +1,7 @@
 import { Token } from "./TokenManager"
 
 export const getTraveler = (id) => {
-    return fetch(`http://localhost:8000/travelers/${id}`, {
+    return fetch(`https://trouvaille-server.vercel.app/travelers/${id}`, {
         headers:{
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }
@@ -10,7 +10,7 @@ export const getTraveler = (id) => {
 }
 
 export const getAuthTraveler = () => {
-    return fetch("http://localhost:8000/travelers/auth", {
+    return fetch("https://trouvaille-server.vercel.app/travelers/auth", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }
@@ -19,7 +19,7 @@ export const getAuthTraveler = () => {
 }
 
 export const getTravelers = () => {
-    return fetch("http://localhost:8000/travelers", {
+    return fetch("https://trouvaille-server.vercel.app/travelers", {
         headers:{
             "Authorization": Token()
         }
@@ -28,7 +28,7 @@ export const getTravelers = () => {
 }
 
 export const saveTraveler = traveler => {
-    return fetch(`http://localhost:8000/travelers/${traveler.id}`, {
+    return fetch(`https://trouvaille-server.vercel.app/travelers/${traveler.id}`, {
         method: "PUT",
         headers: {
             'Accept': 'application/json',

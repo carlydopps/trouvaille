@@ -1,7 +1,7 @@
 import { Token } from "./TokenManager"
 
 export const getTrip = (tripId) => {
-    return fetch(`http://localhost:8000/trips/${tripId}`, {
+    return fetch(`https://trouvaille-server.vercel.app/trips/${tripId}`, {
         headers:{
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }
@@ -10,7 +10,7 @@ export const getTrip = (tripId) => {
 }
 
 export const getTrips = () => {
-    return fetch("http://localhost:8000/trips", {
+    return fetch("https://trouvaille-server.vercel.app/trips", {
         headers:{
             "Authorization": Token()
         }
@@ -19,7 +19,7 @@ export const getTrips = () => {
 }
 
 export const getMyTrips = () => {
-    return fetch("http://localhost:8000/trips?status=created", {
+    return fetch("https://trouvaille-server.vercel.app/trips?status=created", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }
@@ -28,7 +28,7 @@ export const getMyTrips = () => {
 }
 
 export const createTrip = (trip) => {
-    return fetch("http://localhost:8000/trips", {
+    return fetch("https://trouvaille-server.vercel.app/trips", {
         method: "POST",
         headers:{
             'Accept': 'application/json',
@@ -41,7 +41,7 @@ export const createTrip = (trip) => {
 }
 
 export const saveTrip = (trip) => {
-    return fetch(`http://localhost:8000/trips/${trip.id}`, {
+    return fetch(`https://trouvaille-server.vercel.app/trips/${trip.id}`, {
         method: "PUT",
         headers:{
             'Accept': 'application/json',
@@ -53,7 +53,7 @@ export const saveTrip = (trip) => {
 }
 
 export const deleteTrip = (id) => {
-    return fetch(`http://localhost:8000/trips/${id}`, {
+    return fetch(`https://trouvaille-server.vercel.app/trips/${id}`, {
         method: "DELETE",
         headers:{
             'Accept': 'application/json',

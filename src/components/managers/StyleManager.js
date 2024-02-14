@@ -1,5 +1,5 @@
 export const getStyles = () => {
-    return fetch("http://localhost:8000/styles", {
+    return fetch("https://trouvaille-server.vercel.app/styles", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }

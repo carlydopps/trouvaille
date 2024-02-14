@@ -1,5 +1,5 @@
 export const getExperienceTypes = () => {
-    return fetch("http://localhost:8000/experience_types", {
+    return fetch("https://trouvaille-server.vercel.app/experience_types", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }

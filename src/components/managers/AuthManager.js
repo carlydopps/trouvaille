@@ -1,5 +1,5 @@
 export const loginUser = (user) => {
-  return fetch("http://localhost:8000/login", {
+  return fetch("https://trouvaille-server.vercel.app/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
