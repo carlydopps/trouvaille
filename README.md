@@ -1,11 +1,11 @@
 # Trouvaille
 
-A platform where travelers can discover and share personal adventures for those who want to take the road less traveled
+A platform for travelers to discover and share personal adventures for those who want to take the road less traveled
 <br />
 <br />
 ## Application Overview
 
-Trouvaille enables travelers to discover, create, and share personal adventures with others. People often struggle to find rare experiences, which leads to visiting tourist traps instead. The goal of Trouvaille is to make those rare experiences more accessible and, in turn, create a trip full of “hidden gems” and unique adventures. An added goal is to build connections with other travelers and to make trips more meaningful by filling them with places recommended from someone they know or now follow.
+Trouvaille enables travelers to discover, create, and share personal adventures with each other. It can be difficult to find rare experiences in new places, which often leads to visiting tourist traps instead. The goal of Trouvaille is to make those personal experiences more accessible among fellow travelers and, in turn, create a trip full of “hidden gems” and unique adventures. An added goal is to build connections with other travelers and to make trips more meaningful by filling them with places recommended from someone they know or now follow.
 <br />
 <br />
 
@@ -33,10 +33,13 @@ trou·vaille *(n)*: a chance encounter with something wonderful
 ![Project List](https://res.cloudinary.com/dupram4w7/image/upload/v1673290805/Trouvaille/Screen_Shot_2023-01-09_at_12.46.40_PM_nsjegm.png)
 <br />
 
+## Live Demo
+Under construction! Will be linked here soon
+
 ## Running This Application
 
 ### Client Side
-1. Clone the project repository and change directories in the terminal
+1. Clone the repository and change directories in the terminal
 
 ```
 git clone git@github.com:carlydopps/trouvaille.git
@@ -51,7 +54,7 @@ npm start
 ```
 
 ### Server Side
-1. Clone the repository and change directories in the terminal
+1. Clone the [backend repository](https://github.com/carlydopps/trouvaille-server) and change directories in the terminal
 
 ```
 git clone git@github.com:carlydopps/trouvaille-server.git
