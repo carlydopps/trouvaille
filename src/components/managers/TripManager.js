@@ -1,7 +1,7 @@
 import { Token } from "./TokenManager"
 
 export const getTrip = (tripId) => {
-    return fetch(`http://127.0.0.1:8000trips/${tripId}`, {
+    return fetch(`http://127.0.0.1:8000/trips/${tripId}`, {
         headers:{
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }
@@ -10,7 +10,7 @@ export const getTrip = (tripId) => {
 }
 
 export const getTrips = () => {
-    return fetch("http://127.0.0.1:8000trips", {
+    return fetch("http://127.0.0.1:8000/trips", {
         headers:{
             "Authorization": Token()
         }
@@ -19,7 +19,7 @@ export const getTrips = () => {
 }
 
 export const getMyTrips = () => {
-    return fetch("http://127.0.0.1:8000trips?status=created", {
+    return fetch("http://127.0.0.1:8000/trips?status=created", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }
@@ -28,7 +28,7 @@ export const getMyTrips = () => {
 }
 
 export const createTrip = (trip) => {
-    return fetch("http://127.0.0.1:8000trips", {
+    return fetch("http://127.0.0.1:8000/trips", {
         method: "POST",
         headers:{
             'Accept': 'application/json',
@@ -41,7 +41,7 @@ export const createTrip = (trip) => {
 }
 
 export const saveTrip = (trip) => {
-    return fetch(`http://127.0.0.1:8000trips/${trip.id}`, {
+    return fetch(`http://127.0.0.1:8000/trips/${trip.id}`, {
         method: "PUT",
         headers:{
             'Accept': 'application/json',
@@ -53,7 +53,7 @@ export const saveTrip = (trip) => {
 }
 
 export const deleteTrip = (id) => {
-    return fetch(`http://127.0.0.1:8000trips/${id}`, {
+    return fetch(`http://127.0.0.1:8000/trips/${id}`, {
         method: "DELETE",
         headers:{
             'Accept': 'application/json',

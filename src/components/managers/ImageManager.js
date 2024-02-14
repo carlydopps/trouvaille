@@ -1,5 +1,5 @@
 export const createImage = (image) => {
-    return fetch("http://127.0.0.1:8000images", {
+    return fetch("http://127.0.0.1:8000/images", {
         method: "POST",
         headers:{
             'Accept': 'application/json',
