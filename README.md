@@ -81,5 +81,8 @@ You can also register as a new user by clicking the 'Register' link in the top, 
 ## ERD
 ![ERD](https://res.cloudinary.com/dupram4w7/image/upload/v1673294937/Trouvaille/Screen_Shot_2023-01-09_at_2.06.34_PM_pobfrp.png)
 
+## Wireframe
+![Wireframe](https://res.cloudinary.com/dupram4w7/image/upload/v1673294937/Trouvaille/Screen_Shot_2023-01-09_at_2.06.34_PM_pobfrp.png](https://www.figma.com/file/GGndTqJu2GFJoRbX2SsKB9/Trouvaille?type=whiteboard&node-id=0-1)
+
 ### Created by Carly Doppelheuer
 [![My Skills](https://skillicons.dev/icons?i=github)](https://github.com/carlydopps) [![My Skills](https://skillicons.dev/icons?i=linkedin)](https://www.linkedin.com/in/carlydoppelheuer/)
