@@ -1,5 +1,7 @@
+import { apiUrl } from "../../config"
+
 export const createSubscription = (subscription) => {
-    return fetch("http://127.0.0.1:8000/subscriptions", {
+    return fetch(`${apiUrl}/subscriptions`, {
         method: "POST",
         headers:{
             'Accept': 'application/json',
@@ -12,7 +14,7 @@ export const createSubscription = (subscription) => {
 }
 
 export const deleteSubscription = (travelerId) => {
-    return fetch(`http://127.0.0.1:8000/subscriptions/0/unfollow?traveler=${travelerId}`, {
+    return fetch(`${apiUrl}/subscriptions/0/unfollow?traveler=${travelerId}`, {
         method: "DELETE",
         headers:{
             'Accept': 'application/json',

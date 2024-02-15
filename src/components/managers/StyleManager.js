@@ -1,5 +1,7 @@
+import { apiUrl } from "../../config"
+
 export const getStyles = () => {
-    return fetch("http://127.0.0.1:8000/styles", {
+    return fetch(`${apiUrl}/styles`, {
         headers:{
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }

@@ -1,5 +1,7 @@
+import { apiUrl } from "../../config"
+
 export const loginUser = (user) => {
-  return fetch("http://127.0.0.1:8000/login", {
+  return fetch(`${apiUrl}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -11,7 +13,7 @@ export const loginUser = (user) => {
 }
 
 export const registerUser = (user) => {
-  return fetch("http://127.0.0.1:8000/register", {
+  return fetch(`${apiUrl}/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

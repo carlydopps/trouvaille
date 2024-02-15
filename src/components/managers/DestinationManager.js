@@ -1,15 +1,17 @@
+import { apiUrl } from "../../config"
+
 export const getDestination = (id) => {
-    return fetch(`http://127.0.0.1:8000/destinations/${id}`)
+    return fetch(`${apiUrl}/destinations/${id}`)
         .then(response => response.json())
 }
 
 export const getDestinations = () => {
-    return fetch("http://127.0.0.1:8000/destinations")
+    return fetch(`${apiUrl}/destinations`)
         .then(response => response.json())
 }
 
 export const createDestination = (destination) => {
-    return fetch("http://127.0.0.1:8000/destinations", {
+    return fetch(`${apiUrl}/destinations`, {
         method: "POST",
         headers:{
             'Accept': 'application/json',
@@ -22,7 +24,7 @@ export const createDestination = (destination) => {
 }
 
 export const saveDestination = (destination) => {
-    return fetch(`http://127.0.0.1:8000/destinations/${destination.id}`, {
+    return fetch(`${apiUrl}/destinations/${destination.id}`, {
         method: "PUT",
         headers:{
             'Accept': 'application/json',
