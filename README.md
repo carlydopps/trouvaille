@@ -9,10 +9,6 @@ Trouvaille enables travelers to discover, create, and share personal adventures 
 <br />
 <br />
 
-trou·vaille *(n)*: a chance encounter with something wonderful
-<br />
-<br />
-
 ## Technologies Used
 [![My Skills](https://skills.thijs.gg/icons?i=js,py,react,django,html,css,git)](https://skills.thijs.gg)
 
