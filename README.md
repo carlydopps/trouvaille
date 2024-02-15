@@ -18,6 +18,7 @@ Trouvaille enables travelers to discover, create, and share personal adventures 
 
 ## Features
 
+- Separate views for Trouvaille registered users and nonregistered users
 - Users can login and register with a username and password
 - Users can create and edit their profiles
 - Users can create, view, edit, and delete trips
@@ -26,11 +27,8 @@ Trouvaille enables travelers to discover, create, and share personal adventures 
 - Users can comment on and favorite trips
 - Users can follow other users
 
-![Project List](https://res.cloudinary.com/dupram4w7/image/upload/v1673290805/Trouvaille/Screen_Shot_2023-01-09_at_12.46.40_PM_nsjegm.png)
+![Project Thumbnail](https://res.cloudinary.com/dupram4w7/image/upload/v1673290805/Trouvaille/Screen_Shot_2023-01-09_at_12.46.40_PM_nsjegm.png)
 <br />
-
-## Live Demo
-Under construction! Will be linked here soon
 
 ## Running This Application
 
