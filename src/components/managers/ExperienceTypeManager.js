@@ -1,5 +1,7 @@
+import { apiUrl } from "../../config"
+
 export const getExperienceTypes = () => {
-    return fetch("http://127.0.0.1:8000/experience_types", {
+    return fetch(`${apiUrl}/experience_types`, {
         headers:{
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }

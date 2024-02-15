@@ -1,5 +1,7 @@
+import { apiUrl } from "../../config"
+
 export const postComment = (comment) => {
-    return fetch("http://127.0.0.1:8000/comments", {
+    return fetch(`${apiUrl}/comments`, {
         method: "POST",
         headers:{
             'Accept': 'application/json',
