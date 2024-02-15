@@ -1,5 +1,7 @@
+import { apiUrl } from "../../config"
+
 export const getDurations = () => {
-    return fetch("http://127.0.0.1:8000/durations", {
+    return fetch(`${apiUrl}/durations`, {
         headers:{
             "Authorization": `Token ${localStorage.getItem("auth_token")}`
         }

@@ -1,5 +1,7 @@
+import { apiUrl } from "../../config"
+
 export const createImage = (image) => {
-    return fetch("http://127.0.0.1:8000/images", {
+    return fetch(`${apiUrl}/images`, {
         method: "POST",
         headers:{
             'Accept': 'application/json',
