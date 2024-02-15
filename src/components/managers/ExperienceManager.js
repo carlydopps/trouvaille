@@ -1,15 +1,17 @@
+import { apiUrl } from "../../config"
+
 export const getExperience = (id) => {
-    return fetch(`http://127.0.0.1:8000/experiences/${id}`)
+    return fetch(`${apiUrl}/experiences/${id}`)
         .then(response => response.json())
 }
 
 export const getExperiences = () => {
-    return fetch(`http://127.0.0.1:8000/experiences`)
+    return fetch(`${apiUrl}/experiences`)
         .then(response => response.json())
 }
 
 export const createExperience = (experience) => {
-    return fetch("http://127.0.0.1:8000/experiences", {
+    return fetch(`${apiUrl}/experiences`, {
         method: "POST",
         headers:{
             'Accept': 'application/json',
@@ -23,7 +25,7 @@ export const createExperience = (experience) => {
 
 
 export const saveExperience = (experience) => {
-    return fetch(`http://127.0.0.1:8000/experiences/${experience.id}`, {
+    return fetch(`${apiUrl}/experiences/${experience.id}`, {
         method: "PUT",
         headers:{
             'Accept': 'application/json',
