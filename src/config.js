@@ -1,3 +1,3 @@
 export const apiUrl = process.env.REACT_APP_API_URL === 'prod'
-    ? 'https://trouvaille-server.vercel.app'
+    ? 'https://whale-app-6o59b.ondigitalocean.app'
     : 'http://localhost:8000'
