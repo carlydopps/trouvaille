@@ -2,9 +2,12 @@
 
 An application for travelers to discover, create, and share personal adventures for those who want to take the road less traveled. Trouvaille enables users to create boards to organize adventures, prioritize trips based on user preferences, plan for upcoming trips, and interact with, save, and manage trips in their network of travelers.
 <br />
+<br />
+
+📍[View Deployed Application](https://trouvaille-frontend.vercel.app/)
+<br />
 
 ## Features
-
 - Separate views for Trouvaille registered users and nonregistered users
 - Users can login and register with a username and password
 - Users can create and edit their profiles
@@ -25,12 +28,13 @@ An application for travelers to discover, create, and share personal adventures 
 - Figma (Wireframe)
 - Canva (Logo design)
 - DB Diagram (ERD)
-  
+<br />
+
 [![My Skills](https://skills.thijs.gg/icons?i=js,py,react,django,html,css,git)](https://skills.thijs.gg)
 <br />
 <br />
 
-![Project Thumbnail](https://res.cloudinary.com/dupram4w7/image/upload/v1673290805/Trouvaille/Screen_Shot_2023-01-09_at_12.46.40_PM_nsjegm.png)
+![Project Preview](https://res.cloudinary.com/dupram4w7/image/upload/v1673290805/Trouvaille/Screen_Shot_2023-01-09_at_12.46.40_PM_nsjegm.png)
 <br />
 
 ## Running This Application
