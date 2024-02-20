@@ -1,12 +1,8 @@
 # Trouvaille
 
-A platform for travelers to discover and share personal adventures for those who want to take the road less traveled
+An application for travelers to discover, create, and share personal adventures for those who want to take the road less traveled. Trouvaille enables users to create boards to organize adventures, prioritize trips based on user preferences, plan for upcoming trips, and interact with, save, and manage trips in their network of travelers.
 <br />
-<br />
-## Application Overview
 
-Trouvaille enables travelers to discover, create, and share personal adventures with each other. It can be difficult to find rare experiences in new places, which often leads to visiting tourist traps instead. The goal of Trouvaille is to make those personal experiences more accessible among fellow travelers and, in turn, create a trip full of “hidden gems” and unique adventures. An added goal is to build connections with other travelers and to make trips more meaningful by filling them with places recommended from someone they know or now follow.
-<br />
 ## Features
 
 - Separate views for Trouvaille registered users and nonregistered users
@@ -18,14 +14,23 @@ Trouvaille enables travelers to discover, create, and share personal adventures 
 - Users can comment on and favorite trips
 - Users can follow other users
 
-![Project Thumbnail](https://res.cloudinary.com/dupram4w7/image/upload/v1673290805/Trouvaille/Screen_Shot_2023-01-09_at_12.46.40_PM_nsjegm.png)
-<br />
-
 ## Technologies Used
+- JavaScript
+- React
+- Python
+- Django
+- Cloudinary
+- Bootstrap Icons
+- CSS Grid
+- Figma (Wireframe)
+- Canva (Logo design)
+- DB Diagram (ERD)
+  
 [![My Skills](https://skills.thijs.gg/icons?i=js,py,react,django,html,css,git)](https://skills.thijs.gg)
-
-![Cloudinary](https://res.cloudinary.com/dupram4w7/image/upload/v1668534325/Screen_Shot_2022-11-15_at_11.43.47_AM_ozrpxh.png)
 <br />
+<br />
+
+![Project Thumbnail](https://res.cloudinary.com/dupram4w7/image/upload/v1673290805/Trouvaille/Screen_Shot_2023-01-09_at_12.46.40_PM_nsjegm.png)
 <br />
 
 ## Running This Application
