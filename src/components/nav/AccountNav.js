@@ -1,7 +1,6 @@
 import { Menu, MenuItem } from "@mui/material"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import './AccountNav.css'
 
 export const AccountNav = ({user}) => {
 

@@ -1,6 +1,7 @@
 .page-travelers {
     display: flex;
     flex-direction: column;
+    background-color: $backgroundWarm;
 }
 
 .page-travelers h2 {
@@ -13,29 +14,37 @@
     margin-bottom: 5rem;
 }
 
-.travelers-heading-slogan {
-    font-family: 'Bebas Neue', cursive;
-    margin: 1rem auto;
-    letter-spacing: 0.2rem;
-}
-
-
 .heading-travelers {
     letter-spacing: 0.8rem;
     display: flex;
-    margin-top: -10rem;
-}
+    justify-content: space-between;
 
-.heading-travelers > div {
-    margin: 40vh -30rem 0 10rem;
-    z-index: 1;
-}
+    .details {
+        margin: 2rem -30rem 0 2rem;
+        z-index: 2;
+        color: white;
+    }
 
-.heading-travelers > img {
-    width: 120vw;
-    height: 80vh;
-    object-fit: cover;
-    margin: 0 auto;
+    .images {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .grid {
+        display: grid;
+        padding: 0;
+        grid-template-columns: repeat(5, 1fr);
+
+        img {
+            width: 20vw;
+            height: 50vh;
+            display: flex;
+            align-items: top;
+            background-size: cover;
+            justify-content: left;
+            object-fit: cover;
+        }
+    }
 }
 
 .heading-travelers-details {
@@ -61,7 +70,12 @@
 }
 
 .cards-travelers {
-    margin-top: 0;
+    margin-top: 2rem !important;
+}
+
+.travelers-cards-container {
+    background-color: $white;
+    margin-top: 5rem;
 }
 
 .input-search {
