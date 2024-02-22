@@ -4,7 +4,6 @@ import { Footer } from "../footer/Footer"
 import { FollowIcon, UnfollowIcon } from "../icons/Icons"
 import { createSubscription, deleteSubscription } from "../managers/SubscriptionManager"
 import { getTraveler } from "../managers/TravelerManager"
-import './Traveler.css'
 
 export const Traveler = () => {
 

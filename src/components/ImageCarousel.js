@@ -1,14 +1,13 @@
 import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './ImageCarousel.css'
 
 export const ImageCarousel = ({trips}) => {
 
   return (
     <Carousel>
       {
-        trips.slice(0,2).map(trip =>
+        trips.slice(0,4).map(trip =>
           <Carousel.Item key={`trip--${trip.id}`} className="carousel-item" >
             <img
               className="img-carousel"
