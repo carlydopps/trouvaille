@@ -6,7 +6,6 @@ import { getTravelers } from "../managers/TravelerManager"
 import { getTrips } from "../managers/TripManager"
 import { Footer } from "../footer/Footer"
 import { ForwardArrow } from "../icons/Icons"
-import './LandingPage.css'
 
 export const LandingPage = () => {
 
@@ -19,7 +18,7 @@ export const LandingPage = () => {
         () => {
             getTrips()
                 .then(data => {
-                    const public_trips = data.filter(trip => trip.is_draft === false && trip.is_private === false)
+                    const public_trips = data.filter(trip => trip.is_draft === false && trip.is_private === false).reverse()
                     setTrips(public_trips)
                 })
             getTravelers().then(data => setTravelers(data))
@@ -68,7 +67,7 @@ export const LandingPage = () => {
                     <h2>Travelers</h2>
                     <div className="landing-card-list">
                         {
-                            travelers.slice(0,3).map(traveler => {
+                            travelers.slice(0,5).map(traveler => {
                                 return <button key={`traveler--${traveler.id}`} onClick={() => localStorage.getItem("auth_token") ? navigate(`/travelers/${traveler.id}`) : navigate(`/login`)}>
                                     <img src={traveler.profile_img} alt="Profile Image"/>
                                     <p>@{traveler.username}</p>
