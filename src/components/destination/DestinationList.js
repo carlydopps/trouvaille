@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom"
 import { getDestinations } from "../managers/DestinationManager"
 import { getExperiences } from "../managers/ExperienceManager"
 import { getTrips } from "../managers/TripManager"
-import './DestinationList.css'
 
 export const DestinationList = ({searchTermState}) => {
 
@@ -59,25 +58,42 @@ export const DestinationList = ({searchTermState}) => {
     return <div className="destinations-container">
         <main className="destinations-main">
             <section className="destination-list-heading">
-                <h1>Destinations</h1>
+                <div className='title'>
+                    <h1>Oh the places</h1>
+                    <h2>you'll go -</h2>
+                </div>
+                <div className="destinations-heading-images">
+                    <div className="destinations-heading-grid">
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673141692/Trouvaille/Screen_Shot_2023-01-07_at_5.23.32_PM_jmrgam.png'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.23.45_PM_thhvgd.png'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.23.58_PM_bfyxex.png'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.24.10_PM_zqnryr.png'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.24.23_PM_jjdjsm.png'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.24.38_PM_hcncov.png'></img>
+                    </div>
+                </div>
+            </section>
+            <section classname="destinations-search">
                 <div className="search-bar search-bar-destination">
                     <input onChange={(event) => setSearchTerms(event.target.value)}
-                    type="text" placeholder="Enter city" className="input-search"/>
+                    type="text" placeholder="Search for a city" className="input-search"/>
                 </div>
-                <h4>{Object.keys(selectedDest).length !== 0 ? "Visit" : ""} {selectedDest?.city}</h4>
             </section>
             <section className="destinations-grid">
                 {
                     viewDestinations
                     ? <>
                         {
-                            filteredDestinations.slice(0,3).map(destination => {
+                            filteredDestinations.map(destination => {
                                 return <div key={`destination--${destination.id}`}>
                                     <button onClick={() => {
                                         setSelectedDest(destination)
                                         setViewDestinations(false)
                                     }}>
                                         <div className="card-destination-details">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                                            </svg>
                                             <h4>{destination.city}</h4>
                                             <p>{destination.state}, {destination.country}</p>
                                         </div>

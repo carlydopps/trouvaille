@@ -12,7 +12,6 @@ import { getStyles } from "../managers/StyleManager"
 import { addTripDestination } from "../managers/TripDestinationManager"
 import { addTripExperience } from "../managers/TripExperienceManager"
 import { createTrip } from "../managers/TripManager"
-import './CreateTripForm.css'
 
 export const CreateTripForm = () => {
 
@@ -125,7 +124,7 @@ export const CreateTripForm = () => {
 
         } else if (resource === "experience") {
             if (experience.image === "") {
-                experience.image = "https://res.cloudinary.com/dupram4w7/image/upload/v1673157703/Trouvaille/pexels-min-an-1098872_rpk0hi.jpg"
+                experience.image = "https://res.cloudinary.com/dupram4w7/image/upload/v1673198458/lvjjd9b67uuugzmjehva.jpg"
             }
 
             tripExperiences.push(experience)

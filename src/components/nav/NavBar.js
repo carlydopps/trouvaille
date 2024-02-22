@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
 import { getAuthTraveler } from "../managers/TravelerManager"
 import { AccountNav } from "./AccountNav"
-import './NavBar.css'
 
 export const NavBar = () => {
 
@@ -40,9 +39,10 @@ export const NavBar = () => {
     
     return <>
         <section className="navbar" style={{backgroundColor: background}}>
-            <button onClick={() => navigate(`/home`)} className="navbar-btn-home">
+            <button onClick={() => navigate(`/`)} className="navbar-btn-home">
                 <img src={homeImg} alt="Home" className="home-img"></img>
             </button>
+            <button onClick={() => navigate(`/home`)} className="navbar-btn" style={{color: text}}>Home</button>
             <button onClick={() => navigate(`/trips`)} className="navbar-btn" style={{color: text}}>Trips</button>
             <button onClick={() => navigate(`/travelers`)} className="navbar-btn" style={{color: text}}>Travelers</button>
             <button onClick={() => navigate(`/destinations`)} 

@@ -1,5 +1,6 @@
 .home-page {
     position: relative;
+    background-color: #ead6ca;
 }
 
 .home-content, .home-trips {
@@ -10,16 +11,36 @@
 .home-heading {
     display: flex;
     justify-content: right;
-    background-color: white;
-    padding: 2rem 0;
+    background-color: $backgroundLight;
 }
 
 .home-heading-left {
     margin: auto 0;
+
+    button {
+        border: none;
+        background-color: $orange;
+        margin: 3rem auto;
+        width: 15rem;
+        height: 5rem;
+        padding: 1rem;
+        align-items: center;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        letter-spacing: 0.1rem;
+        box-shadow: 0 0.2rem 0.5rem 0 rgba(157, 157, 157, 0.24), 0 0.2rem 0.5rem 0 rgba(164, 164, 164, 0.19);
+    }
+
+    button:hover {
+        box-shadow: 0 0.2rem 0.5rem 0 rgba(157, 157, 157, 0.24), 0 0.2rem 0.5rem 0 rgba(164, 164, 164, 0.19);
+        background-color: #ffa571;
+        border-color: #ffa571;
+    }
 }
 
 .home-heading-details {
-    padding: 0 2rem;
+    padding: 0 5rem 0 2rem;
     display: flex;
     align-items: center;
     justify-content: right;
@@ -29,7 +50,8 @@
     width: 12rem;
     font-size: 5.5rem;
     font-family: 'Bebas Neue', cursive;
-    margin-right: 1rem;
+    margin-right: 10rem;
+    color: white;
 }
 
 .home-heading-details div {
@@ -54,26 +76,41 @@
 /* Trips ------------------------------------ */
 .home-trips {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     padding: 2rem;
     align-items: center;
     height: auto;
-}
-
-.home-trips > div > button > img {
-    object-fit: cover;
-    width: 18vw;
-    height: 35vh;
-    border: 1rem solid white;
-}
-
-.home-trips > div > button > h4 {
-    color: #AB8466;
     background-color: white;
-    width: 18vw;
-    height: 10vh;
-    padding: 0.5rem;
+
+    .heading {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        padding-right: 10rem;
+
+        h2 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 4rem;
+            letter-spacing: 0.2rem;
+        }
+    }
+
+    div {
+        button {
+            padding: 2rem;
+
+            img {
+                object-fit: cover;
+                width: 15vw;
+                height: 35vh;
+            }
+
+            p {
+                color: $brown;
+                padding: 0.5rem;
+            }
+        }
+    }
 }
 
 .home-trips > div > p {
@@ -92,48 +129,16 @@
     display: grid;
     padding: 0;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-gap: 1rem;
 }
 
 .home-grid > img {
     width: 15vw;
-    height: 30vh;
+    height: 45vh;
     display: flex;
     align-items: top;
     background-size: cover;
     justify-content: left;
     object-fit: cover;
-}
-
-.home-grid img:nth-child(1) {
-    grid-row:  2 / span 2;
-    grid-column: 1;
-}
-
-.home-grid img:nth-child(2) {
-    grid-row: 1 / span 2;
-    grid-column: 2;
-}
-
-.home-grid img:nth-child(3) {
-    grid-row: 3 / span 2;
-    grid-column: 2;
-}
-
-.home-grid img:nth-child(4) {
-    grid-row:  2 / span 2;
-    grid-column: 3;
-}
-
-.home-grid img:nth-child(5) {
-    grid-row:  4 / span 2;
-    grid-column: 3;
-}
-
-.home-grid img:nth-child(6) {
-    grid-row:  3 / span 2;
-    grid-column: 4;
 }
 
 /* Heading ------------------------------------ */
@@ -151,14 +156,13 @@
 
 .home-btn-create {
     border: none;
-    background-color: #faa06b;
+    background-color: $orange;
     height: 3rem;
     width: 15rem;
     margin: 3rem auto;
     padding: 0.5rem 1rem;
     align-items: center;
     text-align: center;
-    border-radius: 0.5rem;
     color: white;
 }
 
@@ -171,12 +175,23 @@
 /* Travelers ------------------------------------ */
 .home-travelers {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     padding: 2rem;
     align-items: center;
     height: auto;
-    background-color: rgba(255, 255, 255, 0.885);
+    background-color: $white;
+
+    .heading {
+        display: flex;
+        flex-direction: column;
+        padding-left: 10rem;
+
+        h2 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 4rem;
+            letter-spacing: 0.2rem;
+        }
+    }
 }
 
 .home-travelers > div > button > img {
@@ -188,23 +203,29 @@
     padding: 0;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
-    grid-gap: 1rem;
+    grid-gap: 2rem;
     margin: 3rem auto;
     justify-content: center;
-}
 
-.home-card-list > button {
-    margin: 1.5rem;
-    border: none;
-    background-color: transparent;
-}
+    button {
+        border: none;
+        background-color: transparent;
 
-.home-card-list > button > img {
-    justify-content: center;
-    height: 15rem;
-    width: 15rem;
-    align-self: center;
-    object-fit: cover;
+        img {
+            justify-content: center;
+            height: 15rem;
+            width: 15rem;
+            align-self: center;
+            object-fit: cover;
+        }
+
+        p {
+            overflow: hidden;
+            width: 100%;
+            margin: 0;
+            color: $blueLight;
+        }
+    }
 }
 
 .home-travelers > svg {
@@ -219,29 +240,26 @@
 /* Toggle ------------------------------------ */
 .home-trips-toggle-heading {
     display: flex;
+    flex-direction: column;
 }
 
 .toggle-header {
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
-    height: 10rem;
-    background-color: white;
+    background-color: $blueLight;
+    padding: 2rem 0;
 }
 
 .home-trips-toggle-heading > h2 {
     font-family: 'Bebas Neue', cursive;
     font-size: 3rem;
     letter-spacing: 0.2rem;
-    margin: 0.5rem;
+    margin: 1rem;
 }
 
 .heading-dynamic-orange {
     color: #ffb387
-}
-
-.heading-dynamic-green {
-    color: #afd9b4
 }
 
 .toggle-title-new, .toggle-title-custom {
@@ -253,7 +271,7 @@
 }
 
 .toggle-title-new {
-    color: #afd9b4;
+    color: $blue;
 }
 
 .section-toggle::after {
@@ -273,25 +291,25 @@
 }
 
 .toggle-container {
-    margin-left: 0;
-    margin-right: 0;
-    padding: 1rem 1rem 1rem 0;
-    max-width: 300px;
+    padding: 2.5rem 0;
     background-color: transparent;
     text-align: left;
-    font-size: 1.5rem;
 }
 
 .input-toggle {
     display: inline-block;
-    width: 40rem;
     text-align: center;
+
+    label {
+        font-family: 'Bebas Neue', cursive;
+        letter-spacing: 0.75rem;
+        color: white;
+        text-transform: uppercase;
+        font-size: 2rem;
+        margin: 0 2rem;
+    }
 }
 
-.input-toggle label {
-    letter-spacing: 0.025em;
-    color: #676767;
-}
 
 .input-toggle .input {
     position: absolute;
@@ -300,11 +318,10 @@
 
 .input-toggle .input + .toggle {
     position: relative;
-    height: 10px;
-    width: 45px;
-    margin-right: 15px;
-    margin-left: 15px;
-    border-radius: 10px;
+    height: 2rem;
+    width: 5rem;
+    margin: 0 1rem;
+    border-radius: 1rem;
     background-color: #e4ecfa;
     vertical-align: middle;
     display: inline-block;
@@ -318,23 +335,14 @@
     transition: 0.35s;
 }
 
-.input-toggle .input + .toggle::before {
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 20%;
-    border-radius: 10px;
-    background-color: #71a376;
-}
-
 .input-toggle .input + .toggle::after {
-    left: 5px;
+    left: 0.2rem;
     top: 50%;
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 1rem;
     border: none;
-    background-color: #afd9b4;
+    background-color: $blue;
     transform: translateY(-50%);
     opacity: 1;
 }
@@ -344,7 +352,7 @@
 }
 
 .input-toggle .input:checked + .toggle {
-    background-color: #fadfe0;
+    background-color: #ffa775;
 }
 
 .input-toggle .input:checked + .toggle::before {
@@ -354,5 +362,5 @@
 
 .input-toggle .input:checked + .toggle::after {
     left: calc(100% - (20px + 5px));
-    background-color: #f8bc99;
+    background-color: #f4c0a3;
 }

@@ -13,8 +13,6 @@ import { getAuthTraveler } from "../managers/TravelerManager"
 import { addTripDestination, deleteTripDestination } from "../managers/TripDestinationManager"
 import { addTripExperience, deleteTripExperience } from "../managers/TripExperienceManager"
 import { deleteTrip, getTrip, saveTrip } from "../managers/TripManager"
-import './Trip.css'
-
 
 export const Trip = () => {
 

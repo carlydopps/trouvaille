@@ -4,8 +4,6 @@ import { getAuthTraveler, getTravelers } from "../managers/TravelerManager"
 import { useNavigate } from "react-router-dom"
 import { Footer } from "../footer/Footer"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "./HomePage.css"
-import "../Main.css"
 
 export const HomePage = () => {
 
@@ -90,22 +88,19 @@ export const HomePage = () => {
                 <div className="home-heading-left">
                     <div className="home-heading-details">
                         <h1>Where<br/>to<br/>next{localStorage.getItem("auth_token") ? `, ${authTraveler.firstName}` :""}?</h1>
-                        <div>
-                            <h5>Book the flight</h5>
-                            <h5>Take the road-trip</h5>
-                            <h5>Explore again</h5>
-                        </div>
                     </div>
-                    <button onClick={() => navigate('/trips/create')} className="home-btn-create" >Start Planning!</button>
+                    <button onClick={() => navigate('/trips/create')}>Start planning</button>
                 </div>
                 <div className="home-images">
                     <div className="home-grid">
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673141692/Trouvaille/Screen_Shot_2023-01-07_at_5.23.32_PM_jmrgam.png'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.23.45_PM_thhvgd.png'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.23.58_PM_bfyxex.png'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.24.10_PM_zqnryr.png'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.24.23_PM_jjdjsm.png'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.24.38_PM_hcncov.png'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540849/pexels-jess-loiterton-5505397_bfslhi.jpg'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708547163/pexels-faruk-tokluog%CC%86lu-20081241_bngq6w.jpg'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540870/pexels-piotr-arnoldes-6441050_phq1jt.jpg'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540883/pexels-toa-heftiba-s%CC%A7inca-1194399_kmhpxc.jpg'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540868/pexels-niklas-jeromin-14760650_gmzebk.jpg'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540884/pexels-toa-heftiba-s%CC%A7inca-1194406_xybfa5.jpg'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708547198/pexels-jess-loiterton-5232303_hh9sin.jpg'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708561137/pexels-maria-orlova-4947223_gmsewn.jpg'></img>
                     </div>
                 </div>
             </section>
@@ -115,50 +110,30 @@ export const HomePage = () => {
                     {
                         localStorage.getItem("auth_token")
                         ? <div className="toggle-container">
-                            <div className="input-toggle">
-                                <label htmlFor="toggle">Discover</label>
-                                <input type="checkbox" id="toggle" className="input" onChange={() => {
-                                    if (projectType === "custom") {
-                                        setProjectType("new")
-                                    } else {
-                                        setProjectType("custom")
-                                    }}}/>
-                                <label htmlFor="toggle" className="toggle"></label>
-                                <label htmlFor="toggle">Favorites</label>
+                                <div className="input-toggle">
+                                    <label htmlFor="toggle">Discover</label>
+                                    <input type="checkbox" id="toggle" className="input" onChange={() => {
+                                        if (projectType === "custom") {
+                                            setProjectType("new")
+                                        } else {
+                                            setProjectType("custom")
+                                        }}}/>
+                                    <label htmlFor="toggle" className="toggle"></label>
+                                    <label htmlFor="toggle">Favorites</label>
+                                </div>
                             </div>
-                        </div>
                         : ""
                     }
-                    { 
-                        projectType === "new"
-                        ? <h2 className="toggle-title-new">Discover new</h2>
-                        : <h2 className="toggle-title-custom">Explore your favorites</h2>
-                    }  
                     </div>
                 </div>
                 <div>
                     { projectType === "new"
                         ? <div className="body-views">
-                            <section className="home-trips">
-                                <div className="home-trips-toggle-heading">
-                                    <h2>Trips to</h2>
-                                    <h2 className="heading-dynamic-green">Discover</h2>
-                                </div>
-                                <div className="home-card-list">
-                                    {
-                                        trips.slice(0,9).map(trip => {
-                                            return <button key={`trip--${trip.id}`} onClick={() => localStorage.getItem("auth_token") ? navigate(`/trip/${trip.id}`) : navigate(`/login`)}>
-                                                <img src={trip.cover_img} alt="Trip Image"/>
-                                                <h4>{trip.title}</h4>
-                                            </button>
-                                        })
-                                    }
-                                </div>
-                            </section>
                             <section className="home-travelers">
-                                <div className="home-trips-toggle-heading">
+                                <div className="heading">
                                     <h2>Meet</h2>
-                                    <h2 className="heading-dynamic-green">New Travelers</h2>
+                                    <h2 className="heading-dynamic-green">New</h2>
+                                    <h2 className="heading-dynamic-green">Travelers</h2>
                                 </div>
                                 <div className="home-card-list">
                                     {
@@ -170,27 +145,29 @@ export const HomePage = () => {
                                     }
                                 </div>
                             </section>
-                        </div> 
-                        :  <div className="body-views">
                             <section className="home-trips">
-                                <div className="home-trips-toggle-heading">
-                                    <h2>Trips you</h2>
-                                    <h2 className="heading-dynamic-orange">Love</h2>
-                                </div>
                                 <div className="home-card-list">
                                     {
-                                        customTrips.map(trip => {
+                                        trips.slice(0,9).map(trip => {
                                             return <button key={`trip--${trip.id}`} onClick={() => localStorage.getItem("auth_token") ? navigate(`/trip/${trip.id}`) : navigate(`/login`)}>
                                                 <img src={trip.cover_img} alt="Trip Image"/>
-                                                <h4>{trip.title}</h4>
+                                                <p>{trip.destinations[0]?.city}, {trip.destinations[0]?.state}</p>
                                             </button>
                                         })
                                     }
                                 </div>
+                                <div className="heading">
+                                    <h2 className="heading-dynamic-green">Discover</h2>
+                                    <h2>More</h2>
+                                    <h2>Adventures</h2>
+                                </div>
                             </section>
+                        </div> 
+                        :  <div className="body-views">
                             <section className="home-travelers">
-                                <div className="home-trips-toggle-heading">
-                                    <h2>Travelers you</h2>
+                                <div className="heading">
+                                    <h2>Travelers</h2>
+                                    <h2>you</h2>
                                     <h2 className="heading-dynamic-orange">Follow</h2>
                                 </div>
                                 <div className="home-card-list">
@@ -201,6 +178,23 @@ export const HomePage = () => {
                                             </button>
                                         })
                                     }
+                                </div>
+                            </section>
+                            <section className="home-trips">
+                                <div className="home-card-list">
+                                    {
+                                        customTrips.map(trip => {
+                                            return <button key={`trip--${trip.id}`} onClick={() => localStorage.getItem("auth_token") ? navigate(`/trip/${trip.id}`) : navigate(`/login`)}>
+                                                <img src={trip.cover_img} alt="Trip Image"/>
+                                                <p>{trip.destinations[0]?.city}, {trip.destinations[0]?.state}</p>
+                                            </button>
+                                        })
+                                    }
+                                </div>
+                                <div className="heading">
+                                    <h2>Trips</h2>
+                                    <h2>you</h2>
+                                    <h2 className="heading-dynamic-orange">Love</h2>
                                 </div>
                             </section>
                         </div>                      

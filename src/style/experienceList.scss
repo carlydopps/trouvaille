@@ -2,6 +2,11 @@
     display: flex;
     flex-direction: column;
     margin-top: -10rem;
+
+    .card-preview {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 .page-experiences > h1 {
@@ -27,8 +32,25 @@
     letter-spacing: 0.5rem;
 }
 
+.experience-list-img-left {
+    width: 35%;
+    height: 30rem;
+    object-fit: cover;
+    padding-right: 1rem
+}
+
 .experience-list-img-cover {
     width: 65%;
     height: 30rem;
     object-fit: cover;
+}
+
+.btn-website {
+    background-color: $orange;
+    color: white;
+    border-radius: 1rem;
+    border: none;
+    width: 100%;
+    height: 2rem;
+    margin-top: 1rem;
 }

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { getExperiences } from "../managers/ExperienceManager"
-import './ExperienceList.css'
 
 export const ExperienceList = () => {
 
@@ -46,9 +45,10 @@ export const ExperienceList = () => {
         <section className="heading-experiences">
             <div className="heading-experiences-details">
                 <h1>Discover</h1>
-                <h2>new adventures</h2>
+                <h2>new experiences</h2>
             </div>
-            <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1672636789/Trouvaille/pexels-riccardo-307008_ohsd7n.jpg" className="experience-list-img-cover"></img>
+            <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1708540884/pexels-toa-heftiba-s%CC%A7inca-1194406_xybfa5.jpg" className="experience-list-img-left"></img>
+            <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1708540885/pexels-toa-heftiba-s%CC%A7inca-1194420_llftxi.jpg" className="experience-list-img-cover"></img>
         </section>
         <div className="search-bar">
             <input onChange={(event) => setSearchTerms(event.target.value)}
@@ -65,7 +65,7 @@ export const ExperienceList = () => {
                                 <div className="card-details">
                                     <p>{experience.address}</p>
                                     <p>{experience.experience_type.name}</p>
-                                    <a href={`${experience.website_url}`} target="_blank">Visit</a>
+                                    <button href={`${experience.website_url}`} target="_blank" className='btn-website'>Website</button>
                                 </div>
                             </div>
                         </button>

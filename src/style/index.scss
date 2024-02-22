@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Bebas+Neue&family=Caveat&family=Montserrat:wght@100;300;400;500;600;700;900&family=Satisfy&display=swap');
+@import './globals.scss';
+@import './account.scss';
+@import './auth.scss';
+@import './destinationList.scss';
+@import './experienceList.scss';
+@import './footer.scss';
+@import './homePage.scss';
+@import './landingPage.scss';
+@import './accountNav.scss';
+@import './navBar.scss';
+@import './traveler.scss';
+@import './travelerList.scss';
+@import './createTripForm.scss';
+@import './myTrips.scss';
+@import './trip.scss';
+@import './tripList.scss';
+@import './imageCarousel.scss';
+@import './main.scss';
+
+div {
+  margin: 0;
+  font-family: "Comfortaa", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $blueLight;
+}
+
+code {
+  font-family: 'Montserrat', sans-serif;
+}

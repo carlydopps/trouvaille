@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { Footer } from "../footer/Footer"
 import { getAuthTraveler, saveTraveler } from "../managers/TravelerManager"
-import "./Account.css"
 
 export const Account = () => {
 
