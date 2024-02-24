@@ -3,6 +3,10 @@ div {font-family: "Comfortaa", sans-serif;}
 p {margin: 0;}
 fieldset {border: none;}
 
+main {
+    padding-top: 7rem !important;
+}
+
 .profile-img {
     justify-content: center;
     height: 5rem;
@@ -18,12 +22,9 @@ fieldset {border: none;}
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto; 
     width: 80%;
-    grid-gap: 0;
-    margin: 5rem auto;
-}
-
-.card-list > div {
-    margin: 0;
+    grid-gap: 2rem;
+    padding: 5rem 0;
+    margin: 0 auto;
 }
 
 .card {
@@ -172,16 +173,16 @@ fieldset {border: none;}
 
 /* Buttons ------------------------------------ */
 .btn {
-    border-color: #D59461;
-    background-color: #D59461;
-    height: 2.6rem;
-    width: 10rem;
-    padding: 0.5rem 1rem;
-    margin: 1rem;
-    align-items: center;
-    text-align: center;
-    border-radius: 0.25rem;
-    color: white;
+    border-color: #D59461 !important;
+    background-color: #D59461 !important;
+    height: 2.6rem !important;
+    width: 10rem !important;
+    padding: 0.5rem 1rem !important;
+    margin: 1rem !important;
+    align-items: center !important;
+    text-align: center !important;
+    border-radius: 0.25rem !important;
+    color: white !important;
 }
 
 .btn:hover, .btn-add:hover {
@@ -276,26 +277,47 @@ fieldset {border: none;}
 }
 
 /* Search ------------------------------------ */
-.search-bar {
+.search {
+    margin: 0 auto;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: -4rem auto 2rem auto;
-    background-color: white;
-    width: 60vw;
-    box-shadow: 0 0.2rem 0.5rem 0 rgba(157, 157, 157, 0.24), 0 0.2rem 0.5rem 0 rgba(164, 164, 164, 0.19) !important;
+    width: 100%;
 }
 
-.input-search {
-    width: 50vw;
-    height: 3rem;
-    border-radius: 0.5rem;
-    background-color: whitesmoke;
-    margin: 2rem !important;
-    border: none !important;
-    outline: none !important;
+.search-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    background-color: $white;
+    width: 100%;
+    height: 10rem;
     box-shadow: 0 0.2rem 0.5rem 0 rgba(157, 157, 157, 0.24), 0 0.2rem 0.5rem 0 rgba(164, 164, 164, 0.19) !important;
+
+    svg {
+        fill: $brown;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    input {
+        width: 40vw;
+        height: 3rem;
+        background-color: $white;
+        color: $brown;
+        font-size: 1.2rem;
+        margin: 2rem;
+        box-shadow: none;
+        border: none;
+        outline: none;
+        border-radius: 0;
+        border-bottom: 0.2rem solid $brown;
+        margin-left: 1rem;
+    }
+
+    input::placeholder{
+        color: $brown;
+    }
 }
 
 /* Feedback ------------------------------------ */

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { BackArrow, DeleteIcon, EditIcon, FavoriteIcon, PlusIcon, PostedIcon, TrashIcon, UnfavoriteIcon } from "../icons/Icons"
+import { BackArrow, DeleteIcon, EditIcon, FavoriteIcon, PlusIcon, PostedIcon, TrashIcon, UnfavoriteIcon } from "../../utils/svgs"
 import { postComment } from "../managers/CommentManager"
 import { createDestination } from "../managers/DestinationManager"
 import { getDurations } from "../managers/DurationManager"

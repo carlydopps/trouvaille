@@ -41,14 +41,14 @@ export const Register = () => {
     }
 
     return <main className="page-auth page-register">
-        <section>
+        <section className='navbar__auth'>
             <button onClick={() => navigate(`/home`)} className="navbar-btn-home">
                 <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1672460293/Trouvaille/Trouvaille_1_rxks06.png' alt="Home" className="home-img"></img>
             </button>
         </section>
         <section className="container-auth">
             <section className="auth-img-container">
-                <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1672443635/Trouvaille/Screen_Shot_2022-12-30_at_12.16.24_AM_witjz9.png" className="auth-img"/>
+                <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1708588159/pexels-edgar-rodrigo-17011415_bicix9.jpg" className="auth-img" alt='Cover image'/>
             </section>
             <section className="auth-form">
                 <dialog className="dialog dialog--password" ref={passwordDialog}>

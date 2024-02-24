@@ -1,7 +1,7 @@
 .page-experiences {
     display: flex;
     flex-direction: column;
-    margin-top: -10rem;
+    position: relative;
 
     .card-preview {
         width: 100%;
@@ -16,8 +16,7 @@
 .heading-experiences {
     display: flex;
     justify-content: right;
-    margin-top: 5rem;
-    padding: 5rem 0;
+    padding-bottom: 3rem;
 }
 
 .heading-experiences-details {
@@ -53,4 +52,130 @@
     width: 100%;
     height: 2rem;
     margin-top: 1rem;
+}
+
+.search-bar__experiences {
+    background-color: $blueLight !important;
+
+    svg {
+        fill: $white !important;
+    }
+
+    input {
+        background-color: $blueLight !important;
+        color: $white !important;
+        border-bottom: 0.2rem solid $white !important;
+    }
+
+    input::placeholder{
+        color: $white !important;
+    }
+}
+
+.card-list__experiences {
+    background-color: $blueDark;
+    width: 100% !important;
+    padding: 5rem 10rem !important;
+}
+
+.experience-status-icons {
+    display: flex;
+    width: auto;
+    height: auto;
+    justify-content: center;
+    margin-top: -7%;
+    z-index: 2;
+
+    button {
+        border: none;
+    }
+
+    svg {
+        fill: white !important;
+    }
+}
+
+.experience-status-icons > div, .experience-status-icons > button {
+    border-radius: 100%;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.icon-experienceType {
+    background-color: #AB8366;
+}
+
+.icon-season {
+    background-color: #ff9659;
+}
+
+.icon-website {
+    background-color: #86cfb2;
+}
+
+/* Experience Grid ------------------------------------ */
+.experiences-grid {
+    display: grid;
+    padding: 0;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 3rem;
+    margin: 3rem auto;
+    min-height: 100vh;
+
+    .card__experience {
+        display: flex;
+        flex-direction: column;
+        width: 25rem;
+        height: auto;
+        justify-content: center;
+        color: white;
+
+        .card--image {
+            width: 25rem;
+            height: 25rem;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    }
+
+    .card__experience:hover {
+        opacity: $hoverOpacity;
+        box-shadow: $hoverShadow;
+    }
+}
+
+.experiences-grid > div > button {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    background-color: #AB8366;
+    border: none;
+    background-size: cover;
+}
+
+.experiences-grid div:nth-child(1) {
+    grid-row:  1;
+    grid-column: 1;
+}
+
+.experiences-grid div:nth-child(2) {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.experiences-grid div:nth-child(3) {
+    grid-row: 1;
+    grid-column: 3;
+}
+
+.experiences-details > h3 {
+    font-family: 'Bebas Neue', cursive;
+    color: gray;
+    text-align: center;
 }

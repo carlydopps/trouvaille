@@ -1,41 +1,52 @@
 .page-auth {
-    background-color: #DFE6F1;
+    overflow: auto;
+    position: relative;
+    padding: 0 !important;
+}
+
+.page-login::before {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-image: url("https://res.cloudinary.com/dupram4w7/image/upload/v1708576733/pexels-maria-orlova-4946983_ilfyqf.jpg");
     background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: fixed;
-    height: 100vh;
+    background-size: contain;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    filter: blur(0.5rem);
 }
 
-.page-login {
-    background-image: url("https://res.cloudinary.com/dupram4w7/image/upload/v1673047694/Trouvaille/Untitled_design_16_zvmw3l.png");
-    background-color: white;
+.page-register::before {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-image: url("https://res.cloudinary.com/dupram4w7/image/upload/v1708588159/pexels-edgar-rodrigo-17011415_bicix9.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    filter: blur(0.5rem);
 }
 
-.page-register {
-    background-image: url("https://res.cloudinary.com/dupram4w7/image/upload/v1673047740/Trouvaille/Untitled_design_17_ogvgcn.png");
-    background-color: white;
+.navbar__auth {
+    margin: 1rem 0;
 }
-
 
 .container-auth {
     display: flex;
-    height: 80vh;
-    width: 60%;
-    margin: -3rem auto;
-    justify-content: center;
+    height: 85vh;
+    width: 60vw;
+    margin: 2vh auto;
     background-color: white;
-    align-self: center;
     box-shadow: 0 0.2rem 1rem 0 rgba(189, 190, 191, 0.404), 0 0.2rem 0.5rem 0 rgba(172, 172, 173, 0.218);
 }
 
-.auth-img-container {
-    background-color: white;
-    width: 100%;
-    height: 100%;
-}
-
 .auth-form {
-    width: 60%;
+    width: 30vw;
     text-align: center;
     background-color: white;
     font-family: 'Abel', sans-serif;
@@ -55,8 +66,8 @@
 }
 
 .auth-img {
-    width: 100%;
-    height: 100%;
+    width: 30vw;
+    height: 85vh;
     object-fit: cover;
 }
 

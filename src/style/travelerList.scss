@@ -69,19 +69,32 @@
     margin: -2rem 0 0 0 !important;
 }
 
-.cards-travelers {
-    margin-top: 2rem !important;
-}
-
 .travelers-cards-container {
     background-color: $white;
-    margin-top: 5rem;
+    padding-top: 3rem;
+    min-height: 100vh;
 }
 
-.input-search {
-    border: none;
-    border-bottom: 0.2rem solid gray;
-    box-shadow: 0.2rem 0.2rem rgba(211, 211, 211, 0.511);
-    margin: 5rem 8rem 2rem 0;
-    outline: none;
+.search-bar__travelers {
+    background-color: $blueLight !important;
+
+    svg {
+        fill: $white !important;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    input {
+        background-color: $blueLight !important;
+        color: $white !important;
+        border-bottom: 0.2rem solid $white !important;
+    }
+
+    input::placeholder{
+        color: $white !important;
+    }
+}
+
+.card__travelers {
+    margin: 2rem auto !important;
 }

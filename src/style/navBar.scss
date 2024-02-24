@@ -2,29 +2,43 @@
     display: flex;
     font-family: 'Abel', sans-serif;
     padding: 0 1rem;
-    width: auto;
-    height: auto;
+    width: 100%;
+    height: 7rem;
     align-items: center;
     justify-content: space-between;
     background-color: transparent !important;
-    position: relative;
+    position: fixed !important;
     z-index: 1001;
+    overflow: hidden;
+    transition: all 0.5s ease-in;
+}
+
+.scroll {
+    background-color: $white !important;
+
+    button {
+        color: $brown !important;
+    }
+}
+
+.scroll__landing {
+    background-color: $blueLight !important;
 }
 
 .navbar-btn {
-    font-size: medium;
-    font-family: 'Abel', sans-serif;
-    letter-spacing: .15em;
+    font-size: 1.2rem;
+    font-family: 'Bebas Neue', cursive;
+    font-weight: 200;
+    letter-spacing: 0.2rem;
     border: none;
     background-color: transparent;
     color: white;
-    font-weight: 600;
-    height: 4rem;
+    height: 3rem;
     width: auto;
     padding: 0.4rem;
-    margin: 1rem 1rem;
-    font-size: 1.3rem;
+    margin: 0 1rem;
     border-bottom: 1px solid rgba(192, 192, 192, 0);  
+    text-transform: uppercase;
     -webkit-transition: border 500ms ease;
     -moz-transition: border 500ms ease;
     -ms-transition: border 500ms ease;
@@ -33,7 +47,7 @@
 }
 
 .navbar-btn:hover {
-    border-bottom: 0.2rem solid #ab84667e;
+    font-weight: 600;
 }
 
 .navbar-account {
@@ -57,10 +71,10 @@
     background-color: transparent;
     width: 9rem;
     padding: 0;
-    margin: 1rem 10rem 1rem 3rem;
+    margin: 0 10rem 0 3rem;
 }
 
 .home-img {
-    height: 100%;
-    width: 100%;
+    height: auto;
+    width: 5rem;
 }
