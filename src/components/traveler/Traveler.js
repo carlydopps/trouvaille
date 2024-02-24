@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import { FollowIcon, UnfollowIcon } from "../../utils/svgs"
 import { Footer } from "../footer/Footer"
-import { FollowIcon, UnfollowIcon } from "../icons/Icons"
 import { createSubscription, deleteSubscription } from "../managers/SubscriptionManager"
 import { getTraveler } from "../managers/TravelerManager"
 
@@ -62,7 +62,7 @@ export const Traveler = () => {
     return <>
         <main className="page-traveler">
             <section>
-                <img src={traveler.coverImg} className="traveler-img-cover"></img>
+                <img src={traveler.coverImg} className="traveler-img-cover" alt='Cover image'></img>
             </section>
             <section className="traveler-profile">
                 <img src={traveler.profileImg} alt="Profile Image" className="profile-img traveler-img-profile"/>

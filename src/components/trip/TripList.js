@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getTrips } from "../managers/TripManager"
 import { useNavigate } from "react-router-dom"
 import { createFavorite, deleteFavorite } from "../managers/FavoriteManager"
-import { FavoriteIcon, UnfavoriteIcon } from "../icons/Icons"
+import { FavoriteIcon, UnfavoriteIcon } from "../../utils/svgs"
 
 export const TripList = () => {
 

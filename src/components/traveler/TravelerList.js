@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getTravelers } from "../managers/TravelerManager"
 import { useNavigate } from "react-router-dom"
 import { createSubscription, deleteSubscription } from "../managers/SubscriptionManager"
-import { UnfollowIcon, FollowIcon } from "../icons/Icons"
+import { FollowIcon, searchIcon, UnfollowIcon } from "../../utils/svgs"
 
 export const TravelerList = () => {
 
@@ -59,23 +59,28 @@ export const TravelerList = () => {
             </div>
             <div className="images">
                 <div className="grid">
-                    <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540855/pexels-jess-loiterton-8651388_oco8ph.jpg'></img>
-                    <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708576736/pexels-maria-orlova-4947416_vevnx1.jpg'></img>
-                    <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708561137/pexels-taryn-elliott-3889827_hjqo4j.jpg'></img>
-                    <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708576663/2-DSC04063_vm8hc9.jpg'></img>
-                    <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708371773/DSC_1139_sng0vl.jpg'></img>
+                    <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540855/pexels-jess-loiterton-8651388_oco8ph.jpg' alt='Cover image'></img>
+                    <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708576736/pexels-maria-orlova-4947416_vevnx1.jpg' alt='Cover image'></img>
+                    <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708561137/pexels-taryn-elliott-3889827_hjqo4j.jpg' alt='Cover image'></img>
+                    <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708711927/DSC04063_3_u0mque.jpg' alt='Cover image'></img>
+                    <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708371773/DSC_1139_sng0vl.jpg' alt='Cover image'></img>
                 </div>
             </div>
         </section>
-        <div className="search-bar">
-            <input onChange={(event) => setSearchTerms(event.target.value)}
-            type="text" placeholder="Find new travelers" className="input-search"/>
-        </div>
+        <section className="search search__travelers">
+            <div className="search-bar search-bar__travelers">
+                <div>
+                    {searchIcon()}
+                </div>
+                <input onChange={(event) => setSearchTerms(event.target.value)}
+                type="text" placeholder="Find new travelers" className="input-search"/>
+            </div>
+        </section>
         <div className='travelers-cards-container'>
-            <section className="card-list cards-travelers">
+            <section className="card-list">
                 {
                     filteredTravelers.map(traveler => {
-                        return <div key={`traveler--${traveler.id}`}>
+                        return <div className='card__travelers' key={`traveler--${traveler.id}`}>
                             <div className="icon-btns">
                                 {
                                     localStorage.getItem("auth_token")

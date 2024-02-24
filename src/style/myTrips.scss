@@ -5,35 +5,40 @@
 
 .heading-my-trips {
     display: flex;
-    flex-direction: column;
+    width: 100%;
 }
 
-.heading-my-trips > img {
-    margin: 8rem auto 0 auto;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-}
-
-.heading-my-trips-details {
+.heading-my-trips-title {
     color: #AB8366;
     display: flex;
     justify-content: center;
-    margin: 4rem auto -28rem auto;
-    z-index: 1;
-}
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.442), 
+        rgba(255, 255, 255, 0.186)
+        ),
+        url('https://res.cloudinary.com/dupram4w7/image/upload/v1673122930/Trouvaille/pexels-roman-odintsov-4553618_fbttpw.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -50rem;
+    width: 100%;
+    height: 90vh;
 
-.heading-my-trips-details h2 {
-    font-weight: 400;
-    margin: 0 1.5rem 0 0;
-    letter-spacing: 0.2rem;
-    font-family: 'Satisfy', cursive;
-    font-size: 4rem;
+    h2 {
+        color: #AB8366;
+        display: flex;
+        justify-content: center;
+        z-index: 1;
+        font-weight: 400;
+        margin: 5rem auto;
+        letter-spacing: 0.2rem;
+        font-family: 'Satisfy', cursive;
+        font-size: 4rem;
+    }
 }
 
 .body-my-trips {
     display: flex;
-    min-height: 100vh;
+    margin: 1rem 0;
 }
 
 .my-trips-details > h3 {
@@ -44,21 +49,38 @@
 
 /* Filter ------------------------------------ */
 .my-trips-filters {
-    margin: 4rem -10vw 10rem 3rem;
-    width: 7vw;
+    padding: 4rem 0 4rem 2rem;
+
+    h4 {
+        font-family: 'Bebas Neue', cursive;
+        text-align: center;
+    }
+
+    button {
+        background-color: white;
+        color: $blueLight
+    }
+
+    button:hover {
+        color: $orange !important;
+    }
+
+    .btn-clear {
+        width: 15rem;
+        padding: 1rem;
+    }
 }
 
 .my-trips-filters section {
     display: flex;
+    align-items: center;
 }
 
 .my-trips-filters > div > button, .my-trips-filters button {
-    background-color: white;
     border: none;
-    width: 10rem;
-    height: 1rem;
+    width: 100%;
+    height: auto;
     text-align: left;
-    margin: 0 0 1rem 0;
     color: rgb(103, 103, 103);
 }
 
@@ -73,13 +95,15 @@
 }
 
 .filter-btns-left > button {
-    width: 5rem;
+    width: 6rem;
+    margin: 1rem 0 1rem 1rem;
+    padding-right: 1rem;
     border-right: 0.05rem solid gray
 }
 
 .filter-btns-right > button {
-    width: 5rem;
-    padding-left: 1rem;
+    width: 6rem;
+    margin: 1rem;
 }
 
 /* Trip Grid ------------------------------------ */
@@ -88,17 +112,24 @@
     padding: 0;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
-    grid-gap: 1rem 2rem;
+    grid-gap: 3rem;
     margin: 3rem auto;
-}
 
-.my-trips-grid > div {
-    display: flex;
-    flex-direction: column;
-    width: 20vw;
-    height: 40vh;
-    justify-content: center;
-    color: white;
+    .card__myTrip {
+        display: flex;
+        flex-direction: column;
+        width: 25rem;
+        height: auto;
+        justify-content: center;
+        color: white;
+
+        .card--image {
+            width: 25rem;
+            height: 25rem;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    }
 }
 
 .my-trips-grid > div > button {
@@ -127,11 +158,15 @@
 
 /* Icons ------------------------------------ */
 .icon-btns-edge-my-trips {
+    display: flex;
+    justify-content: right;
     margin: 0 -1.5rem -1rem 0;
-}
+    height: auto;
 
-.icon-btn-edge-my-trips {
-    margin: 0;
+    button {
+        padding: 0;
+        margin: 0;
+    }
 }
 
 .trip-status-icons {
