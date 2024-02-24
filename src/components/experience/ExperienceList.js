@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { AccommodationIcon, ActivityIcon, AttractionIcon, EateryIcon, PubIcon, searchIcon, WebsiteIcon } from "../../utils/svgs"
 import { getExperiences } from "../managers/ExperienceManager"
 
 export const ExperienceList = () => {
@@ -9,6 +10,14 @@ export const ExperienceList = () => {
     const [filteredExps, setFilteredExps] = useState([])
     const [feedback, setFeedback] = useState("")
     const navigate = useNavigate()
+
+    const icons = {
+        activity: ActivityIcon(),
+        accommodation: AccommodationIcon(),
+        attraction: AttractionIcon(),
+        eatery: EateryIcon(),
+        pub: PubIcon()
+    }
 
     useEffect(
         () => {
@@ -47,28 +56,33 @@ export const ExperienceList = () => {
                 <h1>Discover</h1>
                 <h2>new experiences</h2>
             </div>
-            <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1708540884/pexels-toa-heftiba-s%CC%A7inca-1194406_xybfa5.jpg" className="experience-list-img-left"></img>
-            <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1708540885/pexels-toa-heftiba-s%CC%A7inca-1194420_llftxi.jpg" className="experience-list-img-cover"></img>
+            <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1708540884/pexels-toa-heftiba-s%CC%A7inca-1194406_xybfa5.jpg" className="experience-list-img-left" alt='Cover image'></img>
+            <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1708540885/pexels-toa-heftiba-s%CC%A7inca-1194420_llftxi.jpg" className="experience-list-img-cover" alt='Cover image'></img>
         </section>
-        <div className="search-bar">
-            <input onChange={(event) => setSearchTerms(event.target.value)}
-            type="text" placeholder="Search for new adventures" className="input-search"/>
-        </div>
-        <section className="card-list">
+        <section className="search">
+            <div className="search-bar  search-bar__experiences">
+                <div>
+                    {searchIcon()}
+                </div>
+                <input onChange={(event) => setSearchTerms(event.target.value)}
+                type="text" placeholder="Search for new adventures" className="input-search"/>
+            </div>        
+        </section>
+        <section className="experiences-grid">
             {
                 filteredExps.map(experience => {
-                    return <div key={`exp--${experience.id}`}>
-                        <button onClick={() => experience.experience_trips.length === 0 ? setFeedback("Associated trip is no longer available") : navigate(`/trip/${experience.experience_trips.slice(0)}`)} className="card">
-                            <img src={experience.image} alt="Cover Image" className="card-img"/>
-                            <div className="card-preview">
-                                <h4>{experience.title}</h4>
-                                <div className="card-details">
-                                    <p>{experience.address}</p>
-                                    <p>{experience.experience_type.name}</p>
-                                    <button href={`${experience.website_url}`} target="_blank" className='btn-website'>Website</button>
-                                </div>
+                    return <div className='card__experience' key={`exp--${experience.id}`}>
+                        <button onClick={() => experience.experience_trips.length === 0 ? setFeedback("Associated trip is no longer available") : navigate(`/trip/${experience.experience_trips.slice(0)}`)} className="card--image" style={{backgroundImage: `url(${experience.image})`}}></button>
+                        <div className="experiences-details">
+                            <div className="experience-status-icons">
+                                <div className="icon-experienceType">{icons[experience.experience_type.name?.toLowerCase()]}</div>
+                                <div className="icon-season"></div>
+                                <button href={`${experience.website_url}`} target="_blank" className="icon-website">
+                                    <WebsiteIcon/>
+                                </button>
                             </div>
-                        </button>
+                            <h3 className="my-trips-trip-title">{experience.title}</h3>
+                        </div>
                     </div>
                 })
             }

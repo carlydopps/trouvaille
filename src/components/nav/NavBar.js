@@ -36,9 +36,23 @@ export const NavBar = () => {
         },
         [location]
     )
+
+    window.onscroll = function() {
+        const navbar = document.getElementById('navbar')
+        if (window.scrollY > 0) {
+            if (window.location == 'http://localhost:3000/' || window.location == 'https://trouvaille-frontend.vercel.app/') {
+                navbar.classList.add('scroll__landing')
+            } else {
+                navbar.classList.add('scroll')
+            }
+        } else {
+            navbar.classList.remove('scroll')
+            navbar.classList.remove('scroll__landing')
+        } 
+    }
     
     return <>
-        <section className="navbar" style={{backgroundColor: background}}>
+        <section className="navbar" id='navbar' style={{backgroundColor: background}}>
             <button onClick={() => navigate(`/`)} className="navbar-btn-home">
                 <img src={homeImg} alt="Home" className="home-img"></img>
             </button>

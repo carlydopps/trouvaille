@@ -27,14 +27,14 @@ export const Login = () => {
     }
 
     return <main className="page-auth page-login">
-        <section>
+        <section className='navbar__auth'>
             <button onClick={() => navigate(`/home`)} className="navbar-btn-home">
                 <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1672460293/Trouvaille/Trouvaille_1_rxks06.png' alt="Home" className="home-img"></img>
             </button>
         </section>
         <section className="container-auth">
             <section className="auth-img-container">
-                <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1672445008/Trouvaille/How-To-Take-A-Road-Trip-On-A-Budget-Vanlife-views_2_efkgbi.png" className="auth-img"/>
+                <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1708576733/pexels-maria-orlova-4946983_ilfyqf.jpg" className="auth-img" alt='Cover image'/>
             </section>
             <section className="auth-form">
                 <dialog className="dialog dialog--auth" ref={invalidDialog}>

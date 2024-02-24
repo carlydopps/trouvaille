@@ -1,6 +1,6 @@
 .home-page {
     position: relative;
-    background-color: #ead6ca;
+    background-color: $white;
 }
 
 .home-content, .home-trips {
@@ -21,7 +21,7 @@
         border: none;
         background-color: $orange;
         margin: 3rem auto;
-        width: 15rem;
+        width: auto;
         height: 5rem;
         padding: 1rem;
         align-items: center;
@@ -40,7 +40,7 @@
 }
 
 .home-heading-details {
-    padding: 0 5rem 0 2rem;
+    padding: 0 5rem 0 0;
     display: flex;
     align-items: center;
     justify-content: right;
@@ -48,7 +48,7 @@
 
 .home-heading-details h1 {
     width: 12rem;
-    font-size: 5.5rem;
+    font-size: 5rem;
     font-family: 'Bebas Neue', cursive;
     margin-right: 10rem;
     color: white;
@@ -219,6 +219,11 @@
             object-fit: cover;
         }
 
+        img:hover {
+            box-shadow: $hoverShadow;
+            opacity: $hoverOpacity;
+        }
+
         p {
             overflow: hidden;
             width: 100%;
@@ -226,6 +231,7 @@
             color: $blueLight;
         }
     }
+
 }
 
 .home-travelers > svg {
@@ -307,9 +313,15 @@
         text-transform: uppercase;
         font-size: 2rem;
         margin: 0 2rem;
+
+        p {
+            font-family: 'Abel', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 0;
+            margin: 0;
+        }
     }
 }
-
 
 .input-toggle .input {
     position: absolute;
