@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { searchIcon } from "../../utils/svgs"
 import { getDestinations } from "../managers/DestinationManager"
 import { getExperiences } from "../managers/ExperienceManager"
 import { getTrips } from "../managers/TripManager"
@@ -64,17 +65,20 @@ export const DestinationList = ({searchTermState}) => {
                 </div>
                 <div className="destinations-heading-images">
                     <div className="destinations-heading-grid">
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673141692/Trouvaille/Screen_Shot_2023-01-07_at_5.23.32_PM_jmrgam.png'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.23.45_PM_thhvgd.png'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.23.58_PM_bfyxex.png'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.24.10_PM_zqnryr.png'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.24.23_PM_jjdjsm.png'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.24.38_PM_hcncov.png'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673141692/Trouvaille/Screen_Shot_2023-01-07_at_5.23.32_PM_jmrgam.png' alt='Cover image'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.23.45_PM_thhvgd.png' alt='Cover image'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.23.58_PM_bfyxex.png' alt='Cover image'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.24.10_PM_zqnryr.png' alt='Cover image'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.24.23_PM_jjdjsm.png' alt='Cover image'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.24.38_PM_hcncov.png' alt='Cover image'></img>
                     </div>
                 </div>
             </section>
-            <section classname="destinations-search">
-                <div className="search-bar search-bar-destination">
+            <section className="search search__destinations">
+                <div className="search-bar search-bar__destinations">
+                    <div>
+                        {searchIcon()}
+                    </div>
                     <input onChange={(event) => setSearchTerms(event.target.value)}
                     type="text" placeholder="Search for a city" className="input-search"/>
                 </div>

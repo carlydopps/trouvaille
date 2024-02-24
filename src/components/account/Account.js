@@ -165,19 +165,21 @@ export const Account = () => {
 
 
     return <>
-        <main className="main-account">
-            <div className="img-stack">
-                <img src={traveler.coverImg} className="img-stack-bottom"/>
-                <img src={traveler.profileImg} className="img-stack-top"/>
-            </div>
-            <section className="body-account">
-                <section className="account-profile-details">
-                    <h1 className="h1-account">Hi, {traveler.firstName}!</h1>
-                    {
-                        clickStatus ? editDetails() : defaultDisplay()
-                    }
+        <main>
+            <div className="main-account">
+                <div className="img-stack">
+                    <img src={traveler.coverImg} className="img-stack-bottom" alt='Cover image'/>
+                    <img src={traveler.profileImg} className="img-stack-top" alt='Profile image'/>
+                </div>
+                <section className="body-account">
+                    <section className="account-profile-details">
+                        <h1 className="h1-account">Hi, {traveler.firstName}!</h1>
+                        {
+                            clickStatus ? editDetails() : defaultDisplay()
+                        }
+                    </section>
                 </section>
-            </section>
+            </div>
         </main>
         <Footer/>
     </>

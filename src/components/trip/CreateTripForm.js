@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { Footer } from "../footer/Footer"
-import { DeleteIcon } from "../icons/Icons"
+import { DeleteIcon } from "../../utils/svgs"
 import { createDestination } from "../managers/DestinationManager"
 import { getDurations } from "../managers/DurationManager"
 import { createExperience } from "../managers/ExperienceManager"
@@ -124,7 +123,7 @@ export const CreateTripForm = () => {
 
         } else if (resource === "experience") {
             if (experience.image === "") {
-                experience.image = "https://res.cloudinary.com/dupram4w7/image/upload/v1673198458/lvjjd9b67uuugzmjehva.jpg"
+                experience.image = "https://res.cloudinary.com/dupram4w7/image/upload/v1708739125/pexels-marina-leonova-7634433_klpewl.jpg"
             }
 
             tripExperiences.push(experience)

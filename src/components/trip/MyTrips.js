@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { DeleteIcon, DraftIcon, PastIcon, PostedIcon, PrivateIcon, PublicIcon, UpcomingIcon } from "../icons/Icons"
+import { DeleteIcon, DraftIcon, PastIcon, PostedIcon, PrivateIcon, PublicIcon, UpcomingIcon } from "../../utils/svgs"
 import { getAuthTraveler } from "../managers/TravelerManager"
 import { deleteTrip, getMyTrips } from "../managers/TripManager"
 
@@ -108,13 +108,13 @@ export const MyTrips = () => {
 
     return <main className="page-my-trips">
         <div className="heading-my-trips">
-            <div className="heading-my-trips-details">
+            <div className="heading-my-trips-title">
                 <h2>{authUser.first_name}'s Trips</h2>
             </div>
-            <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1673122930/Trouvaille/pexels-roman-odintsov-4553618_fbttpw.jpg" alt=""/>
         </div>
         <div className="body-my-trips">
-            <aside className="my-trips-filters">
+            <section className="my-trips-filters">
+                <h4>Filter</h4>
                 <section>
                     <div className="filter-btns-left">
                         <button onClick={() => updateStatusState("isDraft", false)} style={{color: textColors["post"]}}>Posts</button>
@@ -127,27 +127,27 @@ export const MyTrips = () => {
                         <button onClick={() => updateStatusState("isUpcoming", true)} style={{color: textColors["upcoming"]}}>Upcoming</button>
                     </div>
                 </section>
-                <button onClick={() => updateStatusState("all", true)}><DeleteIcon/> Clear all</button>
-            </aside>
+                <button onClick={() => updateStatusState("all", true)} className='btn-clear'><DeleteIcon/> Clear all</button>
+            </section>
             <section className="my-trips-grid">
                 {
                     filteredTrips.map(trip => {
-                        return <div key={`trip--${trip.id}`}>
-                            <div className="icon-btns-edge icon-btns-edge-my-trips">
+                        return <div className='card__myTrip' key={`trip--${trip.id}`}>
+                            <div className="icon-btns-edge-my-trips">
                                 <button onClick={(event) => {
                                     event.preventDefault()
                                     deleteTrip(trip.id).then(() => renderTrips())
-                                }} className="icon-btn-edge icon-btn-edge-my-trips">
+                                }} className="icon-btn-edge">
                                     <DeleteIcon/>
                                 </button>
                             </div>
-                            <button onClick={() => navigate(`/trip/${trip.id}`)} style={{backgroundImage: `url(${trip.cover_img})`}}>
+                            <button onClick={() => navigate(`/trip/${trip.id}`)} className='card--image' style={{backgroundImage: `url(${trip.cover_img})`}}>
                             </button>
                             <div className="my-trips-details">
                                 <div className="trip-status-icons">
-                                        <div className="icon-upcoming">{trip.is_upcoming ? <UpcomingIcon/> : <PastIcon/>}</div>
-                                        <div className="icon-draft">{trip.is_draft ? <DraftIcon/> : <PostedIcon/>}</div>
-                                        <div className="icon-private">{trip.is_private ? <PrivateIcon/> : <PublicIcon/>}</div>
+                                    <div className="icon-upcoming">{trip.is_upcoming ? <UpcomingIcon/> : <PastIcon/>}</div>
+                                    <div className="icon-draft">{trip.is_draft ? <DraftIcon/> : <PostedIcon/>}</div>
+                                    <div className="icon-private">{trip.is_private ? <PrivateIcon/> : <PublicIcon/>}</div>
                                 </div>
                                 <h3 className="my-trips-trip-title">{trip.title}</h3>
                             </div>

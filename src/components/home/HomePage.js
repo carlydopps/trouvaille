@@ -93,14 +93,14 @@ export const HomePage = () => {
                 </div>
                 <div className="home-images">
                     <div className="home-grid">
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540849/pexels-jess-loiterton-5505397_bfslhi.jpg'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708547163/pexels-faruk-tokluog%CC%86lu-20081241_bngq6w.jpg'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540870/pexels-piotr-arnoldes-6441050_phq1jt.jpg'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540883/pexels-toa-heftiba-s%CC%A7inca-1194399_kmhpxc.jpg'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540868/pexels-niklas-jeromin-14760650_gmzebk.jpg'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540884/pexels-toa-heftiba-s%CC%A7inca-1194406_xybfa5.jpg'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708547198/pexels-jess-loiterton-5232303_hh9sin.jpg'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708561137/pexels-maria-orlova-4947223_gmsewn.jpg'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540849/pexels-jess-loiterton-5505397_bfslhi.jpg' alt='Cover image'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708547163/pexels-faruk-tokluog%CC%86lu-20081241_bngq6w.jpg' alt='Cover image'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540870/pexels-piotr-arnoldes-6441050_phq1jt.jpg' alt='Cover image'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540883/pexels-toa-heftiba-s%CC%A7inca-1194399_kmhpxc.jpg' alt='Cover image'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540868/pexels-niklas-jeromin-14760650_gmzebk.jpg' alt='Cover image'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540884/pexels-toa-heftiba-s%CC%A7inca-1194406_xybfa5.jpg' alt='Cover image'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708547198/pexels-jess-loiterton-5232303_hh9sin.jpg' alt='Cover image'></img>
+                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708561137/pexels-maria-orlova-4947223_gmsewn.jpg' alt='Cover image'></img>
                     </div>
                 </div>
             </section>
@@ -108,21 +108,32 @@ export const HomePage = () => {
                 <div className="toggle-header">
                     <div>
                     {
-                        localStorage.getItem("auth_token")
-                        ? <div className="toggle-container">
+                        <div className="toggle-container">
                                 <div className="input-toggle">
                                     <label htmlFor="toggle">Discover</label>
                                     <input type="checkbox" id="toggle" className="input" onChange={() => {
+                                        if (!localStorage.getItem("auth_token")) {
+                                            navigate('/login')
+                                            return
+                                        }
                                         if (projectType === "custom") {
                                             setProjectType("new")
                                         } else {
                                             setProjectType("custom")
                                         }}}/>
                                     <label htmlFor="toggle" className="toggle"></label>
-                                    <label htmlFor="toggle">Favorites</label>
+                                    <label htmlFor="toggle">
+                                        {
+                                            localStorage.getItem("auth_token") 
+                                            ? <h2>Favorites</h2>
+                                            : <>
+                                                <p>Login to view</p>
+                                                <h2>Favorites</h2>
+                                            </>
+                                        }
+                                    </label>
                                 </div>
                             </div>
-                        : ""
                     }
                     </div>
                 </div>
