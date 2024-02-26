@@ -183,7 +183,7 @@ export const HomePage = () => {
                                 </div>
                                 <div className="home-card-list">
                                     {
-                                        customTravelers.map(traveler => {
+                                        customTravelers.slice(0,9).map(traveler => {
                                             return <button key={`traveler--${traveler.id}`} onClick={() => localStorage.getItem("auth_token") ? navigate(`/travelers/${traveler.id}`) : navigate(`/login`)}>
                                                 <img src={traveler.profile_img} alt="Profile Image"/>
                                             </button>
@@ -194,7 +194,7 @@ export const HomePage = () => {
                             <section className="home-trips">
                                 <div className="home-card-list">
                                     {
-                                        customTrips.map(trip => {
+                                        customTrips.slice(0,9).map(trip => {
                                             return <button key={`trip--${trip.id}`} onClick={() => localStorage.getItem("auth_token") ? navigate(`/trip/${trip.id}`) : navigate(`/login`)}>
                                                 <img src={trip.cover_img} alt="Trip Image"/>
                                                 <p>{trip.destinations[0]?.city}, {trip.destinations[0]?.state}</p>
