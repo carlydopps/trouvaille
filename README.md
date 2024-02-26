@@ -5,6 +5,9 @@ An application for travelers to discover, create, and share personal adventures 
 <br />
 
 📍[View Deployed Application](https://trouvaille-frontend.vercel.app/)
+Login using demo account to access additional features:
+Username: sam
+Password: test
 <br />
 
 ## Features
