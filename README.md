@@ -12,6 +12,7 @@ An application for travelers to discover, create, and share personal adventures 
 <br />
 <sub>- Password: test</sub>
 <br />
+<br />
 
 ## Features
 - Separate views for Trouvaille registered users and nonregistered users
