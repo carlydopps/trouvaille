@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
+import { pages } from "../../utils/pages"
+import { staticImages } from "../../utils/staticImages"
 import { BackArrow, DeleteIcon, EditIcon, FavoriteIcon, PlusIcon, PostedIcon, TrashIcon, UnfavoriteIcon } from "../../utils/svgs"
 import { postComment } from "../managers/CommentManager"
 import { createDestination } from "../managers/DestinationManager"
@@ -13,6 +15,8 @@ import { getAuthTraveler } from "../managers/TravelerManager"
 import { addTripDestination, deleteTripDestination } from "../managers/TripDestinationManager"
 import { addTripExperience, deleteTripExperience } from "../managers/TripExperienceManager"
 import { deleteTrip, getTrip, saveTrip } from "../managers/TripManager"
+
+const pageName = pages.TRIP
 
 export const Trip = () => {
 
@@ -144,7 +148,7 @@ export const Trip = () => {
         } else if (resource.includes("experience")) {
 
             if (stateExperience.image === "") {
-                stateExperience.image = "https://res.cloudinary.com/dupram4w7/image/upload/v1673157703/Trouvaille/pexels-min-an-1098872_rpk0hi.jpg"
+                stateExperience.image = staticImages(pageName, 'defaultExperience')
             }
 
             if (resource.includes("create")) {

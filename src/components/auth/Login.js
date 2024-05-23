@@ -1,6 +1,10 @@
 import React, { useRef } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { pages } from "../../utils/pages"
+import { staticImages } from "../../utils/staticImages"
 import { loginUser } from "../managers/AuthManager"
+
+const pageName = pages.LOGIN
 
 export const Login = () => {
     const username = useRef()
@@ -29,12 +33,12 @@ export const Login = () => {
     return <main className="page-auth page-login">
         <section className='navbar__auth'>
             <button onClick={() => navigate(`/home`)} className="navbar-btn-home">
-                <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1672460293/Trouvaille/Trouvaille_1_rxks06.png' alt="Home" className="home-img"></img>
+                <img src={staticImages(pageName, 'logo')} alt="Home" className="home-img"></img>
             </button>
         </section>
         <section className="container-auth">
             <section className="auth-img-container">
-                <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1708576733/pexels-maria-orlova-4946983_ilfyqf.jpg" className="auth-img" alt='Cover image'/>
+                <img src={staticImages(pageName, 'background')} className="auth-img" alt='Cover image'/>
             </section>
             <section className="auth-form">
                 <dialog className="dialog dialog--auth" ref={invalidDialog}>

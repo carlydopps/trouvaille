@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { pages } from "../../utils/pages"
+import { staticImages } from "../../utils/staticImages"
 import { DeleteIcon } from "../../utils/svgs"
 import { createDestination } from "../managers/DestinationManager"
 import { getDurations } from "../managers/DurationManager"
@@ -11,6 +13,8 @@ import { getStyles } from "../managers/StyleManager"
 import { addTripDestination } from "../managers/TripDestinationManager"
 import { addTripExperience } from "../managers/TripExperienceManager"
 import { createTrip } from "../managers/TripManager"
+
+const pageName = pages.TRIP_FORM
 
 export const CreateTripForm = () => {
 
@@ -71,6 +75,7 @@ export const CreateTripForm = () => {
                                 tripId: newTrip.id,
                                 destinationId: newDest.id
                             }
+                    
                             addTripDestination(newTripDest)
                         })
                 })
@@ -106,7 +111,7 @@ export const CreateTripForm = () => {
             let tripDraft = structuredClone(trip)
             tripDraft.isDraft = true
             if (tripDraft.coverImg === "") {
-                tripDraft.coverImg = "https://res.cloudinary.com/dupram4w7/image/upload/v1673144063/Trouvaille/pexels-marina-leonova-7634434_mnw6wt.jpg"
+                tripDraft.coverImg = staticImages(pageName, 'defaultCover')
             }
             sendTrip(tripDraft)
 
@@ -123,7 +128,7 @@ export const CreateTripForm = () => {
 
         } else if (resource === "experience") {
             if (experience.image === "") {
-                experience.image = "https://res.cloudinary.com/dupram4w7/image/upload/v1708739125/pexels-marina-leonova-7634433_klpewl.jpg"
+                experience.image = staticImages(pageName, 'defaultExperience')
             }
 
             tripExperiences.push(experience)
@@ -145,7 +150,7 @@ export const CreateTripForm = () => {
         let tripPost = structuredClone(trip)
         tripPost.isDraft = false
         if (tripPost.coverImg === "") {
-            tripPost.coverImg = "https://res.cloudinary.com/dupram4w7/image/upload/v1673144063/Trouvaille/pexels-marina-leonova-7634434_mnw6wt.jpg"
+            tripPost.coverImg = staticImages(pageName, 'defaultCover')
         }
         sendTrip(tripPost)
     }

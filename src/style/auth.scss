@@ -9,7 +9,7 @@
     position: fixed;
     left: 0;
     right: 0;
-    background-image: url("https://res.cloudinary.com/dupram4w7/image/upload/v1708576733/pexels-maria-orlova-4946983_ilfyqf.jpg");
+    background-image: url($loginBackground);
     background-repeat: no-repeat;
     background-size: contain;
     z-index: -1;
@@ -23,7 +23,7 @@
     position: fixed;
     left: 0;
     right: 0;
-    background-image: url("https://res.cloudinary.com/dupram4w7/image/upload/v1708588159/pexels-edgar-rodrigo-17011415_bicix9.jpg");
+    background-image: url($registerBackground);
     background-repeat: no-repeat;
     background-size: contain;
     z-index: -1;

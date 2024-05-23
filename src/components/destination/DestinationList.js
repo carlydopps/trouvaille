@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { pages } from "../../utils/pages"
+import { staticImages } from "../../utils/staticImages"
 import { searchIcon } from "../../utils/svgs"
 import { getDestinations } from "../managers/DestinationManager"
 import { getExperiences } from "../managers/ExperienceManager"
 import { getTrips } from "../managers/TripManager"
+
+const pageName = pages.DESTINATIONS
 
 export const DestinationList = ({searchTermState}) => {
 
@@ -65,12 +69,7 @@ export const DestinationList = ({searchTermState}) => {
                 </div>
                 <div className="destinations-heading-images">
                     <div className="destinations-heading-grid">
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673141692/Trouvaille/Screen_Shot_2023-01-07_at_5.23.32_PM_jmrgam.png' alt='Cover image'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.23.45_PM_thhvgd.png' alt='Cover image'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.23.58_PM_bfyxex.png' alt='Cover image'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.24.10_PM_zqnryr.png' alt='Cover image'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.24.23_PM_jjdjsm.png' alt='Cover image'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1673134027/Trouvaille/Screen_Shot_2023-01-07_at_5.24.38_PM_hcncov.png' alt='Cover image'></img>
+                        {staticImages(pageName, 'header').map(img => <img src={img} alt='Cover image'></img>)}
                     </div>
                 </div>
             </section>

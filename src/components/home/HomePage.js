@@ -4,9 +4,12 @@ import { getAuthTraveler, getTravelers } from "../managers/TravelerManager"
 import { useNavigate } from "react-router-dom"
 import { Footer } from "../footer/Footer"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { pages } from "../../utils/pages"
+import { staticImages } from "../../utils/staticImages"
+
+const pageName = pages.HOME
 
 export const HomePage = () => {
-
     const [trips, setTrips] = useState([])
     const [travelers, setTravelers] = useState([])
     const [customTrips, setCustomTrips] = useState([])
@@ -93,14 +96,7 @@ export const HomePage = () => {
                 </div>
                 <div className="home-images">
                     <div className="home-grid">
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540849/pexels-jess-loiterton-5505397_bfslhi.jpg' alt='Cover image'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708547163/pexels-faruk-tokluog%CC%86lu-20081241_bngq6w.jpg' alt='Cover image'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540870/pexels-piotr-arnoldes-6441050_phq1jt.jpg' alt='Cover image'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540883/pexels-toa-heftiba-s%CC%A7inca-1194399_kmhpxc.jpg' alt='Cover image'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540868/pexels-niklas-jeromin-14760650_gmzebk.jpg' alt='Cover image'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540884/pexels-toa-heftiba-s%CC%A7inca-1194406_xybfa5.jpg' alt='Cover image'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708547198/pexels-jess-loiterton-5232303_hh9sin.jpg' alt='Cover image'></img>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708561137/pexels-maria-orlova-4947223_gmsewn.jpg' alt='Cover image'></img>
+                        {staticImages(pageName, 'header').map(img => <img src={img} alt='Cover image'></img>)}
                     </div>
                 </div>
             </section>

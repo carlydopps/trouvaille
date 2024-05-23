@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
+import { pages } from "../../utils/pages"
+import { staticImages } from "../../utils/staticImages"
 import { getAuthTraveler } from "../managers/TravelerManager"
 import { AccountNav } from "./AccountNav"
 
@@ -27,11 +29,11 @@ export const NavBar = () => {
             if (["/"].includes(window.location.pathname)) {
                 setBackground('transparent');
                 setText('white')
-                setHomeImg('https://res.cloudinary.com/dupram4w7/image/upload/v1672460293/Trouvaille/Trouvaille_1_rxks06.png')
+                setHomeImg(staticImages(pages.GLOBAL, 'logo'))
             } else {
                 setBackground('transparent')
                 setText('#AB8466')
-                setHomeImg('https://res.cloudinary.com/dupram4w7/image/upload/v1672513789/Trouvaille/image_2_bqurbu.png')
+                setHomeImg(staticImages(pages.GLOBAL, 'logoDark'))
             }
         },
         [location]

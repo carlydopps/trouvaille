@@ -3,6 +3,10 @@ import { getTrips } from "../managers/TripManager"
 import { useNavigate } from "react-router-dom"
 import { createFavorite, deleteFavorite } from "../managers/FavoriteManager"
 import { FavoriteIcon, UnfavoriteIcon } from "../../utils/svgs"
+import { pages } from "../../utils/pages"
+import { staticImages } from "../../utils/staticImages"
+
+const pageName = pages.TRIPS
 
 export const TripList = () => {
 
@@ -41,7 +45,7 @@ export const TripList = () => {
                 <h2>Find your next</h2>
                 <h3>adventure.</h3>
             </div>
-            <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1672636798/Trouvaille/pexels-feelalivenow-9309828_rz3qph.jpg" alt=""/>
+            <img src={staticImages(pageName, 'header')} alt="Cover image"/>
         </div>
         <div className="trips-list">
             <button onClick={() => navigate('/trips/create')} className="trips-btn-create" >Plan your own Adventure</button>

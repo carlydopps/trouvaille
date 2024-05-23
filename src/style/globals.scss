@@ -14,3 +14,12 @@ $backgroundGray: #EFEFEF;
 // Hover ------------------
 $hoverOpacity: 0.8;
 $hoverShadow: 0 0.2rem 0.5rem 0 rgba(111, 109, 109, 0.466), 0 0.2rem 0.5rem 0 rgba(108, 107, 107, 0.479);
+
+// Static Images -----------------
+$cloudfrontUrl: 'https://d28fylukvva3rw.cloudfront.net';
+$loginBackground: '#{$cloudfrontUrl}/pexels-maria-orlova-4946983_ilfyqf.jpg';
+$registerBackground: '#{$cloudfrontUrl}/pexels-edgar-rodrigo-17011415_bicix9.jpg';
+$tripFormBackground: '#{$cloudfrontUrl}/image_5_mb8b2r.png';
+$destinationsBackground: '#{$cloudfrontUrl}/pexels-maria-orlova-4947223_gmsewn.jpg';
+$landingBackground: '#{$cloudfrontUrl}/Untitled_design_13_j4bsrk.png';
+$myTripsBackground: '#{$cloudfrontUrl}/pexels-roman-odintsov-4553618_fbttpw.jpg';
