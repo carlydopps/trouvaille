@@ -6,9 +6,12 @@ import { getTravelers } from "../managers/TravelerManager"
 import { getTrips } from "../managers/TripManager"
 import { Footer } from "../footer/Footer"
 import { ForwardArrow } from "../../utils/svgs"
+import { staticImages } from "../../utils/staticImages"
+import { pages } from "../../utils/pages"
+
+const pageName = pages.LANDING
 
 export const LandingPage = () => {
-
     const [trips, setTrips] = useState([])
     const [travelers, setTravelers] = useState([])
     const [destinations, setDestinations] = useState([])
@@ -32,7 +35,7 @@ export const LandingPage = () => {
             <div className="content-landing">
                 <div className="landing-header">
                     <button onClick={() => navigate(`/home`)}>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1672372171/Trouvaille/Trouvaille_700_300_px_vly6tj.png' alt='Trouvaille' className='img-landingTitle'/>
+                        <img src={staticImages(pageName, 'title')} alt='Trouvaille' className='img-landingTitle'/>
                     </button>
                     <button onClick={() => navigate('/home')} className="forward-arrow">
                         <ForwardArrow/>
@@ -45,7 +48,7 @@ export const LandingPage = () => {
             <div className="landing-main">
                 <section className="landing-content">
                     <section className="landing-heading">
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1672518306/Trouvaille/coloradovibes_hrvest.jpg' alt='Cover image'></img>
+                        <img src={staticImages(pageName, 'section1')} alt='Cover image'/>
                         <div>
                             <h2>Take the road less traveled</h2>
                             <p>Whether it's stumbling across a hidden back street, a quaint cafe, or connecting with a local, trouvaille describes those magical moments we experience in our journeys.</p>
@@ -60,7 +63,7 @@ export const LandingPage = () => {
                                 <ImageCarousel trips={trips}/>
                             </div>
                         </div>
-                        <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1672525771/Trouvaille/pexels-min-an-1375560_rxfhwd.jpg' alt='Cover image'></img>
+                        <img src={staticImages(pageName, 'section2')} alt='Cover image'/>
                     </section>
                     <section className="landing-travelers">
                         <h2>Travelers</h2>

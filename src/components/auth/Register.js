@@ -1,6 +1,10 @@
 import React, { useRef } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { pages } from "../../utils/pages"
+import { staticImages } from "../../utils/staticImages"
 import { registerUser } from "../managers/AuthManager"
+
+const pageName = pages.REGISTER
 
 export const Register = () => {
     const firstName = useRef()
@@ -24,8 +28,8 @@ export const Register = () => {
                 "email": email.current.value,
                 "password": password.current.value,
                 "bio": bio.current.value,
-                "profileImg": "https://res.cloudinary.com/dupram4w7/image/upload/v1663620931/Screen_Shot_2022-09-19_at_2_ey3w9e.png",
-                "coverImg": "https://res.cloudinary.com/dupram4w7/image/upload/v1672466537/Trouvaille/pexels-krivec-ales-547119_xsvwvy.jpg"
+                "profileImg": staticImages(pageName, 'defaultProfile'),
+                "coverImg": staticImages(pageName, 'defaultCover')
             }
 
             registerUser(newUser)
@@ -43,12 +47,12 @@ export const Register = () => {
     return <main className="page-auth page-register">
         <section className='navbar__auth'>
             <button onClick={() => navigate(`/home`)} className="navbar-btn-home">
-                <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1672460293/Trouvaille/Trouvaille_1_rxks06.png' alt="Home" className="home-img"></img>
+                <img src={staticImages(pageName, 'logo')} alt="Home" className="home-img"></img>
             </button>
         </section>
         <section className="container-auth">
             <section className="auth-img-container">
-                <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1708588159/pexels-edgar-rodrigo-17011415_bicix9.jpg" className="auth-img" alt='Cover image'/>
+                <img src={staticImages(pageName, 'background')} className="auth-img" alt='Cover image'/>
             </section>
             <section className="auth-form">
                 <dialog className="dialog dialog--password" ref={passwordDialog}>

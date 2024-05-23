@@ -3,6 +3,10 @@ import { getTravelers } from "../managers/TravelerManager"
 import { useNavigate } from "react-router-dom"
 import { createSubscription, deleteSubscription } from "../managers/SubscriptionManager"
 import { FollowIcon, searchIcon, UnfollowIcon } from "../../utils/svgs"
+import { staticImages } from "../../utils/staticImages"
+import { pages } from "../../utils/pages"
+
+const pageName = pages.TRAVELERS
 
 export const TravelerList = () => {
 
@@ -59,11 +63,7 @@ export const TravelerList = () => {
             </div>
             <div className="images">
                 <div className="grid">
-                    <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708540855/pexels-jess-loiterton-8651388_oco8ph.jpg' alt='Cover image'></img>
-                    <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708576736/pexels-maria-orlova-4947416_vevnx1.jpg' alt='Cover image'></img>
-                    <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708561137/pexels-taryn-elliott-3889827_hjqo4j.jpg' alt='Cover image'></img>
-                    <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708711927/DSC04063_3_u0mque.jpg' alt='Cover image'></img>
-                    <img src='https://res.cloudinary.com/dupram4w7/image/upload/v1708371773/DSC_1139_sng0vl.jpg' alt='Cover image'></img>
+                    {staticImages(pageName, 'header').map(img => <img src={img} alt='Cover image'></img>)}
                 </div>
             </div>
         </section>

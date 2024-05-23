@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { pages } from "../../utils/pages"
+import { staticImages } from "../../utils/staticImages"
 import { AccommodationIcon, ActivityIcon, AttractionIcon, EateryIcon, PubIcon, searchIcon, WebsiteIcon } from "../../utils/svgs"
 import { getExperiences } from "../managers/ExperienceManager"
+
+const pageName = pages.EXPERIENCES
 
 export const ExperienceList = () => {
 
@@ -56,8 +60,7 @@ export const ExperienceList = () => {
                 <h1>Discover</h1>
                 <h2>new experiences</h2>
             </div>
-            <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1708540884/pexels-toa-heftiba-s%CC%A7inca-1194406_xybfa5.jpg" className="experience-list-img-left" alt='Cover image'></img>
-            <img src="https://res.cloudinary.com/dupram4w7/image/upload/v1708540885/pexels-toa-heftiba-s%CC%A7inca-1194420_llftxi.jpg" className="experience-list-img-cover" alt='Cover image'></img>
+            {staticImages(pageName, 'header').map(img => <img src={img} className="experience-list-img-left" alt='Cover image'></img>)}
         </section>
         <section className="search">
             <div className="search-bar  search-bar__experiences">

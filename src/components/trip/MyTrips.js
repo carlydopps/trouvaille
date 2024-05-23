@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { pages } from "../../utils/pages"
 import { DeleteIcon, DraftIcon, PastIcon, PostedIcon, PrivateIcon, PublicIcon, UpcomingIcon } from "../../utils/svgs"
 import { getAuthTraveler } from "../managers/TravelerManager"
 import { deleteTrip, getMyTrips } from "../managers/TripManager"

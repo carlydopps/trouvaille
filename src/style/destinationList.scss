@@ -15,7 +15,7 @@
         rgba(255, 255, 255, 0.442), 
         rgba(255, 255, 255, 0.186)
         ),
-        url('https://res.cloudinary.com/dupram4w7/image/upload/v1708561137/pexels-maria-orlova-4947223_gmsewn.jpg');
+        url($destinationsBackground);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

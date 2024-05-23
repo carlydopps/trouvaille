@@ -16,7 +16,7 @@
         rgba(255, 255, 255, 0.442), 
         rgba(255, 255, 255, 0.186)
         ),
-        url('https://res.cloudinary.com/dupram4w7/image/upload/v1673122930/Trouvaille/pexels-roman-odintsov-4553618_fbttpw.jpg');
+        url($myTripsBackground);
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: -50rem;
